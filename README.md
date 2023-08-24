@@ -6,12 +6,15 @@
 2. Check out the repo
 3. Create a `.env` file using the `.env-example` as a template
    1. add a unique `KEY` and `SECRET`
-   2. add the details for connecting to the database ```DB_CLIENT="mysql"
-DB_HOST="localhost"
-DB_PORT="8889"
-DB_DATABASE="DATABASE_NAME"
-DB_USER="DATABASE_USER"
-DB_PASSWORD="DATABASE_PASS"```
+   2. add the details for connecting to the database 
+   ```
+   DB_CLIENT="mysql"
+   DB_HOST="localhost"
+   DB_PORT="8889"
+   DB_DATABASE="DATABASE_NAME"
+   DB_USER="DATABASE_USER"
+   DB_PASSWORD="DATABASE_PASS"
+   ```
 
    
 
