@@ -1,8 +1,8 @@
 # The Brooklyn Rail
 
 
-## Getting set up
-1. 3. Set up a new local database called `rail` and note the user/pass for accessing the database locally
+## Initial set up
+1. Set up a new local database called `rail` and note the user/pass for accessing the database locally
 2. Check out the repo
 3. Create a `.env` file using the `.env-example` as a template
    1. add a unique `KEY` and `SECRET`
@@ -16,10 +16,9 @@
    DB_PASSWORD="DATABASE_PASS"
    ```
 
-   
-
 ## Launch the studio app
 - run: `yarn dev`
+- Open http://localhost:8055
 
 
 ### Take a snapshot of your schema
@@ -30,7 +29,7 @@ More: https://docs.directus.io/self-hosted/cli.html#migrate-schema-to-a-differen
 
 
 ## Docker
-
+**Not able to get Docker working yet**
 Helpful docker commands:
 - Starting docker: `docker compose up`
 - Delete the database within Docker: `docker-compose rm -v database`
