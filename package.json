@@ -1,0 +1,13 @@
+{
+  "name": "platform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "dev": "npx directus start",
+    "schema": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
+  }
+}
