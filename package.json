@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "directus": "^10.6.1",
     "knex": "^2.5.1",
     "mysql": "^2.18.1"
   },
   "scripts": {
     "dev": "npx directus start",
-    "schema": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
+    "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "migrate": "npx directus database migrate:latest"
   }
 }
