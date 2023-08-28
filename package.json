@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^5.2.0",
     "directus": "^10.6.1",
     "knex": "^2.5.1",
     "mysql": "^2.18.1"
@@ -12,5 +13,8 @@
     "dev": "npx directus start",
     "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
     "migrate": "npx directus database migrate:latest"
+  },
+  "devDependencies": {
+    "prisma": "^5.2.0"
   }
 }
