@@ -11,8 +11,11 @@
   },
   "scripts": {
     "dev": "npx directus start",
+    "baseline": "npx directus schema snapshot ./snapshots/init.yaml",
+    "refresh": "npx directus bootstrap && npx directus schema apply ./snapshots/init.yaml",
     "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
-    "migrate": "npx directus database migrate:latest"
+    "migrate": "npx directus database migrate:latest",
+    "prisma:setup": "npx prisma init"
   },
   "devDependencies": {
     "prisma": "^5.2.0"
