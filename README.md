@@ -42,19 +42,18 @@ ALTER TABLE `articles` DROP COLUMN `banner_start`, DROP COLUMN `banner_end`, DRO
 ALTER TABLE `auction_items` DROP COLUMN `updated_on`;
 
 # Dropping unused tables
-DROP TABLE `blacklist_patterns`;
+# DROP TABLE `blacklist_patterns`;
 DROP TABLE `ci_sessions`;
-DROP TABLE `migrations`;
-DROP TABLE `newusers`;
-DROP TABLE `page_caches`;
-DROP TABLE `schema_info`;
-DROP TABLE `sessions`;
-DROP TABLE `settings`;
+# DROP TABLE `migrations`;
+# DROP TABLE `newusers`;
+# DROP TABLE `page_caches`;
+# DROP TABLE `schema_info`;
+# DROP TABLE `sessions`;
+# DROP TABLE `settings`;
 DROP TABLE `stats`;
 DROP TABLE `test`;
 DROP TABLE `test_migration`;
-DROP TABLE `users`;
-
+# DROP TABLE `users`;
 
 # Change the table and column collation
 ALTER TABLE `ads` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -86,7 +85,6 @@ UPDATE `ads` SET `end_date` = replace(end_date, '0000-00-00 00:00:00', NULL);
 # Edit Articles columns/fields
 ALTER TABLE `articles` CHANGE COLUMN permalink slug VARCHAR(255);
 ALTER TABLE `articles` CHANGE COLUMN webex in_print TINYINT(1);
-
 ```
 
 
@@ -106,3 +104,13 @@ When making changes to the content model or schema, make sure to take a snapshot
 - To create a new baseline snapshot (used in the initial import), run: `yarn baseline`
 
 More: https://docs.directus.io/self-hosted/cli.html#migrate-schema-to-a-different-environment
+
+
+
+## Cleaning the Latin1 database
+```
+ALTER TABLE `banners` CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+ALTER TABLE `migrations` CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+ALTER TABLE `newusers` CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+ALTER TABLE `sponsorships` CONVERT TO CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+```
