@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "npx directus start",
+    "bootstrap": "npx directus bootstrap",
     "baseline": "npx directus schema snapshot ./snapshots/init.yaml",
     "refresh": "npx directus bootstrap && npx directus schema apply ./snapshots/init.yaml",
     "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
