@@ -72,6 +72,14 @@ collections:
     meta: null
     schema:
       name: banners
+  - collection: blacklist_patterns
+    meta: null
+    schema:
+      name: blacklist_patterns
+  - collection: ci_sessions
+    meta: null
+    schema:
+      name: ci_sessions
   - collection: comments
     meta: null
     schema:
@@ -92,6 +100,18 @@ collections:
     meta: null
     schema:
       name: mailinglist
+  - collection: migrations
+    meta: null
+    schema:
+      name: migrations
+  - collection: newusers
+    meta: null
+    schema:
+      name: newusers
+  - collection: page_caches
+    meta: null
+    schema:
+      name: page_caches
   - collection: pages
     meta: null
     schema:
@@ -100,14 +120,42 @@ collections:
     meta: null
     schema:
       name: relatedarticles
+  - collection: schema_info
+    meta: null
+    schema:
+      name: schema_info
   - collection: sections
     meta: null
     schema:
       name: sections
+  - collection: sessions
+    meta: null
+    schema:
+      name: sessions
+  - collection: settings
+    meta: null
+    schema:
+      name: settings
   - collection: sponsorships
     meta: null
     schema:
       name: sponsorships
+  - collection: stats
+    meta: null
+    schema:
+      name: stats
+  - collection: test
+    meta: null
+    schema:
+      name: test
+  - collection: test_migration
+    meta: null
+    schema:
+      name: test_migration
+  - collection: users
+    meta: null
+    schema:
+      name: users
 fields:
   - collection: ads
     field: ad_type
@@ -229,12 +277,12 @@ fields:
     schema:
       name: embedded_tags
       table: ads
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -457,9 +505,9 @@ fields:
     schema:
       name: remote_image
       table: ads
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -591,9 +639,9 @@ fields:
     schema:
       name: html_version
       table: article_types
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -727,25 +775,7 @@ fields:
   - collection: articles
     field: allow_comments
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: allow_comments
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 19
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: allow_comments
       table: articles
@@ -754,7 +784,7 @@ fields:
       max_length: null
       numeric_precision: 3
       numeric_scale: 0
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -765,31 +795,13 @@ fields:
   - collection: articles
     field: alt_info
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: alt_info
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 17
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: alt_info
       table: articles
-      data_type: longtext
+      data_type: mediumtext
       default_value: null
-      max_length: 4294967295
+      max_length: 16777215
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -803,25 +815,7 @@ fields:
   - collection: articles
     field: article_type_id
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: article_type_id
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 9
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: article_type_id
       table: articles
@@ -839,27 +833,69 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
+    field: artseen_end
+    type: date
+    meta: null
+    schema:
+      name: artseen_end
+      table: articles
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: artseen_start
+    type: date
+    meta: null
+    schema:
+      name: artseen_start
+      table: articles
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: banner_end
+    type: date
+    meta: null
+    schema:
+      name: banner_end
+      table: articles
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
     field: banner_image
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: banner_image
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 20
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: banner_image
       table: articles
@@ -877,33 +913,35 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
+    field: banner_start
+    type: date
+    meta: null
+    schema:
+      name: banner_start
+      table: articles
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
     field: body
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: body
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 16
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: body
       table: articles
-      data_type: longtext
+      data_type: mediumtext
       default_value: null
-      max_length: 4294967295
+      max_length: 16777215
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -917,31 +955,13 @@ fields:
   - collection: articles
     field: body_old
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: body_old
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 15
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: body_old
       table: articles
-      data_type: longtext
+      data_type: mediumtext
       default_value: null
-      max_length: 4294967295
+      max_length: 16777215
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -955,31 +975,13 @@ fields:
   - collection: articles
     field: byline_override
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: byline_override
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 12
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: byline_override
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -993,25 +995,7 @@ fields:
   - collection: articles
     field: created_at
     type: dateTime
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: created_at
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 26
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: created_at
       table: articles
@@ -1031,25 +1015,7 @@ fields:
   - collection: articles
     field: custom_article_type
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: custom_article_type
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 10
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: custom_article_type
       table: articles
@@ -1069,31 +1035,13 @@ fields:
   - collection: articles
     field: deck
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: deck
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 3
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: deck
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1105,66 +1053,15 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
-    field: divider-gsqzy4
-    type: alias
-    meta:
-      collection: articles
-      field: divider-gsqzy4
-      special:
-        - alias
-        - no-data
-      interface: presentation-divider
-      options:
-        title: Details
-      display: null
-      display_options: null
-      readonly: false
-      hidden: false
-      sort: 14
-      width: full
-      translations: null
-      note: null
-      conditions: null
-      required: false
-      group: null
-      validation: null
-      validation_message: null
-  - collection: articles
     field: excerpt
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: formatted-value
-      display_options:
-        format: true
-      field: excerpt
-      group: null
-      hidden: false
-      interface: input-rich-text-html
-      note: null
-      options:
-        softLength: 255
-        toolbar:
-          - code
-          - customLink
-          - italic
-          - removeformat
-          - visualaid
-      readonly: false
-      required: true
-      sort: 5
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: excerpt
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1178,31 +1075,13 @@ fields:
   - collection: articles
     field: excerpt_old
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: excerpt_old
-      group: null
-      hidden: true
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 13
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: excerpt_old
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1216,25 +1095,7 @@ fields:
   - collection: articles
     field: feature_image
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: feature_image
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 22
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: feature_image
       table: articles
@@ -1254,25 +1115,7 @@ fields:
   - collection: articles
     field: feature_position
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: feature_position
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 23
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: feature_position
       table: articles
@@ -1292,25 +1135,7 @@ fields:
   - collection: articles
     field: featured
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: featured
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 21
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: featured
       table: articles
@@ -1330,25 +1155,7 @@ fields:
   - collection: articles
     field: guid
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: guid
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 28
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: guid
       table: articles
@@ -1368,25 +1175,7 @@ fields:
   - collection: articles
     field: header_type
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: header_type
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 37
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: header_type
       table: articles
@@ -1406,25 +1195,7 @@ fields:
   - collection: articles
     field: hidden
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: hidden
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 35
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: hidden
       table: articles
@@ -1444,25 +1215,7 @@ fields:
   - collection: articles
     field: hide
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: hide
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 34
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: hide
       table: articles
@@ -1489,13 +1242,13 @@ fields:
       display_options: null
       field: id
       group: null
-      hidden: true
+      hidden: false
       interface: null
       note: null
       options: null
-      readonly: true
-      required: true
-      sort: 1
+      readonly: false
+      required: false
+      sort: null
       special: null
       translations: null
       validation: null
@@ -1518,66 +1271,9 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
-    field: in_print
-    type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: in_print
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 38
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: in_print
-      table: articles
-      data_type: boolean
-      default_value: false
-      max_length: null
-      numeric_precision: 3
-      numeric_scale: 0
-      is_nullable: false
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: articles
     field: inconvo_name
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: inconvo_name
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 6
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: inconvo_name
       table: articles
@@ -1597,31 +1293,13 @@ fields:
   - collection: articles
     field: internal_notes
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: internal_notes
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 33
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: internal_notes
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -1635,25 +1313,7 @@ fields:
   - collection: articles
     field: issue_id
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: issue_id
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 7
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: issue_id
       table: articles
@@ -1673,25 +1333,7 @@ fields:
   - collection: articles
     field: keywords
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: keywords
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 18
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: keywords
       table: articles
@@ -1711,25 +1353,7 @@ fields:
   - collection: articles
     field: new_layout
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: new_layout
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 36
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: new_layout
       table: articles
@@ -1747,27 +1371,29 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
+    field: permalink
+    type: string
+    meta: null
+    schema:
+      name: permalink
+      table: articles
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
     field: position
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: position
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 29
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: position
       table: articles
@@ -1785,27 +1411,29 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
+    field: pub_override
+    type: dateTime
+    meta: null
+    schema:
+      name: pub_override
+      table: articles
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
     field: rss
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: rss
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 30
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: rss
       table: articles
@@ -1825,25 +1453,7 @@ fields:
   - collection: articles
     field: section_id
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: section_id
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 8
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: section_id
       table: articles
@@ -1863,25 +1473,7 @@ fields:
   - collection: articles
     field: show_contrib
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: show_contrib
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 31
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: show_contrib
       table: articles
@@ -1901,25 +1493,7 @@ fields:
   - collection: articles
     field: show_contrib_section
     type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: show_contrib_section
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 32
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: show_contrib_section
       table: articles
@@ -1937,76 +1511,15 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
-    field: slug
-    type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: raw
-      display_options: null
-      field: slug
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options:
-        font: monospace
-        iconLeft: link
-        slug: true
-        softLength: 100
-        trim: true
-      readonly: false
-      required: true
-      sort: 4
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: slug
-      table: articles
-      data_type: varchar
-      default_value: null
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: true
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: articles
     field: tags
     type: text
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: tags
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 11
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: tags
       table: articles
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -2020,25 +1533,7 @@ fields:
   - collection: articles
     field: thumb_image
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: thumb_image
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 24
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: thumb_image
       table: articles
@@ -2058,29 +1553,7 @@ fields:
   - collection: articles
     field: title
     type: string
-    meta:
-      collection: articles
-      conditions: null
-      display: formatted-value
-      display_options:
-        font: serif
-        format: true
-      field: title
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options:
-        font: serif
-        trim: true
-      readonly: false
-      required: true
-      sort: 2
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: title
       table: articles
@@ -2100,25 +1573,7 @@ fields:
   - collection: articles
     field: updated_at
     type: dateTime
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: updated_at
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 27
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: updated_at
       table: articles
@@ -2138,25 +1593,7 @@ fields:
   - collection: articles
     field: user_id
     type: integer
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: user_id
-      group: null
-      hidden: false
-      interface: null
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 25
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
+    meta: null
     schema:
       name: user_id
       table: articles
@@ -2166,6 +1603,26 @@ fields:
       numeric_precision: 10
       numeric_scale: 0
       is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: webex
+    type: boolean
+    meta: null
+    schema:
+      name: webex
+      table: articles
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: 3
+      numeric_scale: 0
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -2200,9 +1657,9 @@ fields:
     schema:
       name: description
       table: auction_items
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2333,6 +1790,26 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: auction_items
+    field: updated_on
+    type: timestamp
+    meta: null
+    schema:
+      name: updated_on
+      table: auction_items
+      data_type: timestamp
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: banner_displays
     field: banner_id
     type: integer
@@ -2440,9 +1917,9 @@ fields:
     schema:
       name: alt_info
       table: banners
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2540,9 +2017,9 @@ fields:
     schema:
       name: excerpt
       table: banners
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2680,12 +2157,172 @@ fields:
     schema:
       name: url
       table: banners
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: blacklist_patterns
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: blacklist_patterns
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: blacklist_patterns
+    field: pattern
+    type: string
+    meta: null
+    schema:
+      name: pattern
+      table: blacklist_patterns
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: blacklist_patterns
+    field: type
+    type: string
+    meta: null
+    schema:
+      name: type
+      table: blacklist_patterns
+      data_type: varchar
+      default_value: null
+      max_length: 15
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ci_sessions
+    field: ip_address
+    type: string
+    meta: null
+    schema:
+      name: ip_address
+      table: ci_sessions
+      data_type: varchar
+      default_value: '0'
+      max_length: 16
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ci_sessions
+    field: last_activity
+    type: integer
+    meta: null
+    schema:
+      name: last_activity
+      table: ci_sessions
+      data_type: int unsigned
+      default_value: 0
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ci_sessions
+    field: session_data
+    type: text
+    meta: null
+    schema:
+      name: session_data
+      table: ci_sessions
+      data_type: text
+      default_value: null
+      max_length: 65535
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ci_sessions
+    field: session_id
+    type: string
+    meta: null
+    schema:
+      name: session_id
+      table: ci_sessions
+      data_type: varchar
+      default_value: '0'
+      max_length: 40
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ci_sessions
+    field: user_agent
+    type: string
+    meta: null
+    schema:
+      name: user_agent
+      table: ci_sessions
+      data_type: varchar
+      default_value: ''
+      max_length: 50
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -2760,9 +2397,9 @@ fields:
     schema:
       name: body
       table: comments
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2780,9 +2417,9 @@ fields:
     schema:
       name: body_html
       table: comments
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2920,9 +2557,9 @@ fields:
     schema:
       name: bio
       table: contributors
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2940,9 +2577,9 @@ fields:
     schema:
       name: bio_old
       table: contributors
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3200,9 +2837,9 @@ fields:
     schema:
       name: location
       table: events
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -3260,9 +2897,9 @@ fields:
     schema:
       name: text
       table: events
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
@@ -3320,9 +2957,9 @@ fields:
     schema:
       name: cover_description
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3340,9 +2977,9 @@ fields:
     schema:
       name: cover_description2
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3360,9 +2997,9 @@ fields:
     schema:
       name: cover_description3
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3380,9 +3017,9 @@ fields:
     schema:
       name: cover_description4
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3400,9 +3037,9 @@ fields:
     schema:
       name: cover_description5
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3420,9 +3057,9 @@ fields:
     schema:
       name: cover_description6
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3760,9 +3397,9 @@ fields:
     schema:
       name: music_podcast
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -3980,9 +3617,9 @@ fields:
     schema:
       name: section_cols
       table: issues
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -4093,6 +3730,186 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: newusers
+    field: email
+    type: string
+    meta: null
+    schema:
+      name: email
+      table: newusers
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: newusers
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: name
+    type: string
+    meta: null
+    schema:
+      name: name
+      table: newusers
+      data_type: varchar
+      default_value: null
+      max_length: 100
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: password_hash
+    type: string
+    meta: null
+    schema:
+      name: password_hash
+      table: newusers
+      data_type: varchar
+      default_value: null
+      max_length: 35
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: password_salt
+    type: string
+    meta: null
+    schema:
+      name: password_salt
+      table: newusers
+      data_type: varchar
+      default_value: null
+      max_length: 15
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: role
+    type: unknown
+    meta: null
+    schema:
+      name: role
+      table: newusers
+      data_type: enum
+      default_value: user
+      max_length: 7
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: newusers
+    field: username
+    type: string
+    meta: null
+    schema:
+      name: username
+      table: newusers
+      data_type: varchar
+      default_value: null
+      max_length: 25
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: page_caches
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: page_caches
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: page_caches
+    field: name
+    type: string
+    meta: null
+    schema:
+      name: name
+      table: page_caches
+      data_type: varchar
+      default_value: ''
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: pages
     field: body
     type: text
@@ -4100,9 +3917,9 @@ fields:
     schema:
       name: body
       table: pages
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -4120,9 +3937,9 @@ fields:
     schema:
       name: body_old
       table: pages
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -4453,6 +4270,146 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: sessions
+    field: data
+    type: text
+    meta: null
+    schema:
+      name: data
+      table: sessions
+      data_type: text
+      default_value: null
+      max_length: 65535
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: sessions
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: sessions
+      data_type: int unsigned
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: sessions
+    field: sessid
+    type: string
+    meta: null
+    schema:
+      name: sessid
+      table: sessions
+      data_type: varchar
+      default_value: null
+      max_length: 32
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: sessions
+    field: updated_at
+    type: dateTime
+    meta: null
+    schema:
+      name: updated_at
+      table: sessions
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: settings
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: settings
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: settings
+    field: name
+    type: string
+    meta: null
+    schema:
+      name: name
+      table: settings
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: settings
+    field: value
+    type: string
+    meta: null
+    schema:
+      name: value
+      table: settings
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: sponsorships
     field: added_at
     type: dateTime
@@ -4560,9 +4517,9 @@ fields:
     schema:
       name: sponsor_html
       table: sponsorships
-      data_type: mediumtext
+      data_type: text
       default_value: null
-      max_length: 16777215
+      max_length: 65535
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -4626,6 +4583,286 @@ fields:
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test
+    field: created_at
+    type: dateTime
+    meta: null
+    schema:
+      name: created_at
+      table: test
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: test
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test
+    field: name
+    type: string
+    meta: null
+    schema:
+      name: name
+      table: test
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test_migration
+    field: another_description
+    type: text
+    meta: null
+    schema:
+      name: another_description
+      table: test_migration
+      data_type: text
+      default_value: null
+      max_length: 65535
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test_migration
+    field: another_title
+    type: string
+    meta: null
+    schema:
+      name: another_title
+      table: test_migration
+      data_type: varchar
+      default_value: null
+      max_length: 100
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test_migration
+    field: description
+    type: text
+    meta: null
+    schema:
+      name: description
+      table: test_migration
+      data_type: text
+      default_value: null
+      max_length: 65535
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test_migration
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: test_migration
+      data_type: int unsigned
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: test_migration
+    field: title
+    type: string
+    meta: null
+    schema:
+      name: title
+      table: test_migration
+      data_type: varchar
+      default_value: null
+      max_length: 100
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: email
+    type: string
+    meta: null
+    schema:
+      name: email
+      table: users
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: id
+    type: integer
+    meta: null
+    schema:
+      name: id
+      table: users
+      data_type: int
+      default_value: null
+      max_length: null
+      numeric_precision: 10
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: name
+    type: string
+    meta: null
+    schema:
+      name: name
+      table: users
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: password_hash
+    type: string
+    meta: null
+    schema:
+      name: password_hash
+      table: users
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: password_salt
+    type: string
+    meta: null
+    schema:
+      name: password_salt
+      table: users
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: users
+    field: username
+    type: string
+    meta: null
+    schema:
+      name: username
+      table: users
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
