@@ -1,5 +1,6 @@
 # The Brooklyn Rail
 
+[![Run Directus in Google Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/)
 
 ## Initial set up
 1. Set up a new local database called `rail` and note the user/pass for accessing the database locally
