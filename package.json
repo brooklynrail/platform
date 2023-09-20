@@ -9,6 +9,9 @@
     "knex": "^2.5.1",
     "mysql": "^2.18.1"
   },
+  "engines": {
+    "node": "16.19.1"
+  },
   "scripts": {
     "dev": "npx directus start",
     "bootstrap": "npx directus bootstrap",
