@@ -1,4 +1,4 @@
-FROM node:16.19.1-alpine
+FROM node:18.18.0-alpine
 
 WORKDIR /src
 
