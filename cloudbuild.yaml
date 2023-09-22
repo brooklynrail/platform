@@ -1,7 +1,7 @@
   steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', 'gcr.io/${PROJECT_ID}/brooklynrail-studio:${COMMIT_SHA}', '.']
+    args: ["docker build gcr.io/${PROJECT_ID}/brooklynrail-studio:${COMMIT_SHA} '.'"]
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/brooklynrail-studio:$COMMIT_SHA']
