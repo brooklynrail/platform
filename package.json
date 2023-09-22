@@ -10,7 +10,7 @@
     "mysql": "^2.18.1"
   },
   "engines": {
-    "node": "16.19.1"
+    "node": "18.18.0"
   },
   "scripts": {
     "dev": "npx directus start",
