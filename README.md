@@ -1,7 +1,5 @@
 # The Brooklyn Rail
 
----
-
 [![Run Directus in Google Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/)
 
 ## Initial set up
