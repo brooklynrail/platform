@@ -2,8 +2,8 @@
 
 [![Run Directus in Google Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/)
 
-## Google Cloud
-TKTK
+## Google Cloud Build
+
 
 ## Initial set up
 1. Set up a new local database called `rail` and note the user/pass for accessing the database locally
