@@ -8,4 +8,4 @@ RUN yarn install
 
 ADD .env /src
 
-CMD ["yarn", "dev"]
+CMD ["yarn", "build"]
