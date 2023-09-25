@@ -2,7 +2,7 @@ steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c','build', '-t', 'gcr.io/${PROJECT_ID}/brooklynrail-studio:${SHORT_SHA}', '.']
+  args: ['-c', 'build', 'gcr.io/${PROJECT_ID}/brooklynrail-studio:${SHORT_SHA}', '.']
   secretEnv: ['DB_CLIENT', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USER', 'DB_PASSWORD', 'DATABASE_URL', 'KEY', 'SECRET', 'ADMIN_EMAIL', 'ADMIN_PASSWORD', 'NODE_ENV']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
