@@ -9,14 +9,8 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args:
-  - 'run'
-  - 'deploy'
-  - 'brooklynrail-studio'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/brooklynrail-studio:$SHORT_SHA'
-  - '--region'
-  - 'us-west2'
+  args: ['run', 'deploy', 'brooklynrail-studio', '--image', 'gcr.io/$PROJECT_ID/brooklynrail-studio:$SHORT_SHA', '--region', 'us-west2']
+  secretEnv: ['DB_CLIENT', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USER', 'DB_PASSWORD', 'DATABASE_URL', 'KEY', 'SECRET', 'ADMIN_EMAIL', 'ADMIN_PASSWORD', 'NODE_ENV']
 images:
 - 'gcr.io/$PROJECT_ID/brooklynrail-studio:$SHORT_SHA'
 availableSecrets:
