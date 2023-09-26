@@ -17,7 +17,7 @@
     "build": "CONFIG_PATH='.env' npx directus start",
     "bootstrap": "npx directus bootstrap",
     "baseline": "npx directus schema snapshot ./snapshots/init.yaml",
-    "refresh": "npx directus bootstrap && npx directus schema apply ./snapshots/init.yaml",
+    "refresh": "npx directus bootstrap && npx directus schema apply ./snapshots/init.yaml -p $PORT",
     "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
     "migrate": "npx directus database migrate:latest",
     "prisma:setup": "npx prisma init"
