@@ -17,8 +17,9 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install
+      - run: sudo apt install rsync
       - deploy:
-          name: Deploy
+          name: Deploy over SSH
           command: ./deploy.sh
 
 workflows:
