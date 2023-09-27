@@ -9,14 +9,23 @@ version: '2.1'
 jobs:
   deploy:
     docker:
-      - image: circleci/php:8.1.23-node
+      - image: cimg/php:8.1.23-node
     working_directory: ~/project
     steps:
       - checkout
+      - run: sudo apt update
+      - run: sudo apt-get install rsync
+      - run: sudo docker-php-ext-install zip
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run: yarn install 
+      - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+          - ./vendor
       - run: node --version
-      - run:
-          name: Install dependencies
-          command: yarn install
       - deploy:
           name: Deploy over SSH
           command: ./deploy.sh
