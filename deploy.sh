@@ -9,7 +9,6 @@ GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 DOMAIN="studio.brooklynrail.org"
 DEST_DIR="\${HOME}/domains/studio.brooklynrail.org"
 
-
 # copy files to server
 rsync -acr --stats -e "ssh -o StrictHostKeyChecking=no" \
   --exclude .git \
