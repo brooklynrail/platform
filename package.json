@@ -10,7 +10,7 @@
     "mysql": "^2.18.1"
   },
   "engines": {
-    "node": "18.18.0"
+    "node": "18.17.1"
   },
   "scripts": {
     "dev": "CONFIG_PATH='.env-development' npx directus start",
