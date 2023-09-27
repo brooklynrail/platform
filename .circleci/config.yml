@@ -15,7 +15,6 @@ jobs:
       - checkout
       - run: sudo apt update
       - run: sudo apt-get install rsync
-      - run: sudo docker-php-ext-install zip
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
