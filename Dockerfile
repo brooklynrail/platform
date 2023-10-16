@@ -6,7 +6,7 @@ WORKDIR /src
 
 ADD package.json /src
 
-RUN yarn install
+RUN yarn install --ignore-engines
 
 ADD .env /src
 
