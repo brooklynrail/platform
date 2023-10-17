@@ -10,9 +10,9 @@ ADD package.json /src
 RUN yarn install --ignore-engines
 
 ADD .env /src
-RUN ls -all
-ADD snapshots/init.yaml /src/snapshots
+
+ADD ./snapshots/init.yaml /src/snapshots
 # ADD .env-development /src
 
 # CMD ["yarn", "dev"]
-CMD ["yarn", "refresh"]
+CMD ["yarn", "init"]
