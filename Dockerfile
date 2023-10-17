@@ -15,4 +15,4 @@ ADD snapshots/init.yaml snapshots/
 # ADD .env-development /src
 
 # CMD ["yarn", "dev"]
-CMD ["yarn", "init"]
+CMD ["yarn", "refresh"]
