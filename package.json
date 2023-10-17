@@ -5,18 +5,18 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.2.0",
-    "directus": "^10.6.1",
+    "directus": "^10.6.3",
     "knex": "^2.5.1",
     "mysql": "^2.18.1"
   },
   "engines": {
-    "node": "18.17.1"
+    "node": "18.18.0"
   },
   "scripts": {
     "dev": "CONFIG_PATH='.env-development' npx directus start",
     "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus schema apply snapshots/init.yaml && npx directus start",
-    "bootstrap": "npx directus bootstrap",
-    "baseline": "npx directus schema snapshot ./snapshots/init.yaml",
+    "bootstrap": "CONFIG_PATH='.env-development' npx directus bootstrap",
+    "baseline": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init.yaml",
     "refresh": "npx directus bootstrap && npx directus schema apply snapshots/init.yaml",
     "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
     "migrate": "npx directus database migrate:latest",
