@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "CONFIG_PATH='.env-development' npx directus start",
-    "build": "CONFIG_PATH='.env' npx directus start",
+    "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus schema apply snapshots/init.yaml && npx directus start",
     "bootstrap": "npx directus bootstrap",
     "baseline": "npx directus schema snapshot ./snapshots/init.yaml",
     "refresh": "npx directus bootstrap && npx directus schema apply snapshots/init.yaml",
