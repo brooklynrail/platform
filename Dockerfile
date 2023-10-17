@@ -1,6 +1,7 @@
 # via https://github.com/tpAtalas/tp-next-todos/wiki/Deploy-Next.js-App-into-Google-Cloud-Run(GCR)-with-Docker
 
-FROM --platform=linux/amd64 node:18.17.1-alpine AS deps
+# linux/amd64
+FROM --platform=linux/x86_64 node:18.17.1-alpine AS deps
 
 WORKDIR /src
 
