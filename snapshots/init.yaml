@@ -1,5 +1,5 @@
 version: 1
-directus: 13.1.1
+directus: 14.0.1
 vendor: mysql
 collections:
   - collection: ads
@@ -23,6 +23,7 @@ collections:
       sort_field: null
       translations: null
       unarchive_value: null
+      versioning: false
     schema:
       name: ads
   - collection: article_images
