@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "directus": "^10.7.1"
+    "directus": "10.7.2"
   },
   "engines": {
     "node": "18.18.0"
@@ -13,9 +13,8 @@
     "dev": "CONFIG_PATH='.env-development' npx directus start",
     "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus schema apply --yes snapshots/init.yaml && npx directus start",
     "bootstrap": "CONFIG_PATH='.env-development' npx directus bootstrap",
-    "baseline": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init.yaml",
     "refresh": "CONFIG_PATH='.env-development' npx directus bootstrap && CONFIG_PATH='.env-development' npx directus schema apply --yes snapshots/init.yaml",
-    "snapshot": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "snapshot": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init.yaml",
     "migrate": "npx directus database migrate:latest",
     "download": "CONFIG_PATH='.env-development' node snapshots/download"
   },

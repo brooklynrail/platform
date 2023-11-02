@@ -1298,14 +1298,14 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@directus/api@14.0.1":
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/@directus/api/-/api-14.0.1.tgz#7f65477d533fc1d164a41c22d1e13672f4d07abb"
-  integrity sha512-8V7S5GRTc2GoXs/Zg0dQivr/3URqitD5EUTw9O/m4ONzWxUhs/e1OpMLpmSaAsj9+3J4uqkBw56M1/yoRqPtBQ==
+"@directus/api@14.0.2":
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/@directus/api/-/api-14.0.2.tgz#fa722cc8517e2a7dbb2370b541ae5d6c3499b57f"
+  integrity sha512-uXbZdMVbEfZYGlUGewm7JvtL2CcwuvLsmHtCamJWVTuwSkO8t/9QhmLDTw1syVTC1SQX4lQllhM5wiU5sQRQ/w==
   dependencies:
     "@authenio/samlify-node-xmllint" "2.0.0"
     "@aws-sdk/client-ses" "3.332.0"
-    "@directus/app" "10.11.0"
+    "@directus/app" "10.12.0"
     "@directus/constants" "11.0.1"
     "@directus/errors" "0.2.0"
     "@directus/extensions" "0.1.1"
@@ -1415,10 +1415,10 @@
     sqlite3 "5.1.6"
     tedious "16.1.0"
 
-"@directus/app@10.11.0":
-  version "10.11.0"
-  resolved "https://registry.yarnpkg.com/@directus/app/-/app-10.11.0.tgz#d5dce40a0df2a8f40a277c748a299b526c383d67"
-  integrity sha512-0XbwvhbB6/pwmBFMV34uqIZIDI0hD5Ha8d4k8kFXvm3nKYt7mmAqDtNQap19hgm6TK/0+A5i0+mND1VFyjLaRA==
+"@directus/app@10.12.0":
+  version "10.12.0"
+  resolved "https://registry.yarnpkg.com/@directus/app/-/app-10.12.0.tgz#4b4bbef9ec31aa271a70ba24d1667e014d7ef7a6"
+  integrity sha512-FumXMoKMQlM6rmW8pBvD1mUxag/E536LMAkcvSfgCIWtq7AQdCvJPbAJiEbgMnIG4lFgm1eTepv367tcB42bVQ==
 
 "@directus/composables@10.1.5":
   version "10.1.5"
@@ -3734,12 +3734,12 @@ detect-libc@^2.0.0, detect-libc@^2.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.2.tgz#8ccf2ba9315350e1241b88d0ac3b0e1fbd99605d"
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
 
-directus@^10.7.1:
-  version "10.7.1"
-  resolved "https://registry.yarnpkg.com/directus/-/directus-10.7.1.tgz#607a277a70870a5023aea79210b8d0efa90574bb"
-  integrity sha512-t0Q1vikzb6zC8Fbewah+xB4H3AQTVtx8y0nsHfYzTuEUCUBL6LV7amYNzOO/BJS4Ww3zJRUSF93Llv6RfFY/JQ==
+directus@10.7.2:
+  version "10.7.2"
+  resolved "https://registry.yarnpkg.com/directus/-/directus-10.7.2.tgz#f6381f85005c835f8e6c67776e8afa251b7f5b1c"
+  integrity sha512-BmS3EQ9QtzXVid7P7t93dFBybZB1kXRVMW2xwStUvcCghpGmaMdT6CTQq0PfY+DO6yPwZ9FZKFlVAcZjOd12og==
   dependencies:
-    "@directus/api" "14.0.1"
+    "@directus/api" "14.0.2"
     "@directus/update-check" "11.0.3"
 
 dom-serializer@^1.0.1:
