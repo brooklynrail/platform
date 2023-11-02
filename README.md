@@ -28,15 +28,29 @@
 ## Migrating data from the OLD Rail Site
 
 1. Download a fresh copy of the database from GoDaddy
-2. Create a new `utf8` database in Sequel Ace
-3. Import the `brooklynrail_production` database _(as latin1)_
-4. Run the migration script _(below)_ that will convert all of the tables and collation to `utf8`
-5. Run `yarn directus bootstrap` to add the Directus tables to the database
-6. Run `yarn refresh` to load in the current Directus schema from `snapshots/init.yaml`
-7. Run `yarn dev`
-8. Open http://localhost:8055
+2. Start up the Brooklyn Site locally with this fresh database
+3. Verify that it works http://localhost:8055
+4. Connect to the Database via Sequel Ace
+5. Run the clean up scripts (below)
+6. Export the database as SQL Dump
+7. Upload the `.sql` file to Google Cloud Storage https://console.cloud.google.com/storage/browser/brooklynrail-data;tab=objects
+8. Create a new database https://console.cloud.google.com/sql
+9. Import the `.sql` file into the new database
+10. Set the Secret for DB_DATABASE to the name of the new database
+11. Trigger a build https://console.cloud.google.com/cloud-build/triggers;region=us-west2?hl=en&project=studio-399415
 
 
+```
+DROP TABLE `blacklist_patterns`;
+DROP TABLE `page_caches`;
+DROP TABLE `schema_info`;
+DROP TABLE `stats`;
+DROP TABLE `test`;
+DROP TABLE `test_migration`;
+```
+
+
+## Old migration data
 ```
 # Remove unused DATE fields in articles
 # These existing values `0000-00-00` are throwing an error
