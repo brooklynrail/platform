@@ -11,12 +11,12 @@
   },
   "scripts": {
     "dev": "CONFIG_PATH='.env-development' npx directus start",
-    "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus start",
+    "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus schema snapshot ./snapshots/init-local.yaml && npx directus start",
     "bootstrap": "CONFIG_PATH='.env-development' npx directus bootstrap",
-    "refresh": "CONFIG_PATH='.env-development' npx directus bootstrap && CONFIG_PATH='.env-development' npx directus schema apply --yes snapshots/init.yaml",
-    "snapshot": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init.yaml",
+    "refresh": "CONFIG_PATH='.env-development' npx directus schema apply --yes snapshots/init.yaml",
+    "snapshot": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init-local.yaml",
     "migrate": "npx directus database migrate:latest",
-    "download": "CONFIG_PATH='.env-development' node snapshots/download"
+    "download": "node snapshots/download"
   },
   "devDependencies": {
     "dotenv": "^16.3.1"
