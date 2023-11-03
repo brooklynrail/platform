@@ -491,7 +491,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 19
+      sort: 17
       special: null
       translations: null
       validation: null
@@ -529,7 +529,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 17
+      sort: 15
       special: null
       translations: null
       validation: null
@@ -567,7 +567,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 7
+      sort: 10
       special: null
       translations: null
       validation: null
@@ -605,7 +605,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 34
+      sort: 29
       special: null
       translations: null
       validation: null
@@ -643,7 +643,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 33
+      sort: 28
       special: null
       translations: null
       validation: null
@@ -681,7 +681,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 32
+      sort: 27
       special: null
       translations: null
       validation: null
@@ -719,7 +719,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 20
+      sort: 18
       special: null
       translations: null
       validation: null
@@ -757,7 +757,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 31
+      sort: 26
       special: null
       translations: null
       validation: null
@@ -785,17 +785,36 @@ fields:
     meta:
       collection: articles
       conditions: null
-      display: null
-      display_options: null
+      display: formatted-value
+      display_options:
+        format: true
       field: body
       group: null
       hidden: false
-      interface: null
+      interface: input-rich-text-html
       note: null
-      options: null
+      options:
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customLink
+          - fullscreen
+          - h2
+          - h3
+          - h4
+          - h5
+          - h6
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - unlink
+          - visualaid
       readonly: false
-      required: false
-      sort: 16
+      required: true
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -827,13 +846,13 @@ fields:
       display_options: null
       field: body_old
       group: null
-      hidden: false
+      hidden: true
       interface: null
       note: null
       options: null
       readonly: false
       required: false
-      sort: 15
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -871,7 +890,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 11
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -909,7 +928,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 26
+      sort: 22
       special: null
       translations: null
       validation: null
@@ -947,7 +966,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 8
+      sort: 11
       special: null
       translations: null
       validation: null
@@ -975,17 +994,19 @@ fields:
     meta:
       collection: articles
       conditions: null
-      display: null
-      display_options: null
+      display: formatted-value
+      display_options:
+        format: true
       field: deck
       group: null
       hidden: false
-      interface: null
+      interface: input
       note: null
-      options: null
+      options:
+        trim: true
       readonly: false
       required: false
-      sort: 14
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -1013,17 +1034,23 @@ fields:
     meta:
       collection: articles
       conditions: null
-      display: null
-      display_options: null
+      display: formatted-value
+      display_options:
+        format: true
       field: excerpt
       group: null
       hidden: false
-      interface: null
+      interface: input-rich-text-html
       note: null
-      options: null
+      options:
+        toolbar:
+          - bold
+          - code
+          - italic
+          - removeformat
       readonly: false
-      required: false
-      sort: 13
+      required: true
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -1055,13 +1082,13 @@ fields:
       display_options: null
       field: excerpt_old
       group: null
-      hidden: false
+      hidden: true
       interface: null
       note: null
       options: null
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -1099,7 +1126,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 22
+      sort: 20
       special: null
       translations: null
       validation: null
@@ -1137,7 +1164,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 23
+      sort: 21
       special: null
       translations: null
       validation: null
@@ -1175,7 +1202,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 21
+      sort: 19
       special: null
       translations: null
       validation: null
@@ -1213,7 +1240,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 28
+      sort: 23
       special: null
       translations: null
       validation: null
@@ -1251,7 +1278,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 42
+      sort: 36
       special: null
       translations: null
       validation: null
@@ -1260,10 +1287,10 @@ fields:
     schema:
       name: header_type
       table: articles
-      data_type: smallint
+      data_type: int
       default_value: 1
       max_length: null
-      numeric_precision: 5
+      numeric_precision: 10
       numeric_scale: 0
       is_nullable: true
       is_unique: false
@@ -1289,7 +1316,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 40
+      sort: 34
       special: null
       translations: null
       validation: null
@@ -1327,7 +1354,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 39
+      sort: 33
       special: null
       translations: null
       validation: null
@@ -1341,7 +1368,7 @@ fields:
       max_length: null
       numeric_precision: 10
       numeric_scale: 0
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -1403,7 +1430,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -1441,7 +1468,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 37
+      sort: 31
       special: null
       translations: null
       validation: null
@@ -1479,7 +1506,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 5
+      sort: 9
       special: null
       translations: null
       validation: null
@@ -1517,7 +1544,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 18
+      sort: 16
       special: null
       translations: null
       validation: null
@@ -1555,7 +1582,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 41
+      sort: 35
       special: null
       translations: null
       validation: null
@@ -1583,16 +1610,20 @@ fields:
     meta:
       collection: articles
       conditions: null
-      display: null
+      display: raw
       display_options: null
       field: permalink
       group: null
       hidden: false
-      interface: null
+      interface: input
       note: null
-      options: null
+      options:
+        font: monospace
+        iconLeft: link
+        slug: true
+        trim: true
       readonly: false
-      required: false
+      required: true
       sort: 3
       special: null
       translations: null
@@ -1631,7 +1662,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 29
+      sort: 24
       special: null
       translations: null
       validation: null
@@ -1669,7 +1700,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 38
+      sort: 32
       special: null
       translations: null
       validation: null
@@ -1707,7 +1738,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 30
+      sort: 25
       special: null
       translations: null
       validation: null
@@ -1745,7 +1776,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -1783,7 +1814,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 35
+      sort: 30
       special: null
       translations: null
       validation: null
@@ -1821,7 +1852,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 36
+      sort: 42
       special: null
       translations: null
       validation: null
@@ -1835,7 +1866,7 @@ fields:
       max_length: null
       numeric_precision: 3
       numeric_scale: 0
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -1859,7 +1890,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 10
+      sort: 38
       special: null
       translations: null
       validation: null
@@ -1897,7 +1928,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 24
+      sort: 39
       special: null
       translations: null
       validation: null
@@ -1976,7 +2007,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 27
+      sort: 41
       special: null
       translations: null
       validation: null
@@ -2014,7 +2045,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 25
+      sort: 40
       special: null
       translations: null
       validation: null
@@ -2052,7 +2083,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 9
+      sort: 37
       special: null
       translations: null
       validation: null
