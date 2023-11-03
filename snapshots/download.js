@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const token = process.env.TOKEN;
 const url = "https://studio.brooklynrail.org/schema/snapshot?export=yaml&access_token=" + token;
+// console.log("token: ", token);
 
 https.get(url, (res) => {
   const path = "snapshots/init.yaml";
