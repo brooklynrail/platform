@@ -1,8 +1,6 @@
-# The Brooklyn Rail
+# The Brooklyn Rail Studio
 
-[![Run Directus in Google Cloud Run](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/)
-
-## Google Cloud Build
+---
 
 
 ## Initial set up
@@ -24,6 +22,9 @@
 6. Run `npx directus bootstrap` -- Keep trying this till your connection to the database works
 7. Run `yarn dev` -- this should spin up a local version of the Studio at `http://localhost:8055`
 
+## Commands
+
+- Copy files to Google Cloud Storage — `gsutil cp -n -r -m content-to-be-uploaded/ gs://bucketname`
 
 ## Migrating data from the OLD Rail Site
 
