@@ -14,7 +14,7 @@
     "build": "CONFIG_PATH='.env' npx directus bootstrap && npx directus schema snapshot ./snapshots/init-local.yaml && npx directus start",
     "bootstrap": "CONFIG_PATH='.env-development' npx directus bootstrap",
     "refresh": "CONFIG_PATH='.env-development' npx directus schema apply --yes snapshots/init.yaml",
-    "snapshot": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init-local.yaml",
+    "snapshot": "CONFIG_PATH='.env-development' npx directus schema snapshot ./snapshots/init.yaml",
     "migrate": "npx directus database migrate:latest",
     "download": "node snapshots/download"
   },
