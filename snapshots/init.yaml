@@ -74,7 +74,7 @@ collections:
       display_template: null
       group: null
       hidden: false
-      icon: null
+      icon: emoji_people
       item_duplication_fields: null
       note: null
       preview_url: null
