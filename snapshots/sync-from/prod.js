@@ -6,7 +6,7 @@ const BASE_DIRECTUS_URL = 'https://studio.brooklynrail.org';
 const BASE_ACCESS_TOKEN = process.env.TOKEN;
 
 const TARGET_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const TARGET_ACCESS_TOKEN = 'oK3jgAPaK7Hg-_eUxg-wNajajTvMPmcn';
+const TARGET_ACCESS_TOKEN = process.env.TOKENLOCAL;
 
 async function main() {
 	const snapshot = await getSnapshot();

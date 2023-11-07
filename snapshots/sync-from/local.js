@@ -3,7 +3,7 @@ require('dotenv').config();
 const token = process.env.TOKEN;
 
 const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = 'oK3jgAPaK7Hg-_eUxg-wNajajTvMPmcn';
+const BASE_ACCESS_TOKEN = process.env.TOKENLOCAL;
 
 const TARGET_DIRECTUS_URL = 'https://studio.brooklynrail.org';
 const TARGET_ACCESS_TOKEN = process.env.TOKEN;
