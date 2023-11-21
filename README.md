@@ -3,6 +3,38 @@
 ---
 
 
+## Local development
+
+1. Start up the local Brooklyn Rail site with a fresh database
+2. Remove unused tables from the database
+```
+DROP TABLE `stats`;
+DROP TABLE `test`;
+DROP TABLE `test_migration`;
+DROP TABLE `sessions`;
+DROP TABLE `page_caches`;
+DROP TABLE `blacklist_patterns`;
+DROP TABLE `schema_info`;
+DROP TABLE `ci_sessions`;
+```
+3. Add the new CI_Sessions table
+```
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+   `id` varchar(40) NOT NULL,
+   `ip_address` varchar(45) NOT NULL,
+   `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+   `data` blob NOT NULL,
+   KEY `ci_sessions_timestamp` (`timestamp`)
+);
+```
+4. In this repo, run `yarn bootstrap` to initialize Directus and set up the tables in the database
+5. Run `yarn refresh` to instal the latest configuration
+
+
+
+
+
+
 ## Initial set up
 1. Set up a new local database called `rail` and note the user/pass for accessing the database locally
 2. Check out the repo
@@ -41,14 +73,7 @@
 11. Trigger a build https://console.cloud.google.com/cloud-build/triggers;region=us-west2?hl=en&project=studio-399415
 
 
-```
-DROP TABLE `blacklist_patterns`;
-DROP TABLE `page_caches`;
-DROP TABLE `schema_info`;
-DROP TABLE `stats`;
-DROP TABLE `test`;
-DROP TABLE `test_migration`;
-```
+
 
 
 ## Old migration data
