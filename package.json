@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "cross-fetch": "^4.0.0",
-    "directus": "10.7.2"
+    "directus": "10.8.1"
   },
   "engines": {
     "node": "18.18.0"
@@ -16,7 +16,7 @@
     "build": "npx directus bootstrap && npx directus start",
     "bootstrap": "CONFIG_PATH='.env.local' npx directus bootstrap",
     "refresh": "CONFIG_PATH='.env.local' npx directus schema apply --yes snapshots/init.yaml",
-    "snapshot": "CONFIG_PATH='.env.local' npx directus schema snapshot --yes ./snapshots/init-local.yaml",
+    "snapshot": "CONFIG_PATH='.env.local' npx directus schema snapshot --yes ./snapshots/init.yaml",
     "migrate": "CONFIG_PATH='.env.local' npx directus database migrate:latest",
     "download": "CONFIG_PATH='.env.local' node snapshots/download"
   },
