@@ -1,6 +1,5 @@
 const fetch = require('cross-fetch');
 require('dotenv').config();
-const token = process.env.TOKEN;
 
 const BASE_DIRECTUS_URL = 'https://studio.brooklynrail.org';
 const BASE_ACCESS_TOKEN = process.env.TOKEN;
