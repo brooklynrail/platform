@@ -16,8 +16,8 @@ gcloud sql databases create br-2023-11-20 --instance=rail-archive-staging --char
 
 **Import data into the new database**
 ```
-gcloud sql import sql rail-archive-staging gs://brooklynrail-data/br-2023-11-20.sql \
---database=br-2023-11-20
+gcloud sql import sql rail-archive-staging gs://brooklynrail-data/br-2023-11-21.sql \
+--database=br-2023-11-21
 ```
 
 
@@ -34,20 +34,9 @@ DROP TABLE `sessions`;
 DROP TABLE `page_caches`;
 DROP TABLE `blacklist_patterns`;
 DROP TABLE `schema_info`;
-DROP TABLE `ci_sessions`;
 ```
-3. Add the new CI_Sessions table
-```
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
-   `id` varchar(40) NOT NULL,
-   `ip_address` varchar(45) NOT NULL,
-   `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
-   `data` blob NOT NULL,
-   KEY `ci_sessions_timestamp` (`timestamp`)
-);
-```
-4. In this repo, run `yarn bootstrap` to initialize Directus and set up the tables in the database
-5. Run `yarn refresh` to instal the latest configuration
+3. In this repo, run `yarn bootstrap` to initialize Directus and set up the tables in the database
+4. Run `yarn refresh` to instal the latest configuration
 
 
 
