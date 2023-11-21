@@ -2,8 +2,27 @@
 
 ---
 
+## Common commands
 
-## Local development
+**Upload a `.sql` file to Cloud Storage**
+```
+gcloud storage cp ../brooklynrail/data/br-2023-11-20.sql gs://brooklynrail-data
+```
+
+**Create a new database in the current instance**
+```
+gcloud sql databases create br-2023-11-20 --instance=rail-archive-staging --charset=latin1 --collation=latin1_swedish_ci
+```
+
+**Import data into the new database**
+```
+gcloud sql import sql rail-archive-staging gs://brooklynrail-data/br-2023-11-20.sql \
+--database=br-2023-11-20
+```
+
+
+
+## Local setup
 
 1. Start up the local Brooklyn Rail site with a fresh database
 2. Remove unused tables from the database
