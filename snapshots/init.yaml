@@ -498,7 +498,25 @@ fields:
   - collection: articles
     field: allow_comments
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: allow_comments
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 20
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: allow_comments
       table: articles
@@ -518,7 +536,25 @@ fields:
   - collection: articles
     field: alt_info
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: alt_info
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 18
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: alt_info
       table: articles
@@ -538,7 +574,25 @@ fields:
   - collection: articles
     field: article_type_id
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: article_type_id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: article_type_id
       table: articles
@@ -558,7 +612,25 @@ fields:
   - collection: articles
     field: artseen_end
     type: date
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: artseen_end
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 35
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: artseen_end
       table: articles
@@ -578,7 +650,25 @@ fields:
   - collection: articles
     field: artseen_start
     type: date
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: artseen_start
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 34
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: artseen_start
       table: articles
@@ -598,7 +688,25 @@ fields:
   - collection: articles
     field: banner_end
     type: date
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: banner_end
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 33
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: banner_end
       table: articles
@@ -618,7 +726,25 @@ fields:
   - collection: articles
     field: banner_image
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: banner_image
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 21
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: banner_image
       table: articles
@@ -638,7 +764,25 @@ fields:
   - collection: articles
     field: banner_start
     type: date
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: banner_start
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 32
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: banner_start
       table: articles
@@ -658,7 +802,25 @@ fields:
   - collection: articles
     field: body
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: body
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 17
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: body
       table: articles
@@ -678,7 +840,25 @@ fields:
   - collection: articles
     field: body_old
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: body_old
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 16
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: body_old
       table: articles
@@ -698,7 +878,25 @@ fields:
   - collection: articles
     field: byline_override
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: byline_override
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: byline_override
       table: articles
@@ -718,7 +916,25 @@ fields:
   - collection: articles
     field: created_at
     type: dateTime
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 27
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: created_at
       table: articles
@@ -738,7 +954,25 @@ fields:
   - collection: articles
     field: custom_article_type
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: custom_article_type
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: custom_article_type
       table: articles
@@ -758,7 +992,28 @@ fields:
   - collection: articles
     field: deck
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: deck
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - italic
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: deck
       table: articles
@@ -776,9 +1031,51 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
+    field: divider-szwkmh
+    type: alias
+    meta:
+      collection: articles
+      field: divider-szwkmh
+      special:
+        - alias
+        - no-data
+      interface: presentation-divider
+      options: null
+      display: null
+      display_options: null
+      readonly: false
+      hidden: false
+      sort: 5
+      width: full
+      translations: null
+      note: null
+      conditions: null
+      required: false
+      group: null
+      validation: null
+      validation_message: null
+  - collection: articles
     field: excerpt
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: excerpt
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 15
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: excerpt
       table: articles
@@ -798,7 +1095,25 @@ fields:
   - collection: articles
     field: excerpt_old
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: excerpt_old
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 14
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: excerpt_old
       table: articles
@@ -818,7 +1133,25 @@ fields:
   - collection: articles
     field: feature_image
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: feature_image
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 23
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: feature_image
       table: articles
@@ -838,7 +1171,25 @@ fields:
   - collection: articles
     field: feature_position
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: feature_position
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 24
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: feature_position
       table: articles
@@ -858,7 +1209,25 @@ fields:
   - collection: articles
     field: featured
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: featured
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 22
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: featured
       table: articles
@@ -878,7 +1247,25 @@ fields:
   - collection: articles
     field: guid
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: guid
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 29
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: guid
       table: articles
@@ -898,7 +1285,25 @@ fields:
   - collection: articles
     field: header_type
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: header_type
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 43
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: header_type
       table: articles
@@ -918,7 +1323,25 @@ fields:
   - collection: articles
     field: hidden
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: hidden
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 41
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: hidden
       table: articles
@@ -938,7 +1361,25 @@ fields:
   - collection: articles
     field: hide
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: hide
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 40
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: hide
       table: articles
@@ -971,7 +1412,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: null
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -996,7 +1437,25 @@ fields:
   - collection: articles
     field: inconvo_name
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: inconvo_name
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: inconvo_name
       table: articles
@@ -1016,7 +1475,25 @@ fields:
   - collection: articles
     field: internal_notes
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: internal_notes
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 38
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: internal_notes
       table: articles
@@ -1036,7 +1513,25 @@ fields:
   - collection: articles
     field: issue_id
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: issue_id
       table: articles
@@ -1056,7 +1551,25 @@ fields:
   - collection: articles
     field: keywords
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: keywords
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 19
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: keywords
       table: articles
@@ -1076,7 +1589,25 @@ fields:
   - collection: articles
     field: new_layout
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: new_layout
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 42
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: new_layout
       table: articles
@@ -1114,7 +1645,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: null
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -1139,7 +1670,25 @@ fields:
   - collection: articles
     field: position
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: position
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 30
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: position
       table: articles
@@ -1159,7 +1708,25 @@ fields:
   - collection: articles
     field: pub_override
     type: dateTime
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: pub_override
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 39
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: pub_override
       table: articles
@@ -1179,7 +1746,25 @@ fields:
   - collection: articles
     field: rss
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: rss
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 31
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: rss
       table: articles
@@ -1199,7 +1784,25 @@ fields:
   - collection: articles
     field: section_id
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: section_id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: section_id
       table: articles
@@ -1219,7 +1822,25 @@ fields:
   - collection: articles
     field: show_contrib
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: show_contrib
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 36
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: show_contrib
       table: articles
@@ -1239,7 +1860,25 @@ fields:
   - collection: articles
     field: show_contrib_section
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: show_contrib_section
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 37
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: show_contrib_section
       table: articles
@@ -1259,7 +1898,25 @@ fields:
   - collection: articles
     field: tags
     type: text
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: tags
       table: articles
@@ -1279,7 +1936,25 @@ fields:
   - collection: articles
     field: thumb_image
     type: string
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: thumb_image
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 25
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: thumb_image
       table: articles
@@ -1314,7 +1989,7 @@ fields:
         trim: true
       readonly: false
       required: true
-      sort: null
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -1339,7 +2014,25 @@ fields:
   - collection: articles
     field: updated_at
     type: dateTime
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: updated_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 28
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: updated_at
       table: articles
@@ -1359,7 +2052,25 @@ fields:
   - collection: articles
     field: user_id
     type: integer
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: user_id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 26
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: user_id
       table: articles
@@ -1379,7 +2090,25 @@ fields:
   - collection: articles
     field: webex
     type: boolean
-    meta: null
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: webex
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: webex
       table: articles
@@ -2003,12 +2732,12 @@ fields:
     schema:
       name: timestamp
       table: ci_sessions
-      data_type: int unsigned
+      data_type: int
       default_value: 0
       max_length: null
       numeric_precision: 10
       numeric_scale: 0
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -2239,7 +2968,33 @@ fields:
   - collection: contributors
     field: bio
     type: text
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: bio
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - code
+          - customLink
+          - italic
+          - removeformat
+          - visualaid
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: bio
       table: contributors
@@ -2259,7 +3014,25 @@ fields:
   - collection: contributors
     field: bio_old
     type: text
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: null
+      display_options: null
+      field: bio_old
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: bio_old
       table: contributors
@@ -2279,7 +3052,27 @@ fields:
   - collection: contributors
     field: email
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: email
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: email
       table: contributors
@@ -2299,7 +3092,27 @@ fields:
   - collection: contributors
     field: first_name
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: first_name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       name: first_name
       table: contributors
@@ -2319,7 +3132,25 @@ fields:
   - collection: contributors
     field: hide_from_list
     type: integer
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: null
+      display_options: null
+      field: hide_from_list
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: hide_from_list
       table: contributors
@@ -2328,7 +3159,7 @@ fields:
       max_length: null
       numeric_precision: 10
       numeric_scale: 0
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -2339,7 +3170,25 @@ fields:
   - collection: contributors
     field: id
     type: integer
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: id
       table: contributors
@@ -2359,7 +3208,25 @@ fields:
   - collection: contributors
     field: image
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: null
+      display_options: null
+      field: image
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: image
       table: contributors
@@ -2379,7 +3246,27 @@ fields:
   - collection: contributors
     field: last_name
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: last_name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       name: last_name
       table: contributors
@@ -2399,7 +3286,25 @@ fields:
   - collection: contributors
     field: permalink
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: null
+      display_options: null
+      field: permalink
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       name: permalink
       table: contributors
@@ -2419,7 +3324,27 @@ fields:
   - collection: contributors
     field: title
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       name: title
       table: contributors
@@ -2439,7 +3364,30 @@ fields:
   - collection: contributors
     field: url
     type: string
-    meta: null
+    meta:
+      collection: contributors
+      conditions: null
+      display: formatted-value
+      display_options:
+        font: monospace
+        format: true
+      field: url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+        slug: true
+        trim: true
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       name: url
       table: contributors
