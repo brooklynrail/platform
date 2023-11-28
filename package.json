@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "CONFIG_PATH='.env.local' npx directus start",
-    "build-local": "yarn bootstrap && yarn dev",
+    "build-local": "yarn bootstrap && yarn refresh && yarn dev",
     "build": "npx directus bootstrap && npx directus schema apply --yes snapshots/init.yaml && npx directus start",
     "bootstrap": "CONFIG_PATH='.env.local' npx directus bootstrap",
     "refresh": "CONFIG_PATH='.env.local' npx directus schema apply --yes snapshots/init.yaml",
