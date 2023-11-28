@@ -26,3 +26,7 @@ availableSecrets:
     env: 'KEY'
   - versionName: projects/${PROJECT_ID}/secrets/SECRET/versions/1
     env: 'SECRET'
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - $_SERVICE_NAME
