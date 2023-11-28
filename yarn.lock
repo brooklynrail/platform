@@ -1298,14 +1298,14 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@directus/api@14.1.1":
-  version "14.1.1"
-  resolved "https://registry.yarnpkg.com/@directus/api/-/api-14.1.1.tgz#0c9fc6b5fe3ae7024e20572269dd2734da02906e"
-  integrity sha512-ouT/4fBHmYivEwcAPjxbLPigZfIi7sXmjva+v2+qz86IKyC090l9+j0NAODOF0mKkDIUnWnhzfZR0z9ENt5bgw==
+"@directus/api@14.1.2":
+  version "14.1.2"
+  resolved "https://registry.yarnpkg.com/@directus/api/-/api-14.1.2.tgz#b945429b3ad71aa4e7d946d3f55d1f71d067209f"
+  integrity sha512-7qbYCbVNhbeQ3y/x8SV6CazAxlPowXiam1wdTMh0Z6YUqXSusBHNcrCDtODfkzrBERzu+vwCUUuW96XHo8JM3w==
   dependencies:
     "@authenio/samlify-node-xmllint" "2.0.0"
     "@aws-sdk/client-ses" "3.332.0"
-    "@directus/app" "10.13.1"
+    "@directus/app" "10.13.2"
     "@directus/constants" "11.0.1"
     "@directus/errors" "0.2.0"
     "@directus/extensions" "0.2.0"
@@ -1313,7 +1313,7 @@
     "@directus/format-title" "10.1.0"
     "@directus/pressure" "1.0.13"
     "@directus/schema" "11.0.0"
-    "@directus/specs" "10.2.3"
+    "@directus/specs" "10.2.4"
     "@directus/storage" "10.0.7"
     "@directus/storage-driver-azure" "10.0.14"
     "@directus/storage-driver-cloudinary" "10.0.14"
@@ -1400,7 +1400,7 @@
     stream-json "1.7.5"
     strip-bom-stream "5.0.0"
     tinypool "0.8.1"
-    tsx "3.12.7"
+    tsx "4.1.4"
     uuid "9.0.0"
     uuid-validate "0.0.3"
     wellknown "0.5.0"
@@ -1416,10 +1416,10 @@
     sqlite3 "5.1.6"
     tedious "16.1.0"
 
-"@directus/app@10.13.1":
-  version "10.13.1"
-  resolved "https://registry.yarnpkg.com/@directus/app/-/app-10.13.1.tgz#73ef716b709900e7b86c1bffe72758b9d7981c4b"
-  integrity sha512-BMI3RO6XJjEFyHGBxP326ret1aQcgxYFkrJLO5kKwtsy8aAMpoUyQzLynSW4AwXZcTCs8fSluULnff4m/uqXBA==
+"@directus/app@10.13.2":
+  version "10.13.2"
+  resolved "https://registry.yarnpkg.com/@directus/app/-/app-10.13.2.tgz#3e2ba56bd0918e688987b884f27b54f83042c5ef"
+  integrity sha512-RpZkLDG1BCwA6ofmbMvubQAFgJJAZH4NnRw3Zte9UQJx+eSPoMOWHFY+Ruua80eYWFCzZ9/T3dui0OkrgtuAPw==
 
 "@directus/composables@10.1.6":
   version "10.1.6"
@@ -1507,10 +1507,10 @@
   dependencies:
     knex "2.4.2"
 
-"@directus/specs@10.2.3":
-  version "10.2.3"
-  resolved "https://registry.yarnpkg.com/@directus/specs/-/specs-10.2.3.tgz#7ebdc6a727c1fc628e35498fd2a6b92b101e2435"
-  integrity sha512-Snqses8X8MNOigYaJsHyaxVLNuGLi68pJ8c0R6VbqHuB348LFDPwMwmycD6nLvT7ZjeZhYIKVHb2IJqpa2D6mg==
+"@directus/specs@10.2.4":
+  version "10.2.4"
+  resolved "https://registry.yarnpkg.com/@directus/specs/-/specs-10.2.4.tgz#30fc740d679bb0c6c9d195a3850881830eb46c9c"
+  integrity sha512-UnTalIGHSMNquJC9xzZrRKbSADlL9zYI64+TjQ4TUWFbTnVvDSEjmUbBUyUDtptslGqd0B7eo0NO4nT4eq/k0w==
   dependencies:
     openapi3-ts "4.1.2"
 
@@ -1627,30 +1627,6 @@
     "@directus/errors" "0.2.0"
     "@directus/utils" "11.0.2"
     joi "17.9.2"
-
-"@esbuild-kit/cjs-loader@^2.4.2":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/cjs-loader/-/cjs-loader-2.4.4.tgz#8638177732e2de258a3243597bfdba082993c442"
-  integrity sha512-NfsJX4PdzhwSkfJukczyUiZGc7zNNWZcEAyqeISpDnn0PTfzMJR1aR8xAIPskBejIxBJbIgCCMzbaYa9SXepIg==
-  dependencies:
-    "@esbuild-kit/core-utils" "^3.2.3"
-    get-tsconfig "^4.7.0"
-
-"@esbuild-kit/core-utils@^3.0.0", "@esbuild-kit/core-utils@^3.2.3", "@esbuild-kit/core-utils@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/core-utils/-/core-utils-3.3.2.tgz#186b6598a5066f0413471d7c4d45828e399ba96c"
-  integrity sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==
-  dependencies:
-    esbuild "~0.18.20"
-    source-map-support "^0.5.21"
-
-"@esbuild-kit/esm-loader@^2.5.5":
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/@esbuild-kit/esm-loader/-/esm-loader-2.6.5.tgz#6eedee46095d7d13b1efc381e2211ed1c60e64ea"
-  integrity sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==
-  dependencies:
-    "@esbuild-kit/core-utils" "^3.3.2"
-    get-tsconfig "^4.7.0"
 
 "@esbuild/android-arm64@0.17.19":
   version "0.17.19"
@@ -3742,12 +3718,12 @@ detect-libc@^2.0.0, detect-libc@^2.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.2.tgz#8ccf2ba9315350e1241b88d0ac3b0e1fbd99605d"
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
 
-directus@10.8.1:
-  version "10.8.1"
-  resolved "https://registry.yarnpkg.com/directus/-/directus-10.8.1.tgz#999c33e2c8a49fa2c837ffd2252d8f0e0efecb63"
-  integrity sha512-8nazk6dSYLl6BLIdJ+p0hR9FY4u8CdUkN97EN4rXVN0HHxRw1dxqeOk04hxWKkzWYBsUoNLkPEenbnRIRYNzJg==
+directus@10.8.2:
+  version "10.8.2"
+  resolved "https://registry.yarnpkg.com/directus/-/directus-10.8.2.tgz#a9313f8bd2632e80baa5d0eed5be6f7b8fe93d8b"
+  integrity sha512-xNtKHxV0Wn1q6uns2UbLne15RYuEj083oZkPt7sNnCinMaqkrA+ECc49T6VZWcoAFUpdPtJHrCfKDlHqPUkz7Q==
   dependencies:
-    "@directus/api" "14.1.1"
+    "@directus/api" "14.1.2"
     "@directus/update-check" "11.0.3"
 
 dom-serializer@^1.0.1:
@@ -4412,7 +4388,7 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
-fsevents@~2.3.2:
+fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
   integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
@@ -4522,7 +4498,7 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-get-tsconfig@^4.7.0:
+get-tsconfig@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.7.2.tgz#0dcd6fb330391d46332f4c6c1bf89a6514c2ddce"
   integrity sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==
@@ -8271,16 +8247,16 @@ tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.1, tslib@^2.5.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
-tsx@3.12.7:
-  version "3.12.7"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.12.7.tgz#b3b8b0fc79afc8260d1e14f9e995616c859a91e9"
-  integrity sha512-C2Ip+jPmqKd1GWVQDvz/Eyc6QJbGfE7NrR3fx5BpEHMZsEHoIxHL1j+lKdGobr8ovEyqeNkPLSKp6SCSOt7gmw==
+tsx@4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.1.4.tgz#e8c18cb5e890b410915d3cfa92b94d5e3147f465"
+  integrity sha512-9X7uBCIyUsvMzIH+o8m+5o/5eL461cChCF+XUtOZsPr1a4pZx2lTQx0Muu5G5VwJWZwAGKBe3sJHLk82BENAVw==
   dependencies:
-    "@esbuild-kit/cjs-loader" "^2.4.2"
-    "@esbuild-kit/core-utils" "^3.0.0"
-    "@esbuild-kit/esm-loader" "^2.5.5"
+    esbuild "~0.18.20"
+    get-tsconfig "^4.7.2"
+    source-map-support "^0.5.21"
   optionalDependencies:
-    fsevents "~2.3.2"
+    fsevents "~2.3.3"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
