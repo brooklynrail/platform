@@ -3718,6 +3718,16 @@ detect-libc@^2.0.0, detect-libc@^2.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.2.tgz#8ccf2ba9315350e1241b88d0ac3b0e1fbd99605d"
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
 
+directus-extension-display-link@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/directus-extension-display-link/-/directus-extension-display-link-1.6.1.tgz#e195a168253b665054b62dc03cde9411ff375874"
+  integrity sha512-WS4CCLND1Pk06eUg/SbXFEBMyirdg/wxe3qfqdwkPRWr4ffsGT3JNNG3QlsGYFD54Jvx79HhLwBAp9JDNWek+A==
+
+directus-extension-wpslug-interface@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/directus-extension-wpslug-interface/-/directus-extension-wpslug-interface-1.1.0.tgz#efd54aaca1e432dad451e5f3595b922411778c89"
+  integrity sha512-2dk0I7QQkfVF/jlK1o4pJ8rn3UmYQAvBVSzkaTXXuRYSksJ40zfDQcFsTgoWn4x0cb2ibtPTgIIEk4yvMXpBDA==
+
 directus@10.8.2:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/directus/-/directus-10.8.2.tgz#a9313f8bd2632e80baa5d0eed5be6f7b8fe93d8b"
