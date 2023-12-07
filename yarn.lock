@@ -1507,6 +1507,11 @@
   dependencies:
     knex "2.4.2"
 
+"@directus/sdk@^13.0.2":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@directus/sdk/-/sdk-13.0.2.tgz#8657741b1b0c85d1402db98e4864c6cddfa0b075"
+  integrity sha512-KECQM0w8xlgr5EklX+Jb9+dIzXyvJFjRfhiIAI7l/b0WEtVaCfvRMIrJXR3XsLeVW9u2nu+b/TffOyTMSLjm2w==
+
 "@directus/specs@10.2.4":
   version "10.2.4"
   resolved "https://registry.yarnpkg.com/@directus/specs/-/specs-10.2.4.tgz#30fc740d679bb0c6c9d195a3850881830eb46c9c"
@@ -3400,13 +3405,6 @@ cross-fetch@^3.1.5:
   dependencies:
     node-fetch "^2.6.12"
 
-cross-fetch@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-4.0.0.tgz#f037aef1580bb3a1a35164ea2a848ba81b445983"
-  integrity sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==
-  dependencies:
-    node-fetch "^2.6.12"
-
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -5183,6 +5181,14 @@ isolated-vm@4.6.0:
   integrity sha512-MEnfC/54q5PED3VJ9UJYJPOlU6mYFHS3ivR9E8yeNNBEFRFUNBnY0xO4Rj3D/SOtFKPNmsQp9NWUYSKZqAoZiA==
   dependencies:
     prebuild-install "^7.1.1"
+
+isomorphic-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
+  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
+  dependencies:
+    node-fetch "^2.6.1"
+    whatwg-fetch "^3.4.1"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -8526,6 +8532,11 @@ wellknown@0.5.0:
   dependencies:
     concat-stream "~1.5.0"
     minimist "~1.2.0"
+
+whatwg-fetch@^3.4.1:
+  version "3.6.19"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.19.tgz#caefd92ae630b91c07345537e67f8354db470973"
+  integrity sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==
 
 whatwg-url@^5.0.0:
   version "5.0.0"
