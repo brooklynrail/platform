@@ -14,14 +14,14 @@
     "node": "18.18.0"
   },
   "scripts": {
-    "dev": "CONFIG_PATH='.env.local' npx directus start",
+    "dev": "npx directus start",
     "build-local": "yarn bootstrap && yarn refresh && yarn dev",
     "build": "npx directus bootstrap && npx directus start",
-    "bootstrap": "CONFIG_PATH='.env.local' npx directus bootstrap",
-    "refresh": "CONFIG_PATH='.env.local' npx directus schema apply --yes snapshots/init.yaml",
-    "snapshot": "CONFIG_PATH='.env.local' npx directus schema snapshot --yes ./snapshots/init.yaml",
-    "migrate": "CONFIG_PATH='.env.local' npx directus database migrate:latest",
-    "download": "CONFIG_PATH='.env.local' node snapshots/download"
+    "bootstrap": "npx directus bootstrap",
+    "refresh": "npx directus schema apply --yes snapshots/init.yaml",
+    "snapshot": "npx directus schema snapshot --yes ./snapshots/init.yaml",
+    "migrate": "npx directus database migrate:latest",
+    "download": "node snapshots/download"
   },
   "devDependencies": {
     "dotenv": "^16.3.1"
