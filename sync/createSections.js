@@ -20,7 +20,7 @@ async function createSections() {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
     const section = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('section', data))
+      withToken(BASE_ACCESS_TOKEN, createItems('sections', data))
     );
     console.log(section);
 
