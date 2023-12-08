@@ -74,6 +74,30 @@ collections:
       versioning: false
     schema:
       name: Issues_Articles
+  - collection: Pages
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: status
+      archive_value: archived
+      collapse: open
+      collection: Pages
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: sort
+      translations: null
+      unarchive_value: draft
+      versioning: true
+    schema:
+      name: Pages
   - collection: People
     meta:
       accountability: all
@@ -394,6 +418,46 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: Articles
+    field: featured_image
+    type: uuid
+    meta:
+      collection: Articles
+      conditions: null
+      display: image
+      display_options: null
+      field: featured_image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+      readonly: false
+      required: false
+      sort: 14
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: featured_image
+      table: Articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: Articles
     field: id
     type: integer
     meta:
@@ -492,7 +556,7 @@ fields:
         limit: 10
       readonly: false
       required: false
-      sort: 14
+      sort: 15
       special:
         - m2m
       translations: null
@@ -553,7 +617,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 15
+      sort: 16
       special:
         - m2m
       translations: null
@@ -576,7 +640,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 16
+      sort: 17
       special:
         - m2m
       translations: null
@@ -1438,6 +1502,442 @@ fields:
       has_auto_increment: true
       foreign_key_table: null
       foreign_key_column: null
+  - collection: Pages
+    field: body
+    type: text
+    meta:
+      collection: Pages
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: body
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - alignleft
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h2
+          - h3
+          - h4
+          - h5
+          - h6
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - strikethrough
+          - subscript
+          - superscript
+          - table
+          - unlink
+          - visualaid
+      readonly: false
+      required: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: body
+      table: Pages
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: date_created
+    type: timestamp
+    meta:
+      collection: Pages
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 5
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: Pages
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: Pages
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: Pages
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: id
+    type: integer
+    meta:
+      collection: Pages
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: Pages
+      data_type: integer
+      default_value: nextval('"Pages_id_seq"'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: slug
+    type: string
+    meta:
+      collection: Pages
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: extension-wpslug
+      note: null
+      options:
+        template: '{{title}}'
+      readonly: false
+      required: true
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: Pages
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: sort
+    type: integer
+    meta:
+      collection: Pages
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: Pages
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: status
+    type: string
+    meta:
+      collection: Pages
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: $t:published
+            value: published
+            foreground: '#FFFFFF'
+            background: var(--theme--primary)
+          - text: $t:draft
+            value: draft
+            foreground: '#18222F'
+            background: '#D3DAE4'
+          - text: $t:archived
+            value: archived
+            foreground: '#FFFFFF'
+            background: var(--theme--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: $t:published
+            value: published
+          - text: $t:draft
+            value: draft
+          - text: $t:archived
+            value: archived
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: Pages
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: title
+    type: string
+    meta:
+      collection: Pages
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: Pages
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: Pages
+    field: user_created
+    type: uuid
+    meta:
+      collection: Pages
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: Pages
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: Pages
+    field: user_updated
+    type: uuid
+    meta:
+      collection: Pages
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 6
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_updated
+      table: Pages
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
   - collection: People
     field: articles
     type: alias
@@ -2740,7 +3240,51 @@ fields:
       has_auto_increment: true
       foreign_key_table: null
       foreign_key_column: null
+  - collection: directus_files
+    field: articles
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: articles
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
 relations:
+  - collection: Articles
+    field: featured_image
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: Articles
+      many_field: featured_image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: articles
+      sort_field: null
+    schema:
+      table: Articles
+      column: featured_image
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: articles_featured_image_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: Articles
     field: user_created
     related_collection: directus_users
@@ -2867,6 +3411,48 @@ relations:
       constraint_name: issues_articles_issues_id_foreign
       on_update: NO ACTION
       on_delete: SET NULL
+  - collection: Pages
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: Pages
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: Pages
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: pages_user_created_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: Pages
+    field: user_updated
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: Pages
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: Pages
+      column: user_updated
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: pages_user_updated_foreign
+      on_update: NO ACTION
+      on_delete: NO ACTION
   - collection: People
     field: user_created
     related_collection: directus_users
