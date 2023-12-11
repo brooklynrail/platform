@@ -2,20 +2,33 @@ version: '3'
 
 services:
   directus:
+    container_name: studio
     image: directus/directus:latest
+    build: .
+    tty: true
+    stdin_open: true
     ports:
       - "8055:8055"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/directus
     env_file:
       - .env
+    volumes:
+      - ./database:/src/database
+      - ./uploads:/src/uploads
+      - ./extensions:/src/extensions
+      - ./snapshots:/src/snapshots
+      - ./sync:/src/sync
     depends_on:
-      - db
+      - studio-db
   db:
+    container_name: studio-db
     image: postgres:latest
     environment:
       POSTGRES_DB: directus
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
