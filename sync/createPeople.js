@@ -20,7 +20,7 @@ async function createPeople() {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
     const people = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('people', data))
+      withToken(BASE_ACCESS_TOKEN, createItems('People', data))
     );
     console.log(people);
 
