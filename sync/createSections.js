@@ -12,17 +12,14 @@ async function createSections() {
         Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
       },
     });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    
+
     const data = await response.json();
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
-    const section = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('sections', data))
+    const sections = await client.request(
+      withToken(BASE_ACCESS_TOKEN, createItems('Sections', data))
     );
-    console.log(section);
+    console.log(sections);
 
   } catch (error){
     console.error("Error creating section", error.message);
