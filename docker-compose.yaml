@@ -9,8 +9,6 @@ services:
     stdin_open: true
     ports:
       - "8055:8055"
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/directus
     env_file:
       - .env
     volumes:
