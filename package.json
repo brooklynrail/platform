@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "npx directus start",
     "build-local": "yarn bootstrap && yarn refresh && yarn dev",
-    "build": "npx directus bootstrap && npx directus schema apply --yes snapshots/init.yaml && npx directus start",
+    "build": "npx directus bootstrap && npx directus start",
     "bootstrap": "npx directus bootstrap",
     "refresh": "npx directus schema apply --yes snapshots/init.yaml",
     "snapshot": "npx directus schema snapshot --yes ./snapshots/init.yaml",
