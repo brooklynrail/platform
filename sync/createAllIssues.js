@@ -2,7 +2,7 @@ const fetch = require('isomorphic-fetch');
 const { createDirectus, rest, withToken, createItems, readItems, readActivity} = require('@directus/sdk');
 
 const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = process.env.TOKENLOCAL;
+const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 const API_ENDPOINT = 'http://localhost:8000';
 
 async function isSection(old_section_id, client) {

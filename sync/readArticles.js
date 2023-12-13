@@ -9,7 +9,7 @@ async function readArticles() {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   
   const request = await client.request(
-    withToken(BASE_ACCESS_TOKEN, readItems('article'))
+    withToken(BASE_ACCESS_TOKEN, readItems('Articles'))
   );
 
   console.log(request);
