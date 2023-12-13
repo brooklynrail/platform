@@ -6,22 +6,8 @@ const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
 const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 const API_ENDPOINT = 'http://localhost:8000/api/issues';
 
-async function importImages(data, client) {
-  const allCovers = [];
-  const coverImages = await Promise.all(data.map(async (cover, index) => {
-    // upload the cover image
-    if (cover) {
-      const imageId = await importImageModule(cover, client);
-      // push to the array
-      const key = `cover_${index}`;
-      allCovers.push({ [key]: imageId });
-    }
-  }));
 
-  return coverImages;
-}
-
-
+// Create all the issues at once
 async function createIssues() {
   try {
     const response = await fetch(API_ENDPOINT, {
