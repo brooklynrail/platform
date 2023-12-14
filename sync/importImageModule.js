@@ -1,6 +1,6 @@
 // importImage.js
-const { createDirectus, rest, withToken, createItems, importFile} = require('@directus/sdk');
-// const { importImage } = require('./path/to/your/importImageModule'); // Replace with the actual path
+const fs = require('fs');
+const { importFile} = require('@directus/sdk');
 
 async function importImageModule(data, client) {
   // takes the query string out of the URL
@@ -10,14 +10,15 @@ async function importImageModule(data, client) {
   
   try {
     if(data && data.path){
-      console.log("importing image -----------");
+      
       // Local imports
       const path = getPathFromUrl(`https://storage.googleapis.com/rail-legacy-media/production${data.path}`);
       // Staging and Production imports
       // const path = getPathFromUrl(`${data.path}`);
-      console.log(`Image: ${path}`);
       const description = data.description;
 
+      console.log("importing image -----------");
+      console.log(`Image: ${path}`);
       const result = await client.request(
         importFile(path, {
           description: description || null,
@@ -32,6 +33,13 @@ async function importImageModule(data, client) {
     }
   } catch (error){
     console.error('Error uploading image:', error.message);
+
+    // Handle the error and write specific data to a text file
+    const failedData = `${path}\n`;
+    const filePath = `errors-images.txt`;
+
+    // Write the error data to the text file
+    fs.writeFileSync(filePath, failedData, 'utf-8');
   }
 }
 
