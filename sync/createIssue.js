@@ -1,150 +1,81 @@
 require('dotenv').config();
+const { importImageModule } = require('./importImageModule');
+const { sectionsModule } = require('./sectionsModule');
+const { peopleModule } = require('./peopleModule');
 const { createDirectus, rest, withToken, createItems, importFile, readItems, readActivity} = require('@directus/sdk');
 
 const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = process.env.TOKENLOCAL;
+const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 const API_ENDPOINT = 'http://localhost:8000';
 
-async function isSection(old_section_id, client) {
-  try {
-    const section = await client.request(
-      withToken(BASE_ACCESS_TOKEN, readItems('Sections', {
-        "filter": {
-          "old_id": {
-            "_eq": old_section_id
-          }
-        }
-      }))
-    );
-    if(section.length == 0){
-      console.log('Error fetching section:');
-      return;
-    }
-    return section[0].id;
-  } catch (error){
-    console.error('Error fetching section:', error.message);
-  }
-}
+// const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
+// const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
+// const API_ENDPOINT = 'https://staging.brooklynrail.org';
 
 // ============
 
-async function isPeople(peopleIds, client) {
-  try {
-    const existingPeople = [];
-    // Function to check if a person with a given ID exists in Directus
-    const checkPersonExists = async (personId, client) => {
-      const person = await client.request(
-        withToken(BASE_ACCESS_TOKEN, readItems('People', {
-          "filter": {
-            "old_id": {
-              "_eq": personId
-            }
-          }
-        }))
-      );
-
-      return person.length > 0 ? person[0].id : null;
-    };
-
-    // Iterate over each personId and check if it exists in Directus
-    for (const personId of peopleIds) {
-      const existingPersonId = await checkPersonExists(personId, client);
-      if (existingPersonId) {
-        existingPeople.push({ People_id: existingPersonId });
-      } 
-    }
-
-    if(existingPeople.length == 0){
-      console.log('Error fetching existingPeople');
-      return;
-    }
-    
-    return existingPeople;
-   
-  } catch (error){
-    console.error('Error fetching person:', error.message);
-  }
-}
-
-
-// ============
-
-async function importFeaturedImage(data, client) {
-  try {
-    if(data){
-      const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
-      console.log(path);
-      const description = data.description;
-
-      const result = await client.request(
-        importFile(path, {
-          description: description || null,
-        })
-      );
-      console.log("featured_image ------>");
-      console.log(result);
-      // return the ID of the file that was just uploaded
-      return result.id;
-    }
-  } catch (error){
-    console.error('Error fetching Featured Image:', error.message);
-  }
-}
-
-
-// ============
-
-async function importIssues(issues) {
+async function importIssue(data) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
     
-    // Iterate over each issue
-    
-    const issueUrl = `${API_ENDPOINT}/2023/11/api`;
+    // const issueData = {}
+    // // Iterate over each issue
+    // if(!data){
+    //   const issueUrl = !data ? `${API_ENDPOINT}/2023/11/api`: null;
+    //   // Fetch data for the current issue
+    //   const response = await fetch(issueUrl, {
+    //     headers: {
+    //       Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
+    //     },
+    //   });
 
-    console.log("------------------- - - - -")
+    //   if (!response.ok) {
+    //     console.error(`Error fetching data for issue: HTTP error! Status: ${response.status}`);
+    //   }
+    //   const issueData = await response.json();
+    // }
+
+    console.log("+++++++++++++++++++++++++++++++")
     console.log(`Importing issue`);
+    if(data){
+      
+      // Add the Cover Images directly to `data`
+      // for each cover in the issue
+      for (let i = 0; i < data.covers.length; i++) {
+        const coverData = data.covers[i];
+        const key = `cover_${i + 1}`;
+        const coverId = await importImageModule(coverData, client);
+        // Add the cover image ID directly to the issue data object
+        data[key] = coverId;
+      }
 
-    // Fetch data for the current issue
-    const response = await fetch(issueUrl, {
-      headers: {
-        Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
-      },
-    });
+      // Add the Articles for this issue
+      const articles = await Promise.all(data.articles.map(async (article) => {
+        const sections = await sectionsModule(article.Articles_id.old_section_id, client);
+        const people = await peopleModule(article.Articles_id.people, client);
+        const featured_image = await importImageModule(article.Articles_id.featured_image, client);
+        return {
+          ...article,
+          Articles_id: {
+            ...article.Articles_id,
+            sections,
+            people,
+            featured_image,
+          },
+        };
+      }));
+      // console.log(articles);
 
-    if (!response.ok) {
-      console.error(`Error fetching data for issue ${issue.year}/${issue.month}: HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    
-    const articles = await Promise.all(data.articles.map(async (article) => {
-      const section = await isSection(article.Articles_id.old_section_id, client);
-      const people = await isPeople(article.Articles_id.people, client);
-      const featured_image = await importFeaturedImage(article.Articles_id.featured_image, client);
-      return {
-        ...article,
-        Articles_id: {
-          ...article.Articles_id,
-          section,
-          people,
-          featured_image,
-        },
+      const newData = await {
+        ...data,
+        articles: articles,
       };
-    }));
-    
-    const newData = await {
-      ...data,
-      articles: articles,
-    };
 
-    const createIssue = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('Issues', newData))
-    );
-    
-    console.log(createIssue);
-    
-    console.log('Full import completed successfully.');
+      const createIssue = await client.request(
+        withToken(BASE_ACCESS_TOKEN, createItems('Issues', newData))
+      );
+      return createIssue;
+    }
 
   } catch (error) {
     console.error('Error creating issue data:', error);
@@ -152,6 +83,9 @@ async function importIssues(issues) {
   }
 }
 
-
 // Start the import process
-importIssues();
+importIssue();
+
+module.exports = {
+  importIssue,
+};
