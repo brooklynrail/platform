@@ -1,7 +1,11 @@
 const { createDirectus, rest, withToken, createItems, readItems, readActivity} = require('@directus/sdk');
 const { importIssue } = require('./issueModule');
-const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-const API_ENDPOINT = 'http://localhost:8000';
+// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
+// const API_ENDPOINT = 'http://localhost:8000';
+
+// const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
+const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
+const API_ENDPOINT = 'https://brooklynrail.org/';
 
 // ============
 

@@ -7,7 +7,7 @@ const { createDirectus, rest, withToken, createItems, readItems, readActivity} =
 
 const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
 const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-const API_ENDPOINT = 'https://staging.brooklynrail.org/api/sections';
+const API_ENDPOINT = 'https://brooklynrail.org/api/sections';
 
 async function createSections() {
   try {
@@ -21,7 +21,7 @@ async function createSections() {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
     const sections = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('Sections', data))
+      withToken(BASE_ACCESS_TOKEN, createItems('sections', data))
     );
     console.log(sections);
 

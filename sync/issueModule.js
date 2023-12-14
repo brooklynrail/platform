@@ -4,13 +4,13 @@ const { sectionsModule } = require('./sectionsModule');
 const { peopleModule } = require('./peopleModule');
 const { createDirectus, rest, withToken, createItems, importFile, readItems, readActivity} = require('@directus/sdk');
 
-const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-const API_ENDPOINT = 'http://localhost:8000';
+// const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
+// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
+// const API_ENDPOINT = 'http://localhost:8000';
 
-// const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
-// const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-// const API_ENDPOINT = 'https://staging.brooklynrail.org';
+const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
+const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
+const API_ENDPOINT = 'https://brooklynrail.org';
 
 // ============
 
@@ -18,23 +18,6 @@ async function importIssue(data) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
     
-    // const issueData = {}
-    // // Iterate over each issue
-    // if(!data){
-    //   const issueUrl = !data ? `${API_ENDPOINT}/2023/11/api`: null;
-    //   // Fetch data for the current issue
-    //   const response = await fetch(issueUrl, {
-    //     headers: {
-    //       Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
-    //     },
-    //   });
-
-    //   if (!response.ok) {
-    //     console.error(`Error fetching data for issue: HTTP error! Status: ${response.status}`);
-    //   }
-    //   const issueData = await response.json();
-    // }
-
     console.log("+++++++++++++++++++++++++++++++")
     console.log(`Importing issue`);
     if(data){
@@ -51,9 +34,9 @@ async function importIssue(data) {
 
       // Add the Articles for this issue
       const articles = await Promise.all(data.articles.map(async (article) => {
-        const sections = await sectionsModule(article.Articles_id.old_section_id, client);
-        const people = await peopleModule(article.Articles_id.people, client);
-        const featured_image = await importImageModule(article.Articles_id.featured_image, client);
+        const sections = await sectionsModule(article.articles_id.old_section_id, client);
+        const people = await peopleModule(article.articles_id.people, client);
+        const featured_image = await importImageModule(article.articles_id.featured_image, client);
         return {
           ...article,
           Articles_id: {
@@ -64,7 +47,7 @@ async function importIssue(data) {
           },
         };
       }));
-      // console.log(articles);
+      console.log(articles);
 
       const newData = await {
         ...data,
@@ -72,7 +55,7 @@ async function importIssue(data) {
       };
 
       const createIssue = await client.request(
-        withToken(BASE_ACCESS_TOKEN, createItems('Issues', newData))
+        withToken(BASE_ACCESS_TOKEN, createItems('issues', newData))
       );
       return createIssue;
     }

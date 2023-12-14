@@ -2,7 +2,8 @@ const fs = require('fs');
 require('dotenv').config();
 const { withToken, readItems} = require('@directus/sdk');
 
-const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
+// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
+const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
 
 async function peopleModule(peopleIds, client) {
   try {
@@ -10,7 +11,7 @@ async function peopleModule(peopleIds, client) {
     // Function to check if a person with a given ID exists in Directus
     const checkPersonExists = async (personId, client) => {
       const person = await client.request(
-        withToken(BASE_ACCESS_TOKEN, readItems('People', {
+        withToken(BASE_ACCESS_TOKEN, readItems('contributors', {
           "filter": {
             "old_id": {
               "_eq": personId
@@ -26,7 +27,7 @@ async function peopleModule(peopleIds, client) {
     for (const personId of peopleIds) {
       const existingPersonId = await checkPersonExists(personId, client);
       if (existingPersonId) {
-        existingPeople.push({ People_id: existingPersonId });
+        existingPeople.push({ contributors_id: existingPersonId });
       } 
     }
 

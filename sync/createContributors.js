@@ -7,9 +7,9 @@ const { createDirectus, rest, withToken, createItems, readItems, readActivity} =
 
 const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
 const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-const API_ENDPOINT = 'https://staging.brooklynrail.org/api/contributors';
+const API_ENDPOINT = 'https://brooklynrail.org/api/contributors';
 
-async function createPeople() {
+async function createContributors() {
   try {
     const response = await fetch(API_ENDPOINT, {
       headers: {
@@ -23,14 +23,14 @@ async function createPeople() {
     const data = await response.json();
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
-    const people = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems('People', data))
+    const contributors = await client.request(
+      withToken(BASE_ACCESS_TOKEN, createItems('contributors', data))
     );
-    console.log(people);
+    console.log(contributors);
 
   } catch (error){
-    console.error("Error creating people", error.message);
+    console.error("Error creating contributors", error.message);
   }
 }
 
-createPeople();
+createContributors();

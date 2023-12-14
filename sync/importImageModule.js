@@ -12,9 +12,9 @@ async function importImageModule(data, client) {
     if(data && data.path){
       
       // Local imports
-      const path = getPathFromUrl(`https://storage.googleapis.com/rail-legacy-media/production${data.path}`);
+      // const path = getPathFromUrl(`https://storage.googleapis.com/rail-legacy-media/production${data.path}`);
       // Staging and Production imports
-      // const path = getPathFromUrl(`${data.path}`);
+      const path = getPathFromUrl(`${data.path}`);
       const description = data.description;
 
       console.log("importing image -----------");
@@ -24,18 +24,20 @@ async function importImageModule(data, client) {
           description: description || null,
         })
       );
+      
+      // return the ID of the file that was just uploaded
       if(result){
         console.log("uploaded image ------>");
         console.log(result);
-        // return the ID of the file that was just uploaded
-        return result.id;
+        return await result.id;
       }
+
     }
   } catch (error){
     console.error('Error uploading image:', error.message);
 
     // Handle the error and write specific data to a text file
-    const failedData = `${path}\n`;
+    const failedData = `${data.path}\n`;
     const filePath = `errors-images.txt`;
 
     // Write the error data to the text file
