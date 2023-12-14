@@ -1,5 +1,5 @@
 const { createDirectus, rest, withToken, createItems, readItems, readActivity} = require('@directus/sdk');
-const { importIssue } = require('./createIssue');
+const { importIssue } = require('./issueModule');
 const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 const API_ENDPOINT = 'http://localhost:8000';
 
