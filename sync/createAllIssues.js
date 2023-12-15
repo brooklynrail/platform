@@ -1,11 +1,6 @@
-const { createDirectus, rest, withToken, createItems, readItems, readActivity} = require('@directus/sdk');
+const fs = require('fs');
+const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require('./config');
 const { importIssue } = require('./issueModule');
-// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-// const API_ENDPOINT = 'http://localhost:8000';
-
-// const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
-const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-const API_ENDPOINT = 'https://brooklynrail.org/';
 
 // ============
 
@@ -38,13 +33,20 @@ async function importIssues() {
           console.log(`Importing issue for ${issue.year}-${issue.month}`);
           const issueData = await importIssue(data);
           console.log(`The ${issue.year}-${issue.month} Issue import completed!`);
-          console.log(issueData);
+          // console.log(issueData);
         }
       }
     }
   } catch (error) {
-    console.error('Error creating issue data:', error);
+    console.error('Error creating ALL issue data:', error);
     console.error(error.extensions);
+
+    // Handle the error and write specific data to a text file
+    const failedData = `${data.title}\n`;
+    const filePath = `sync/errors-allissues.txt`;
+
+    // Write the error data to the text file
+    fs.writeFileSync(filePath, failedData, 'utf-8');
   }
 }
 

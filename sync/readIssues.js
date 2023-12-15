@@ -1,5 +1,5 @@
 require('dotenv').config();
-// import { createDirectus, rest, readItems } from '@directus/sdk';
+const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require('./config');
 const { createDirectus, rest, withToken, readItems} = require('@directus/sdk');
 
 const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';

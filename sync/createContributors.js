@@ -1,17 +1,10 @@
 require('dotenv').config();
-const { createDirectus, rest, withToken, createItems, readItems, readActivity} = require('@directus/sdk');
-
-// const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-// const API_ENDPOINT = 'http://localhost:8000/api/contributors';
-
-const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
-const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-const API_ENDPOINT = 'https://brooklynrail.org/api/contributors';
+const { BASE_ACCESS_TOKEN, API_ENDPOINT, BASE_DIRECTUS_URL } = require('./config');
+const { createDirectus, rest, withToken, createItems} = require('@directus/sdk');
 
 async function createContributors() {
   try {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch(`${API_ENDPOINT}/api/contributors`, {
       headers: {
         Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
       },

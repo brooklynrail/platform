@@ -1,13 +1,10 @@
 require('dotenv').config();
+const { BASE_ACCESS_TOKEN, API_ENDPOINT, BASE_DIRECTUS_URL } = require('./config');
 const { createDirectus, rest, withToken, deleteItems} = require('@directus/sdk');
-
-const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = process.env.TOKENLOCAL;
-const API_ENDPOINT = 'http://localhost:8000/api/issues';
 
 async function deleteIssues() {
   try {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch(`${API_ENDPOINT}/api/issues`, {
       headers: {
         Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
       },

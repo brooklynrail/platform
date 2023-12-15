@@ -1,13 +1,11 @@
 const fs = require('fs');
 require('dotenv').config();
+const { BASE_ACCESS_TOKEN } = require('./config');
 const { withToken, readItems} = require('@directus/sdk');
 
-// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-
-async function peopleModule(peopleIds, client) {
+async function contributorsModule(contributorsIds, client) {
   try {
-    const existingPeople = [];
+    const existingContributors = [];
     // Function to check if a person with a given ID exists in Directus
     const checkPersonExists = async (personId, client) => {
       const person = await client.request(
@@ -24,26 +22,26 @@ async function peopleModule(peopleIds, client) {
     };
 
     // Iterate over each personId and check if it exists in Directus
-    for (const personId of peopleIds) {
-      const existingPersonId = await checkPersonExists(personId, client);
-      if (existingPersonId) {
-        existingPeople.push({ contributors_id: existingPersonId });
+    for (const contributorId of contributorsIds) {
+      const existingContributorId = await checkPersonExists(contributorId, client);
+      if (existingContributorId) {
+        existingContributors.push({ contributors_id: existingContributorId });
       } 
     }
 
-    if(existingPeople.length == 0){
-      console.log('Error fetching existingPeople');
+    if(existingContributors.length == 0){
+      console.log('Error fetching existingContributors');
       return;
     }
     
-    return existingPeople;
+    return existingContributors;
    
   } catch (error){
     console.error('Error fetching person:', error.message);
     
     // Handle the error and write specific data to a text file
-    const failedData = `${peopleIds}\n`;
-    const filePath = `errors-people.txt`;
+    const failedData = `${contributorsIds}\n`;
+    const filePath = `sync/errors-contributors.txt`;
 
     // Write the error data to the text file
     fs.writeFileSync(filePath, failedData, 'utf-8');
@@ -51,5 +49,5 @@ async function peopleModule(peopleIds, client) {
 }
 
 module.exports = {
-  peopleModule,
+  contributorsModule,
 };

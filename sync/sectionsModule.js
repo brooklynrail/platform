@@ -1,9 +1,7 @@
 const fs = require('fs');
 require('dotenv').config();
+const { BASE_ACCESS_TOKEN } = require('./config');
 const { withToken, readItems} = require('@directus/sdk');
-
-// const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
-const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
 
 async function sectionsModule(old_section_id, client) {
   const old_id = old_section_id;
@@ -12,7 +10,7 @@ async function sectionsModule(old_section_id, client) {
     const existingSections = [];
     // Function to check if a section with a given ID exists in Directus
     const checkSectionExists = async (old_id, client) => {
-      const section = await client.request(
+      const sections = await client.request(
         withToken(BASE_ACCESS_TOKEN, readItems('sections', {
           "filter": {
             "old_id": {
@@ -21,7 +19,7 @@ async function sectionsModule(old_section_id, client) {
           }
         }))
       );
-      return section.length > 0 ? section[0].id : null;
+      return sections.length > 0 ? sections[0].id : null;
     };
 
     const existingSectionId = await checkSectionExists(old_id, client);
@@ -34,8 +32,8 @@ async function sectionsModule(old_section_id, client) {
   } catch (error){
     console.error('Error fetching section:', error.message);
     // Handle the error and write specific data to a text file
-    const failedData = `${old_id}\n`;
-    const filePath = `errors-sections.txt`;
+    const failedData = `${old_section_id}\n`;
+    const filePath = `sync/errors-sections.txt`;
 
     // Write the error data to the text file
     fs.writeFileSync(filePath, failedData, 'utf-8');
