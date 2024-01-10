@@ -12,7 +12,6 @@ services:
     env_file:
       - .env
     volumes:
-      - ./database:/src/database
       - ./uploads:/src/uploads
       - ./extensions:/src/extensions
       - ./snapshots:/src/snapshots
