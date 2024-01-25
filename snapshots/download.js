@@ -1,13 +1,15 @@
 const https = require("https");
 const fs = require("fs");
-require('dotenv').config();
+require("dotenv").config();
 
 const token = process.env.TOKEN;
-const url = "https://studio.brooklynrail.org/schema/snapshot?export=yaml&access_token=" + token;
+const url =
+  "https://studio.brooklynrail.org/schema/snapshot?export=yaml&access_token=" +
+  token;
 // console.log("token: ", token);
 
 https.get(url, (res) => {
-  const path = "snapshots/init.yaml";
+  const path = "snapshots/schema.yaml";
   const writeStream = fs.createWriteStream(path);
   res.pipe(writeStream);
 
