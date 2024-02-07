@@ -5,13 +5,13 @@
   "license": "MIT",
   "dependencies": {
     "@directus/sdk": "^13.0.2",
-    "directus": "10.8.3",
+    "directus": "10.9.0",
     "directus-extension-api-viewer": "^1.2.3",
     "directus-extension-display-link": "^1.6.1",
     "directus-extension-field-actions": "^1.6.6",
     "directus-extension-flexible-editor": "^1.1.7",
     "directus-extension-grid-layout": "^1.0.4",
-    "directus-extension-group-tabs-interface": "^1.2.2",
+    "directus-extension-group-tabs-interface": "^2.0.0",
     "directus-extension-tokenized-preview": "^1.0.0",
     "directus-extension-wpslug-interface": "^1.1.0"
   },
@@ -23,8 +23,8 @@
     "build-local": "yarn bootstrap && yarn refresh && yarn dev",
     "build": "npx directus bootstrap && yarn refresh && npx directus start",
     "bootstrap": "npx directus bootstrap",
-    "refresh": "npx directus schema apply --yes snapshots/schema.yaml",
-    "snapshot": "npx directus schema snapshot --yes ./snapshots/schema.yaml",
+    "refresh": "npx directus schema apply --yes snapshots/init.yaml",
+    "snapshot": "npx directus schema snapshot --yes ./snapshots/init.yaml",
     "migrate": "npx directus database migrate:latest",
     "download": "node snapshots/download"
   },
