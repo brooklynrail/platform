@@ -1,15 +1,25 @@
-const fs = require('fs');
-const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require('./config');
-const { importIssue } = require('./issueModule');
+const fs = require("fs");
+const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require("./config");
+const { importIssue } = require("./issueModule");
 
 // ============
 
 async function importIssues() {
   try {
     // Fetch the list of issues
-    const allIssues = await fetchIssues();
-    
-    if(allIssues){
+    // const allIssues = await fetchIssues();
+    const allIssues = [
+      {
+        year: "2023",
+        month: "12",
+      },
+      {
+        year: "2023",
+        month: "11",
+      },
+    ];
+
+    if (allIssues) {
       // Iterate over each issue
       for (const issue of allIssues) {
         const issueUrl = `${API_ENDPOINT}/${issue.year}/${issue.month}/api`;
@@ -22,23 +32,27 @@ async function importIssues() {
         });
 
         if (!response.ok) {
-          console.error(`Error fetching data for issue ${issue.year}/${issue.month}: HTTP error! Status: ${response.status}`);
+          console.error(
+            `Error fetching data for issue ${issue.year}/${issue.month}: HTTP error! Status: ${response.status}`
+          );
           continue; // Skip to the next issue
         }
 
         const data = await response.json();
-        
-        if(data){
+
+        if (data) {
           console.log(">>>---------------- - - - -");
           console.log(`Importing issue for ${issue.year}-${issue.month}`);
           const issueData = await importIssue(data);
-          console.log(`The ${issue.year}-${issue.month} Issue import completed!`);
+          console.log(
+            `The ${issue.year}-${issue.month} Issue import completed!`
+          );
           // console.log(issueData);
         }
       }
     }
   } catch (error) {
-    console.error('Error creating ALL issue data:', error);
+    console.error("Error creating ALL issue data:", error);
     console.error(error.extensions);
 
     // Handle the error and write specific data to a text file
@@ -46,7 +60,7 @@ async function importIssues() {
     const filePath = `sync/errors-allissues.txt`;
 
     // Write the error data to the text file
-    fs.writeFileSync(filePath, failedData, 'utf-8');
+    fs.appendFileSync(filePath, failedData, "utf-8");
   }
 }
 
@@ -62,7 +76,7 @@ async function fetchIssues() {
     const issues = await response.json();
     return issues;
   } catch (error) {
-    console.error('Error fetching issues:', error.message);
+    console.error("Error fetching issues:", error.message);
     throw error; // Propagate the error
   }
 }

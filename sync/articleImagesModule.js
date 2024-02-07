@@ -25,7 +25,7 @@ async function articleImagesModule(articleImagesIds, client) {
     const filePath = `sync/errors-images.txt`;
 
     // Write the error data to the text file
-    fs.writeFileSync(filePath, failedData, "utf-8");
+    fs.appendFileSync(filePath, failedData, "utf-8");
   }
 }
 
