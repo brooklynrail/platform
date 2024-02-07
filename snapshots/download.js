@@ -9,7 +9,7 @@ const url =
 // console.log("token: ", token);
 
 https.get(url, (res) => {
-  const path = "snapshots/schema.yaml";
+  const path = "snapshots/init.yaml";
   const writeStream = fs.createWriteStream(path);
   res.pipe(writeStream);
 
