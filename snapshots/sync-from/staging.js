@@ -1,12 +1,11 @@
 const fetch = require('cross-fetch');
 require('dotenv').config();
 
-const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
-const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
+const BASE_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
+const BASE_ACCESS_TOKEN = process.env.TOKEN_STAGING;
 
-const TARGET_DIRECTUS_URL = 'https://brooklynrail-studio-staging-jy3zptd2sa-wl.a.run.app/';
-const TARGET_ACCESS_TOKEN = process.env.TOKEN_STAGING;
-
+const TARGET_DIRECTUS_URL = 'http://127.0.0.1:8055';
+const TARGET_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 
 async function main() {
 	const snapshot = await getSnapshot();

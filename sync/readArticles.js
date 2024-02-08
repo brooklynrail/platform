@@ -1,5 +1,5 @@
 require('dotenv').config();
-// import { createDirectus, rest, readItems } from '@directus/sdk';
+const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require('./config');
 const { createDirectus, rest, withToken, readItems} = require('@directus/sdk');
 
 const BASE_DIRECTUS_URL = 'http://127.0.0.1:8055';
@@ -9,7 +9,7 @@ async function readArticles() {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   
   const request = await client.request(
-    withToken(BASE_ACCESS_TOKEN, readItems('article'))
+    withToken(BASE_ACCESS_TOKEN, readItems('Articles'))
   );
 
   console.log(request);
