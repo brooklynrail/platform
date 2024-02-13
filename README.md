@@ -3,6 +3,8 @@
 **The Brooklyn Rail Studio** https://studio.brooklynrail.org <br/>
 **Powered by Directus** https://directus.io/
 
+---
+
 ## Getting started (localhost)
 
 To run the Brooklyn Rail Studio project locally on your computer, follow these steps:
@@ -28,9 +30,9 @@ You will need to generate an API Token upon building Directus for the first time
 TOKEN_LOCAL="the-token-goes-here"
 ```
 
-:warning:**NOTE:** Do not commit these changes into the repo
+:warning:**NOTE:** Do not commit the token into the repo
 
-## Directus Schema
+## Directus Content Schema
 
 When Directus is built via Docker or via `yarn build`, it uses this `init.yaml` file to setup the content schema, specific fields, and field settings within Directus. https://github.com/brooklynrail/studio/blob/main/snapshots/init.yaml
 
