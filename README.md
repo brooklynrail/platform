@@ -28,6 +28,8 @@ You will need to generate an API Token upon building Directus for the first time
 TOKEN_LOCAL="the-token-goes-here"
 ```
 
+:warning:**NOTE:** Do not commit these changes into the repo
+
 ## Directus Schema
 
 https://github.com/brooklynrail/studio/blob/main/snapshots/init.yaml
