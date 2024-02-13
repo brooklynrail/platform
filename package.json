@@ -9,7 +9,6 @@
     "directus-extension-api-viewer": "^1.2.3",
     "directus-extension-display-link": "^1.6.1",
     "directus-extension-field-actions": "^1.6.6",
-    "directus-extension-flexible-editor": "^1.1.7",
     "directus-extension-grid-layout": "^1.0.4",
     "directus-extension-group-tabs-interface": "^2.0.0",
     "directus-extension-tokenized-preview": "^1.0.0",
