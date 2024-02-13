@@ -45,3 +45,30 @@ When we make changes to the schema, it is essential that we update the `init.yam
 - In the **QUERY-STRING PARAMETERS** export box, click on `yaml`
 - click on the **TRY** button — this will generate the schema in `yaml` format
 - Copy the contents and paste them into the file `/snapshots/init.yaml`
+
+## Migrating Content
+
+We have a number of custom scripts for importing all of the Rail content into Directus, via custom APIs that we built into the current Codeigniter site.
+
+A few things to know:
+
+- the current database running on `mysql:5.7.42`, hosted in Google Cloud.
+- the content in the database is currently encoded in `Latin-1(ISO-8859-1)`
+- we are converting each node in our APIs to `UTF-8` from `Latin-1(ISO-8859-1)`
+- we are migrating everything to a `postgres` database managed by Directus
+
+### Migration scripts
+
+**Note:** to use these scripts, you'll need to be running `node 18`. Use `nvm use 18` to set the node version.
+
+1. Import the current Contributors (+8,100) — `node sync/createContributors.js`
+2. Import the current Sections (+35) — `node sync/createSections.js`
+3. Import the All Issues (+245 issues, +40,000 articles, and all images) — `node sync/createSections.js`
+
+### API Enpoints
+
+- Issue + Articles https://brooklynrail.org/2023/12/api
+- All Issues https://brooklynrail.org/api/issues/
+- All Issues as list https://brooklynrail.org/api/issue-list
+- All Contributors https://brooklynrail.org/api/contributors
+- All Sections https://brooklynrail.org/api/sections
