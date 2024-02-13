@@ -32,17 +32,15 @@ TOKEN_LOCAL="the-token-goes-here"
 
 ## Directus Schema
 
-https://github.com/brooklynrail/studio/blob/main/snapshots/init.yaml
+When Directus is built via Docker or via `yarn build`, it uses this `init.yaml` file to setup the content schema, specific fields, and field settings within Directus. https://github.com/brooklynrail/studio/blob/main/snapshots/init.yaml
 
-When Directus is built via Docker or via `yarn build`, it uses this file to initialize the Content Schema, the specific fields, and all of their settings.
-
-#### Updating the Schema
+### Updating the Schema
 
 When we make changes to the schema, it is essential that we update the `init.yaml` file to reflect the most recent changes.
 
-**To update:**
+**To update the schema:**
 
-- Go to the API viewer within the Directus App
+- Go to the API viewer on the left side within the Directus App
 - Click on **Retrieve Schema Snapshot** in the left sidebar
 - In the **QUERY-STRING PARAMETERS** export box, click on `yaml`
 - click on the **TRY** button — this will generate the schema in `yaml` format
