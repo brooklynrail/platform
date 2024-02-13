@@ -1,4 +1,4 @@
-<img src="https://venice.brooklynrail.org/assets/img/brooklyn-rail-logo-2019-outline-red.svg" alt="The Brooklyn Rail logo as a red outline"/>
+<img src="https://venice.brooklynrail.org/assets/img/brooklynrail-logo-red.png" alt="The Brooklyn Rail logo as a red outline"/>
 
 **The Brooklyn Rail Studio** https://studio.brooklynrail.org <br/>
 **Powered by Directus** https://directus.io/
