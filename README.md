@@ -1,8 +1,12 @@
-# The Brooklyn Rail Studio
+<img src="https://venice.brooklynrail.org/assets/img/brooklyn-rail-logo-2019-outline-red.svg" alt="The Brooklyn Rail logo as a red outline"/>
+
+## The Brooklyn Rail Studio
 
 https://studio.brooklynrail.org
 
-## Getting Started
+**Powered by Directus https://directus.io/**
+
+## Getting started (localhost)
 
 To run the Brooklyn Rail Studio project locally on your computer, follow these steps:
 
