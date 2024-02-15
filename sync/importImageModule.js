@@ -29,7 +29,7 @@ async function importImageModule(data, client) {
 
       // return the ID of the file that was just uploaded
       if (result) {
-        console.log("Single image uploaded ------>");
+        console.log("Image uploaded --->", data.path);
         // console.log(result);
         return result.id;
       }
