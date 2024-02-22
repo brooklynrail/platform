@@ -1,5 +1,4 @@
 require("dotenv").config();
-const { importImageModule } = require("./importImageModule");
 const {
   BASE_ACCESS_TOKEN,
   API_ENDPOINT,
@@ -11,6 +10,7 @@ const {
   withToken,
   createItems,
 } = require("@directus/sdk");
+const { importImageModule } = require("./importImageModule");
 
 async function createAds() {
   try {
@@ -28,23 +28,27 @@ async function createAds() {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
     const data = await response.json();
 
-    const newData = [];
+    if (data) {
+      const newData = [];
 
-    // for each Ad
-    for (let index = 0; index < data.length; index++) {
-      const adData = data[index];
-      const key = `ad_${index + 1}`;
-      const imageId = await importImageModule(adData, client);
-      adData[key] = imageId;
-      // Push the updated Ad data to the newData Array
-      newData.push(adData);
+      // for each Ad in data
+      // import the Image, wait for the response, then add the image ID to the Ad data object as `image`
+      // then push the updated Ad data to the newData array
+      for (let index = 0; index < data.length; index++) {
+        const adData = data[index];
+        const ad_image = await importImageModule(adData.image, client);
+        newData.push({
+          ...adData,
+          image: ad_image,
+        });
+      }
+
+      const request = await client.request(
+        withToken(BASE_ACCESS_TOKEN, createItems("ads", newData))
+      );
+      console.log(request);
+      console.log(`The Ads import has completed!`);
     }
-
-    const ads = await client.request(
-      withToken(BASE_ACCESS_TOKEN, createItems("ads", newData))
-    );
-    console.log(ads);
-    console.log(`The Ads import has completed!`);
   } catch (error) {
     console.error("Error creating ads", error);
   }

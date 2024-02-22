@@ -1,7 +1,16 @@
-require('dotenv').config();
-const { BASE_ACCESS_TOKEN, API_ENDPOINT, BASE_DIRECTUS_URL } = require('./config');
-const { importImageModule } = require('./importImageModule');
-const { createDirectus, rest, withToken, createItems} = require('@directus/sdk');
+require("dotenv").config();
+const {
+  BASE_ACCESS_TOKEN,
+  API_ENDPOINT,
+  BASE_DIRECTUS_URL,
+} = require("./config");
+const { importImageModule } = require("./importImageModule");
+const {
+  createDirectus,
+  rest,
+  withToken,
+  createItems,
+} = require("@directus/sdk");
 
 // Create all the issues at once
 async function createIssues() {
@@ -19,9 +28,8 @@ async function createIssues() {
 
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
     const data = await response.json();
-    
-    
-    if(data){
+
+    if (data) {
       const newData = [];
 
       // for each issue
@@ -38,20 +46,18 @@ async function createIssues() {
         }
         // Push the updated issue data to the newDataArray
         newData.push(issueData);
-      };
+      }
       console.log("newData =============");
       console.log(newData);
 
       // import the issue
       const request = await client.request(
-        withToken(BASE_ACCESS_TOKEN, createItems('Issues', newData))
+        withToken(BASE_ACCESS_TOKEN, createItems("Issues", newData))
       );
       console.log(request);
     }
-
-
   } catch (error) {
-    console.error('Error fetching data:', error.message);
+    console.error("Error fetching data:", error.message);
   }
 }
 createIssues();
