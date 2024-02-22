@@ -44,7 +44,7 @@ collections:
       preview_url: null
       singleton: false
       sort: 2
-      sort_field: null
+      sort_field: sort
       translations: null
       unarchive_value: draft
       versioning: true
@@ -574,11 +574,11 @@ fields:
       name: title
       table: ads
       data_type: character varying
-      default_value: null
+      default_value: "---"
       max_length: 255
       numeric_precision: null
       numeric_scale: null
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -615,11 +615,11 @@ fields:
       name: ad_url
       table: ads
       data_type: character varying
-      default_value: null
+      default_value: "###"
       max_length: 255
       numeric_precision: null
       numeric_scale: null
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -685,6 +685,7 @@ fields:
       note: Ad file types (.png, .jpg, .gif)
       options:
         crop: false
+        folder: 89d5706b-df9d-40a7-8ab4-7d61c5651b87
       readonly: false
       required: false
       sort: 14
@@ -725,6 +726,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 89d5706b-df9d-40a7-8ab4-7d61c5651b87
       readonly: false
       required: false
       sort: 15
@@ -794,9 +796,9 @@ fields:
     meta:
       collection: ads
       conditions: null
-      display: raw
+      display: datetime
       display_options:
-        format: "Y-m-d "
+        format: short
       field: start_date
       group: null
       hidden: false
@@ -804,7 +806,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
+      required: true
       sort: 11
       special: null
       translations: null
@@ -819,7 +821,7 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: true
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -834,7 +836,8 @@ fields:
       collection: ads
       conditions: null
       display: datetime
-      display_options: null
+      display_options:
+        format: short
       field: end_date
       group: null
       hidden: false
@@ -842,7 +845,7 @@ fields:
       note: null
       options: null
       readonly: false
-      required: false
+      required: true
       sort: 12
       special: null
       translations: null
@@ -857,7 +860,7 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: true
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -885,7 +888,7 @@ fields:
         limit: 10
       readonly: false
       required: false
-      sort: 22
+      sort: 21
       special:
         - m2m
       translations: null
@@ -1071,7 +1074,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: ac9434c3-0657-4387-a08f-6cf3e5f52e7a
+        folder: 3f7ac0a0-1de2-4850-9534-65da1aaf18d1
       readonly: false
       required: false
       sort: 12
@@ -1149,16 +1152,16 @@ fields:
       display: related-values
       display_options: null
       field: images
-      group: null
+      group: Images
       hidden: false
       interface: files
       note: null
       options:
-        folder: ac9434c3-0657-4387-a08f-6cf3e5f52e7a
+        folder: 1d972beb-1662-4981-999a-1096afa94556
         limit: 25
       readonly: false
       required: false
-      sort: 20
+      sort: 1
       special:
         - files
       translations: null
@@ -1226,7 +1229,7 @@ fields:
         limit: 10
       readonly: false
       required: false
-      sort: 21
+      sort: 20
       special:
         - m2m
       translations: null
@@ -1660,7 +1663,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 19
+      sort: 18
       special:
         - alias
         - group
@@ -1770,6 +1773,194 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: articles
+    field: Images
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: Images
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: imagesmode
+      readonly: false
+      required: false
+      sort: 19
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: promo_thumb
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: promo_thumb
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: promo_thumb
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: articles
+    field: featured
+    type: boolean
+    meta:
+      collection: articles
+      conditions: null
+      display: boolean
+      display_options:
+        labelOn: null
+      field: featured
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 22
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: featured
+      table: articles
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: promo_banner
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: promo_banner
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: promo_banner
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: articles
+    field: slideshow_image
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: slideshow_image
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slideshow_image
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
   - collection: articles_contributors
     field: articles_slug
     type: string
@@ -2874,14 +3065,14 @@ fields:
       field: articles
       group: null
       hidden: false
-      interface: list-m2m
+      interface: list-o2m
       note: null
       options: null
       readonly: false
       required: false
       sort: 3
       special:
-        - m2m
+        - o2m
       translations: null
       validation: null
       validation_message: null
@@ -3097,7 +3288,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 13
@@ -3138,7 +3329,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 14
@@ -3179,7 +3370,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 15
@@ -3220,7 +3411,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 16
@@ -3261,7 +3452,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 17
@@ -3302,7 +3493,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: a0cdd512-2ba0-494d-a1c2-bf4c4c15f46e
+        folder: e625aa5d-75c6-40cf-bff5-ecd808036678
       readonly: false
       required: false
       sort: 18
@@ -4806,6 +4997,69 @@ relations:
       constraint_name: articles_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: articles
+    field: promo_thumb
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: articles
+      many_field: promo_thumb
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: articles
+      sort_field: null
+    schema:
+      table: articles
+      column: promo_thumb
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: articles_promo_thumb_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: articles
+    field: promo_banner
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: articles
+      many_field: promo_banner
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: articles
+      sort_field: null
+    schema:
+      table: articles
+      column: promo_banner
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: articles_promo_banner_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: articles
+    field: slideshow_image
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: articles
+      many_field: slideshow_image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: articles
+      sort_field: null
+    schema:
+      table: articles
+      column: slideshow_image
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: articles_slideshow_image_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: articles_contributors
     field: articles_slug
     related_collection: articles
