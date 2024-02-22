@@ -47,8 +47,27 @@ async function importArticles(data, client) {
         client
       );
 
-      console.log("Images -----");
+      const promo_banner = await importImageModule(
+        article.articles_slug.promo_banner,
+        client
+      );
+
+      const promo_thumb = await importImageModule(
+        article.articles_slug.promo_thumb,
+        client
+      );
+
+      const slideshow_image = await importImageModule(
+        article.articles_slug.slideshow_image,
+        client
+      );
+
+      console.log("Article -----");
+      console.log(article.articles_slug.title);
       console.log(images);
+      console.log(slideshow_image);
+      console.log(promo_banner);
+      console.log(promo_thumb);
 
       return {
         ...article,
@@ -58,6 +77,9 @@ async function importArticles(data, client) {
           contributors,
           featured_image,
           images,
+          promo_banner,
+          promo_thumb,
+          slideshow_image,
         },
       };
     })
@@ -76,7 +98,7 @@ async function importIssue(data) {
 
       // Import articles sequentially
       const articles = await importArticles(data, client);
-      console.log(articles);
+      // console.log(articles);
 
       const newData = {
         ...data,
