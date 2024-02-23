@@ -65,7 +65,8 @@ A few things to know:
 
 1. Import the current Contributors (+8,100) — `node sync/createContributors.js`
 2. Import the current Sections (+35) — `node sync/createSections.js`
-3. Import the All Issues (+245 issues, +40,000 articles, and all images) — `node sync/createSections.js`
+3. Import All Issues (+245 issues, +40,000 articles, and all image files) — `node sync/createSections.js`
+4. Import all Ads (~1,000) — `node sync/createAds.js`
 
 ### API Enpoints
 
@@ -74,3 +75,4 @@ A few things to know:
 - All Issues as list https://brooklynrail.org/api/issue-list
 - All Contributors https://brooklynrail.org/api/contributors
 - All Sections https://brooklynrail.org/api/sections
+- All Ads https://brooklynrail.org/api/ads
