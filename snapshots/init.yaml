@@ -1,5 +1,5 @@
 version: 1
-directus: 10.9.0
+directus: 10.9.3
 vendor: postgres
 collections:
   - collection: ads
@@ -1144,31 +1144,6 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
-    field: images
-    type: alias
-    meta:
-      collection: articles
-      conditions: null
-      display: related-values
-      display_options: null
-      field: images
-      group: Images
-      hidden: false
-      interface: files
-      note: null
-      options:
-        folder: 1d972beb-1662-4981-999a-1096afa94556
-        limit: 25
-      readonly: false
-      required: false
-      sort: 1
-      special:
-        - files
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: articles
     field: in_print
     type: boolean
     meta:
@@ -1673,6 +1648,219 @@ fields:
       validation_message: null
       width: full
   - collection: articles
+    field: Images
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: Images
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerIcon: imagesmode
+      readonly: false
+      required: false
+      sort: 19
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: featured
+    type: boolean
+    meta:
+      collection: articles
+      conditions: null
+      display: boolean
+      display_options:
+        labelOn: null
+      field: featured
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 22
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: featured
+      table: articles
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: images
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: related-values
+      display_options: null
+      field: images
+      group: Images
+      hidden: false
+      interface: files
+      note: null
+      options:
+        folder: 1d972beb-1662-4981-999a-1096afa94556
+        limit: 25
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: promo_thumb
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: promo_thumb
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: promo_thumb
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: articles
+    field: promo_banner
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: promo_banner
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: promo_banner
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: articles
+    field: slideshow_image
+    type: uuid
+    meta:
+      collection: articles
+      conditions: null
+      display: image
+      display_options: null
+      field: slideshow_image
+      group: Images
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slideshow_image
+      table: articles
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: articles
     field: body_code
     type: text
     meta:
@@ -1773,194 +1961,6 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: articles
-    field: Images
-    type: alias
-    meta:
-      collection: articles
-      conditions: null
-      display: null
-      display_options: null
-      field: Images
-      group: null
-      hidden: false
-      interface: group-detail
-      note: null
-      options:
-        headerIcon: imagesmode
-      readonly: false
-      required: false
-      sort: 19
-      special:
-        - alias
-        - group
-        - no-data
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: articles
-    field: promo_thumb
-    type: uuid
-    meta:
-      collection: articles
-      conditions: null
-      display: image
-      display_options: null
-      field: promo_thumb
-      group: Images
-      hidden: false
-      interface: file-image
-      note: null
-      options:
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
-      readonly: false
-      required: false
-      sort: 4
-      special:
-        - file
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: promo_thumb
-      table: articles
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: directus_files
-      foreign_key_column: id
-  - collection: articles
-    field: featured
-    type: boolean
-    meta:
-      collection: articles
-      conditions: null
-      display: boolean
-      display_options:
-        labelOn: null
-      field: featured
-      group: null
-      hidden: false
-      interface: boolean
-      note: null
-      options: null
-      readonly: false
-      required: true
-      sort: 22
-      special:
-        - cast-boolean
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: featured
-      table: articles
-      data_type: boolean
-      default_value: false
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: false
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: articles
-    field: promo_banner
-    type: uuid
-    meta:
-      collection: articles
-      conditions: null
-      display: image
-      display_options: null
-      field: promo_banner
-      group: Images
-      hidden: false
-      interface: file-image
-      note: null
-      options:
-        crop: false
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - file
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: promo_banner
-      table: articles
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: directus_files
-      foreign_key_column: id
-  - collection: articles
-    field: slideshow_image
-    type: uuid
-    meta:
-      collection: articles
-      conditions: null
-      display: image
-      display_options: null
-      field: slideshow_image
-      group: Images
-      hidden: false
-      interface: file-image
-      note: null
-      options:
-        crop: false
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
-      readonly: false
-      required: false
-      sort: 2
-      special:
-        - file
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: slideshow_image
-      table: articles
-      data_type: uuid
-      default_value: null
-      max_length: null
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: directus_files
-      foreign_key_column: id
   - collection: articles_contributors
     field: articles_slug
     type: string
@@ -4004,6 +4004,84 @@ fields:
       numeric_precision: 32
       numeric_scale: 0
       is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: issues
+    field: issue_number
+    type: integer
+    meta:
+      collection: issues
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: issue_number
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 1
+      readonly: false
+      required: true
+      sort: 20
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: issue_number
+      table: issues
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: issues
+    field: old_id
+    type: integer
+    meta:
+      collection: issues
+      conditions: null
+      display: null
+      display_options: null
+      field: old_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 1
+      readonly: false
+      required: false
+      sort: 21
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: old_id
+      table: issues
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
