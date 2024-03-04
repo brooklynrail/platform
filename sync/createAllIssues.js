@@ -10,12 +10,19 @@ async function importIssues() {
     // const allIssues = await fetchIssues();
     const allIssues = [
       {
+        year: "2024",
+        month: "02",
+        issue_number: "3",
+      },
+      {
         year: "2023",
         month: "12",
+        issue_number: "2",
       },
       {
         year: "2023",
         month: "11",
+        issue_number: "1",
       },
     ];
 
@@ -43,6 +50,11 @@ async function importIssues() {
         if (data) {
           console.log(">>>---------------- - - - -");
           console.log(`Importing issue for ${issue.year}-${issue.month}`);
+          console.log(`Issue #${issue.issue_number}`);
+
+          // Add the issue_number to the data object
+          data.issue_number = issue.issue_number;
+
           const issueData = await importIssue(data);
           console.log(
             `The ${issue.year}-${issue.month} Issue import completed!`
