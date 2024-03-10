@@ -36,10 +36,10 @@ async function createAds() {
       // then push the updated Ad data to the newData array
       for (let index = 0; index < data.length; index++) {
         const adData = data[index];
-        const ad_image = await importImageModule(adData.image, client);
+        const ad_image = await importImageModule(adData.tile_image, client);
         newData.push({
           ...adData,
-          image: ad_image,
+          tile_image: ad_image,
         });
       }
 
