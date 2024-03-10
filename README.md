@@ -76,3 +76,12 @@ A few things to know:
 - All Contributors https://brooklynrail.org/api/contributors
 - All Sections https://brooklynrail.org/api/sections
 - All Ads https://brooklynrail.org/api/ads
+
+## Transformation Presets
+
+Required settings for all image transformations.
+
+- `promo-section` — 400x530
+- `promo-banner` — 632x192
+- `promo-thumb` — 120x120
+- `promo-thumb` — 1328x564
