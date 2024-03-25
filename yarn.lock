@@ -1144,16 +1144,16 @@
     core-js-pure "^3.30.2"
     regenerator-runtime "^0.14.0"
 
-"@directus/api@18.1.1":
-  version "18.1.1"
-  resolved "https://registry.yarnpkg.com/@directus/api/-/api-18.1.1.tgz#c4915962eab1aeadf724db0b37b43eef9fbb5c20"
-  integrity sha512-SbKUur4ZmKiWflQ2y45rnqizaAD5HxYsugTSllLNga8mmZVWVN00bW92LioYM66AAdOJ07C96sk82qGYFT7JvQ==
+"@directus/api@18.2.1":
+  version "18.2.1"
+  resolved "https://registry.yarnpkg.com/@directus/api/-/api-18.2.1.tgz#bdd30ffb777929e5fe6a3de246cbe5017c582af4"
+  integrity sha512-tcEyA1yqbckaFNtpX16IP08aKDoi33sHfZz+8VetqrdVWSz8dqtb3uvuevu6S46IGxqJr1KaqbwT2dEMeRejrA==
   dependencies:
     "@authenio/samlify-node-xmllint" "2.0.0"
     "@aws-sdk/client-ses" "3.529.0"
-    "@directus/app" "11.0.2"
+    "@directus/app" "11.0.4"
     "@directus/constants" "11.0.3"
-    "@directus/env" "1.0.4"
+    "@directus/env" "1.1.0"
     "@directus/errors" "0.2.4"
     "@directus/extensions" "1.0.1"
     "@directus/extensions-registry" "1.0.1"
@@ -1162,7 +1162,7 @@
     "@directus/memory" "1.0.5"
     "@directus/pressure" "1.0.17"
     "@directus/schema" "11.0.1"
-    "@directus/specs" "10.2.7"
+    "@directus/specs" "10.2.8"
     "@directus/storage" "10.0.11"
     "@directus/storage-driver-azure" "10.0.18"
     "@directus/storage-driver-cloudinary" "10.0.18"
@@ -1190,10 +1190,10 @@
     cookie-parser "1.4.6"
     cors "2.8.5"
     cron-parser "4.9.0"
-    date-fns "3.3.1"
+    date-fns "3.4.0"
     deep-diff "1.0.2"
     destroy "1.2.0"
-    directus "10.10.2"
+    directus "10.10.4"
     dotenv "16.4.5"
     encodeurl "1.0.2"
     eventemitter2 "6.4.9"
@@ -1226,6 +1226,7 @@
     micromustache "8.0.3"
     mime-types "2.1.35"
     minimatch "9.0.3"
+    mnemonist "0.39.8"
     ms "2.1.3"
     nanoid "5.0.6"
     node-machine-id "1.1.12"
@@ -1267,10 +1268,10 @@
     sqlite3 "5.1.7"
     tedious "17.0.0"
 
-"@directus/app@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/@directus/app/-/app-11.0.2.tgz#94d9dcabbc78fc41917faaf894f01262ab1417e9"
-  integrity sha512-jpMjAE69rk+a0jGXnse5YnaNR78kU2xnm6/rnUkvQeustqU3A12KnKtkMifUe5ornYEpRiG8HAYtBrIVxmbMCA==
+"@directus/app@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@directus/app/-/app-11.0.4.tgz#805242659d72ef6d111df53c87a6bcdeeb8ebba1"
+  integrity sha512-gfGs1Ve13i/CCh4AeYss9a14sw+1ku2b1lJSMn0FrUGgVBxKw+zxGsC5NcUeZp/bzST7eVwdMkQWe2Rv/Qsggg==
 
 "@directus/composables@10.1.11":
   version "10.1.11"
@@ -1304,10 +1305,10 @@
   resolved "https://registry.yarnpkg.com/@directus/constants/-/constants-11.0.3.tgz#e4792ba40fe940860d05da7a0b7e2b9241781f11"
   integrity sha512-+Pd7V6VZ/HzPwWDfVzfOMNzLW2dYMeMUpQvOOfvyvDyxnTsd7/31Gqs1DSL13DdBdvqgh+3Ho8Ai/Zn1GvQYcg==
 
-"@directus/env@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@directus/env/-/env-1.0.4.tgz#580a238a37f693dccd9aaabdb7b72178d91bd1d4"
-  integrity sha512-llpmyxh6Qhioyss+bRzqkleaRQx7rdw7PPBNYsRdkq1PbPwgSg46Hdaog9CovnbFbzmTfW7K26qI8hE70SngLQ==
+"@directus/env@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@directus/env/-/env-1.1.0.tgz#2b2ca14799acaf3b036134d93723011488c9f9ba"
+  integrity sha512-X35QvCAElNa+MI8LVWuoy6kNrE8zFN7DgpcliNwLtuKYuK0TWMgqGe6Ko5ViyzoS+HJoew571xSfmTmB2czNKQ==
   dependencies:
     "@directus/constants" "11.0.3"
     "@directus/utils" "11.0.6"
@@ -1415,10 +1416,10 @@
   resolved "https://registry.yarnpkg.com/@directus/sdk/-/sdk-13.0.2.tgz#8657741b1b0c85d1402db98e4864c6cddfa0b075"
   integrity sha512-KECQM0w8xlgr5EklX+Jb9+dIzXyvJFjRfhiIAI7l/b0WEtVaCfvRMIrJXR3XsLeVW9u2nu+b/TffOyTMSLjm2w==
 
-"@directus/specs@10.2.7":
-  version "10.2.7"
-  resolved "https://registry.yarnpkg.com/@directus/specs/-/specs-10.2.7.tgz#be8b341c1b98f637e1b946eaf18596a6388f84ab"
-  integrity sha512-s6Pacu5QpwLPOfoidyMRNqCweKY7m8dxea/oLpNrECyMlNJBa2W/kcK432FlY3oI63osQCWuBZPXYGBPy4ennw==
+"@directus/specs@10.2.8":
+  version "10.2.8"
+  resolved "https://registry.yarnpkg.com/@directus/specs/-/specs-10.2.8.tgz#17689f930e0136b0e86958492a90214900081efc"
+  integrity sha512-9hfwr/edLEBlojuO3l/Xb0qDKQDYcVfc/XknpvVslCz5wj+PaVV9fIA57mbi/W/JrhnczHvdudnOhbF68L6mIQ==
   dependencies:
     openapi3-ts "4.2.2"
 
@@ -4814,6 +4815,13 @@ cron-parser@4.9.0, cron-parser@^4.2.0:
   dependencies:
     luxon "^3.2.1"
 
+cross-fetch@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-4.0.0.tgz#f037aef1580bb3a1a35164ea2a848ba81b445983"
+  integrity sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==
+  dependencies:
+    node-fetch "^2.6.12"
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -5017,6 +5025,11 @@ date-fns@3.3.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.3.1.tgz#7581daca0892d139736697717a168afbb908cfed"
   integrity sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==
 
+date-fns@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.4.0.tgz#19ac3c19a39af64acb21c23587cb08504dcdc3de"
+  integrity sha512-Akz4R8J9MXBsOgF1QeWeCsbv6pntT5KCPjU0Q9prBxVmWJYPLhwAIsNg3b0QAdr0ttiozYLD3L/af7Ra0jqYXw==
+
 dateformat@^4.6.3:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-4.6.3.tgz#556fa6497e5217fedb78821424f8a1c22fa3f4b5"
@@ -5213,12 +5226,12 @@ directus-extension-wpslug-interface@^1.1.0:
   resolved "https://registry.yarnpkg.com/directus-extension-wpslug-interface/-/directus-extension-wpslug-interface-1.1.0.tgz#efd54aaca1e432dad451e5f3595b922411778c89"
   integrity sha512-2dk0I7QQkfVF/jlK1o4pJ8rn3UmYQAvBVSzkaTXXuRYSksJ40zfDQcFsTgoWn4x0cb2ibtPTgIIEk4yvMXpBDA==
 
-directus@10.10.2:
-  version "10.10.2"
-  resolved "https://registry.yarnpkg.com/directus/-/directus-10.10.2.tgz#e5d772aba84ea07e412710f37ed34ffd331cbd11"
-  integrity sha512-a/FlPY+VY25Rsl721dFvcHsIClPXu37mjp2+HCjMboPi+roaezBa9gYmGoJoysMcoEaZXwLDb8ZxhbCIHPKY+w==
+directus@10.10.4:
+  version "10.10.4"
+  resolved "https://registry.yarnpkg.com/directus/-/directus-10.10.4.tgz#4026c817d52364aca85be0c075808a4b0adb7d98"
+  integrity sha512-DZJniq9lzWM+f3iZWwD24yQ7/oZg9R+U1zH6lMlFIJEiiii8AJNUjHQnyjDbxehki1XZjZ8OzyKAqfyEMSMTEA==
   dependencies:
-    "@directus/api" "18.1.1"
+    "@directus/api" "18.2.1"
     "@directus/update-check" "11.0.8"
 
 dom-serializer@^1.0.1:
@@ -7427,6 +7440,13 @@ mlly@^1.2.0, mlly@^1.4.2:
     pkg-types "^1.0.3"
     ufo "^1.3.0"
 
+mnemonist@0.39.8:
+  version "0.39.8"
+  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.39.8.tgz#9078cd8386081afd986cca34b52b5d84ea7a4d38"
+  integrity sha512-vyWo2K3fjrUw8YeeZ1zF0fy6Mu59RHokURlld8ymdUPjMlD9EC9ov1/YPqTgqRvUN9nTr3Gqfz29LYAmu0PHPQ==
+  dependencies:
+    obliterator "^2.0.1"
+
 mri@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.1.4.tgz#7cb1dd1b9b40905f1fac053abe25b6720f44744a"
@@ -7553,7 +7573,7 @@ node-fetch-native@^1.2.0, node-fetch-native@^1.4.0, node-fetch-native@^1.6.1:
   resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.6.1.tgz#f95c74917d3cebc794cdae0cd2a9c7594aad0cb4"
   integrity sha512-bW9T/uJDPAJB2YNYEpWzE54U5O3MQidXsOyTfnbKYtTtFexRvGzb1waphBN4ZwP6EcIvYYEOwW0b72BpAqydTw==
 
-node-fetch@^2.6.7, node-fetch@^2.6.9:
+node-fetch@^2.6.12, node-fetch@^2.6.7, node-fetch@^2.6.9:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
@@ -7740,6 +7760,11 @@ object.assign@^4.1.4:
     define-properties "^1.1.4"
     has-symbols "^1.0.3"
     object-keys "^1.1.1"
+
+obliterator@^2.0.1:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
+  integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
 
 ofetch@^1.1.1:
   version "1.3.3"
