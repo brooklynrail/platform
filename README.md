@@ -50,22 +50,30 @@ When we make changes to the schema, it is essential that we update the `init.yam
 
 ## Migrating Content
 
-We have a number of custom scripts for importing all of the Rail content into Directus, via custom APIs that we built into the current Codeigniter site.
+A few things to know about our migration:
 
-A few things to know:
-
-- the current database running on `mysql:5.7.42`, hosted in Google Cloud.
+- the current Rail database running on `mysql:5.7.42`, hosted in Google Cloud.
+- the current Rail database application is a very old PHP/Codeigniter site, hosted on GoDaddy.
 - the content in the database is currently encoded in `Latin-1(ISO-8859-1)`
-- we are converting each node in our APIs to `UTF-8` from `Latin-1(ISO-8859-1)`
-- we are migrating everything to a `postgres` database managed by Directus
+- to update the encoding and export the content, we've created a number of custom APIs into the current Codeigniter site. These are designed to migrate everything into our schema, in Directus
+- we are converting each node in these APIs to `UTF-8` from `Latin-1(ISO-8859-1)` (and hoping this works)
+- we have a number of NodeJS scripts that import all of the Rail content into Directus, one issue at a time.
+- we are migrating everything to a `postgres` database, hosted on Directus Cloud
 
 ### Migration scripts
+
+All of our migration scripts are located in the `/sync` folder
 
 **Note:** to use these scripts, you'll need to be running `node 18`. Use `nvm use 18` to set the node version.
 
 1. Import the current Contributors (+8,100) — `node sync/createContributors.js`
 2. Import the current Sections (+35) — `node sync/createSections.js`
-3. Import All Issues (+245 issues, +40,000 articles, and all image files) — `node sync/createSections.js`
+3. Import All Issues (+245 issues) — `node sync/createSections.js`
+
+   - Each issue has anywhere from 100-300 articles and 300-500 images
+   - There are +40,000 articles in total, and maybe around 100,000 image files
+   - we can modify this to import one issue at a time, if needed
+
 4. Import all Ads (~1,000) — `node sync/createAds.js`
 
 ### API Enpoints
@@ -85,3 +93,4 @@ Required settings for all image transformations.
 - `promo-banner` — 632x192
 - `promo-thumb` — 120x120
 - `promo-thumb` — 1328x564
+- `featured-image` — 800x1058
