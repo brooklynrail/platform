@@ -92,5 +92,5 @@ Required settings for all image transformations.
 - `promo-section` — 400x530
 - `promo-banner` — 632x192
 - `promo-thumb` — 120x120
-- `promo-thumb` — 1328x564
+- `slideshow-image` — 1328x564
 - `featured-image` — 800x1058
