@@ -14,6 +14,7 @@ async function importImageModule(data, client) {
       const caption = data.caption;
       const shortcode_key = data.shortcode_key;
       const old_path = data.old_path;
+      const tags = data.tags;
 
       const result = await client.request(
         withToken(
@@ -23,6 +24,7 @@ async function importImageModule(data, client) {
             caption: caption || null,
             shortcode_key: shortcode_key || null,
             old_path: old_path || null,
+            tags: tags || null,
           })
         )
       );
