@@ -11,29 +11,34 @@ async function importIssues() {
     const allIssues = [
       {
         year: "2024",
-        month: "03",
-        issue_number: "5",
+        month: "04",
+        issue_number: "6",
       },
       {
         year: "2024",
-        month: "02",
-        issue_number: "4",
+        month: "03",
+        issue_number: "5",
       },
-      {
-        year: "2023",
-        month: "12",
-        issue_number: "3",
-      },
-      {
-        year: "2023",
-        month: "11",
-        issue_number: "2",
-      },
-      {
-        year: "2023",
-        month: "10",
-        issue_number: "1",
-      },
+      // {
+      //   year: "2024",
+      //   month: "02",
+      //   issue_number: "4",
+      // },
+      // {
+      //   year: "2023",
+      //   month: "12",
+      //   issue_number: "3",
+      // },
+      // {
+      //   year: "2023",
+      //   month: "11",
+      //   issue_number: "2",
+      // },
+      // {
+      //   year: "2023",
+      //   month: "10",
+      //   issue_number: "1",
+      // },
     ];
 
     if (allIssues) {
