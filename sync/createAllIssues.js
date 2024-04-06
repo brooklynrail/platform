@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require("./config");
 const { importIssue } = require("./issueModule");
+const { createIssuePreset } = require("./createPreset");
 
 // ============
 
@@ -66,6 +67,16 @@ async function importIssues() {
           console.log(">>>---------------- - - - -");
           console.log(`Importing issue for ${issue.year}-${issue.month}`);
           console.log(`Issue #${issue.issue_number}`);
+
+          const issuePreset = await createIssuePreset(
+            data.year,
+            data.month,
+            data.title
+          );
+          console.log(
+            `The ${data.year}-${data.month} Issue Preset created!`,
+            issuePreset
+          );
 
           // Add the issue_number to the data object
           data.issue_number = issue.issue_number;
