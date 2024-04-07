@@ -16,16 +16,18 @@ const {
 
 // Import cover images sequentially
 async function importCoverImages(data, client) {
+  const issue_folder = data.issue_folder;
   for (let i = 0; i < data.covers.length; i++) {
     const coverData = data.covers[i];
     const key = `cover_${i + 1}`;
-    const coverId = await importImageModule(coverData, client);
+    const coverId = await importImageModule(coverData, issue_folder, client);
     data[key] = coverId;
   }
 }
 
 // Import articles sequentially
 async function importArticles(data, client) {
+  const issue_folder = data.issue_folder;
   return Promise.all(
     data.articles.map(async (article) => {
       const sections = await sectionsModule(
@@ -39,26 +41,31 @@ async function importArticles(data, client) {
 
       const featured_image = await importImageModule(
         article.articles_slug.featured_image,
+        issue_folder,
         client
       );
 
       const images = await articleImagesModule(
         article.articles_slug.images,
+        issue_folder,
         client
       );
 
       const promo_banner = await importImageModule(
         article.articles_slug.promo_banner,
+        issue_folder,
         client
       );
 
       const promo_thumb = await importImageModule(
         article.articles_slug.promo_thumb,
+        issue_folder,
         client
       );
 
       const slideshow_image = await importImageModule(
         article.articles_slug.slideshow_image,
+        issue_folder,
         client
       );
 

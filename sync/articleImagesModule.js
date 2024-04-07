@@ -2,13 +2,17 @@ const fs = require("fs");
 require("dotenv").config();
 const { importImageModule } = require("./importImageModule");
 
-async function articleImagesModule(articleImagesIds, client) {
+async function articleImagesModule(articleImagesIds, issue_folder, client) {
   try {
     const images = [];
 
     // Iterate over each personId and check if it exists in Directus
     for (const articleImageData of articleImagesIds) {
-      const imageId = await importImageModule(articleImageData, client);
+      const imageId = await importImageModule(
+        articleImageData,
+        issue_folder,
+        client
+      );
       if (imageId) {
         images.push({ directus_files_id: imageId });
       }

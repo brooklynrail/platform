@@ -3,7 +3,7 @@ const fs = require("fs");
 const { BASE_ACCESS_TOKEN } = require("./config");
 const { withToken, importFile } = require("@directus/sdk");
 
-async function importImageModule(data, client) {
+async function importImageModule(data, issue_folder, client) {
   try {
     if (data && data.path) {
       // FULL path to Cloud Storage files
@@ -15,6 +15,7 @@ async function importImageModule(data, client) {
       const shortcode_key = data.shortcode_key;
       const old_path = data.old_path;
       const tags = data.tags;
+      const folder = issue_folder.id;
 
       const result = await client.request(
         withToken(
@@ -25,6 +26,7 @@ async function importImageModule(data, client) {
             shortcode_key: shortcode_key || null,
             old_path: old_path || null,
             tags: tags || null,
+            folder: folder || null,
           })
         )
       );

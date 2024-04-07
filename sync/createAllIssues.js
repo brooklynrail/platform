@@ -2,6 +2,7 @@ const fs = require("fs");
 const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require("./config");
 const { importIssue } = require("./issueModule");
 const { createIssuePreset } = require("./createPreset");
+const { createFileFolder } = require("./createFilesFolder");
 
 // ============
 
@@ -78,8 +79,15 @@ async function importIssues() {
             issuePreset
           );
 
+          const parentFolder = await createFileFolder({ name: "Issues" });
+          const issueFolder = await createFileFolder({
+            name: data.title,
+            parent: parentFolder.id,
+          });
+
           // Add the issue_number to the data object
           data.issue_number = issue.issue_number;
+          data.issue_folder = issueFolder;
 
           const issueData = await importIssue(data);
           console.log(
