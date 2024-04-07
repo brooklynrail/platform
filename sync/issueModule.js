@@ -5,10 +5,13 @@ const { importImageModule } = require("./importImageModule");
 const { sectionsModule } = require("./sectionsModule");
 const { contributorsModule } = require("./contributorsModule");
 const { articleImagesModule } = require("./articleImagesModule");
+const { createIssuePreset } = require("./createPreset");
+const { createFileFolder } = require("./createFilesFolder");
 const {
   createDirectus,
   rest,
   withToken,
+  readItems,
   createItems,
 } = require("@directus/sdk");
 
@@ -71,11 +74,6 @@ async function importArticles(data, client) {
 
       console.log("Article -----");
       console.log(article.articles_slug.title);
-      console.log(images);
-      console.log(slideshow_image);
-      console.log(promo_banner);
-      console.log(promo_thumb);
-      console.log(article.excerpt);
 
       // check if there are wrapping <p> tags in the excerpt and remove them
       let excerpt = article.articles_slug.excerpt;
@@ -107,8 +105,8 @@ async function importIssue(data) {
   try {
     if (data) {
       console.log(">>>---------------- - - - -");
-      console.log(`Importing issue for ${issue.year}-${issue.month}`);
-      console.log(`Issue #${issue.issue_number}`);
+      console.log(`Importing issue for ${data.year}-${data.month}`);
+      console.log(`Issue #${data.issue_number}`);
 
       const issuePreset = await createIssuePreset(
         data.year,
@@ -126,8 +124,6 @@ async function importIssue(data) {
         parent: parentFolder.id,
       });
 
-      // Add the issue_number to the data object
-      data.issue_number = issue.issue_number;
       data.issue_folder = issueFolder;
 
       // Import cover images sequentially
@@ -163,6 +159,36 @@ async function importIssue(data) {
 // Start the import process
 importIssue();
 
+async function checkForIssue(data) {
+  try {
+    const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
+    const issue = await client.request(
+      withToken(
+        BASE_ACCESS_TOKEN,
+        readItems("issues", {
+          filter: {
+            old_id: {
+              _eq: data.old_id,
+            },
+          },
+        })
+      )
+    );
+
+    return issue.length > 0 ? issue[0].id : null;
+  } catch (error) {
+    console.error("Error fetching issue:", error.message);
+
+    // Handle the error and write specific data to a text file
+    const failedData = `${data.issue_number}\n`;
+    const filePath = `sync/errors-issue.txt`;
+
+    // Write the error data to the text file
+    fs.appendFileSync(filePath, failedData, "utf-8");
+  }
+}
+
 module.exports = {
   importIssue,
+  checkForIssue,
 };
