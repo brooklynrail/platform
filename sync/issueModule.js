@@ -75,6 +75,15 @@ async function importArticles(data, client) {
       console.log(slideshow_image);
       console.log(promo_banner);
       console.log(promo_thumb);
+      console.log(article.excerpt);
+
+      // check if there are wrapping <p> tags in the excerpt and remove them
+      let excerpt = article.articles_slug.excerpt;
+      if (excerpt) {
+        excerpt = excerpt.replace(/<p>/g, "").replace(/<\/p>/g, "");
+      }
+      // add the excerpt to the article object
+      article.articles_slug.excerpt = excerpt;
 
       return {
         ...article,
@@ -97,8 +106,29 @@ async function importIssue(data) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
     if (data) {
-      console.log("+++++++++++++++++++++++++++++++");
-      console.log(`Importing issue`);
+      console.log(">>>---------------- - - - -");
+      console.log(`Importing issue for ${issue.year}-${issue.month}`);
+      console.log(`Issue #${issue.issue_number}`);
+
+      const issuePreset = await createIssuePreset(
+        data.year,
+        data.month,
+        data.title
+      );
+      console.log(
+        `The ${data.year}-${data.month} Issue Preset created!`,
+        issuePreset
+      );
+
+      const parentFolder = await createFileFolder({ name: "Issues" });
+      const issueFolder = await createFileFolder({
+        name: data.title,
+        parent: parentFolder.id,
+      });
+
+      // Add the issue_number to the data object
+      data.issue_number = issue.issue_number;
+      data.issue_folder = issueFolder;
 
       // Import cover images sequentially
       await importCoverImages(data, client);
