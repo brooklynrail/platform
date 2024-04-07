@@ -1,11 +1,17 @@
 // importImage.js
 const fs = require("fs");
 const { BASE_ACCESS_TOKEN } = require("./config");
-const { withToken, importFile } = require("@directus/sdk");
+const { withToken, importFile, readFiles } = require("@directus/sdk");
 
 async function importImageModule(data, issue_folder, client) {
   try {
     if (data && data.path) {
+      const existingImage = checkForImage(data, client);
+      if (existingImage) {
+        console.log("Image already exists --->", data.path);
+        return existingImage;
+      }
+      // Import the image
       // FULL path to Cloud Storage files
       const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
       // Local, relative paths
@@ -53,3 +59,28 @@ async function importImageModule(data, issue_folder, client) {
 module.exports = {
   importImageModule,
 };
+
+// check to see if image already exists in Directus
+// if it does, return the ID of the existing image
+async function checkForImage(data, client) {
+  try {
+    const image = await client.request(
+      withToken(
+        BASE_ACCESS_TOKEN,
+        readFiles({
+          query: {
+            filter: {
+              old_path: {
+                _eq: data.old_path,
+              },
+            },
+          },
+        })
+      )
+    );
+
+    return image.length > 0 ? image[0].id : null;
+  } catch (error) {
+    console.error("Error checking for existing image:", error.message);
+  }
+}
