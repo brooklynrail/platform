@@ -14,22 +14,29 @@ async function importIssues() {
       {
         year: "2024",
         month: "04",
-        issue_number: "8",
+        issue_number: "9",
         special_issue: false,
         published: true,
       },
       {
         year: "2024",
         month: "03",
-        issue_number: "7",
+        issue_number: "8",
         special_issue: false,
         published: true,
       },
       {
         year: "2019",
         month: "09",
-        issue_number: "6",
+        issue_number: "7",
         special_issue: true,
+        published: true,
+      },
+      {
+        year: "2017",
+        month: "05",
+        issue_number: "6",
+        special_issue: false,
         published: true,
       },
       {
@@ -63,7 +70,7 @@ async function importIssues() {
       {
         year: "2000",
         month: "10",
-        issue_number: "2",
+        issue_number: "1",
         special_issue: false,
         published: true,
       },
@@ -91,30 +98,6 @@ async function importIssues() {
         const data = await response.json();
 
         if (data) {
-          console.log(">>>---------------- - - - -");
-          console.log(`Importing issue for ${issue.year}-${issue.month}`);
-          console.log(`Issue #${issue.issue_number}`);
-
-          const issuePreset = await createIssuePreset(
-            data.year,
-            data.month,
-            data.title
-          );
-          console.log(
-            `The ${data.year}-${data.month} Issue Preset created!`,
-            issuePreset
-          );
-
-          const parentFolder = await createFileFolder({ name: "Issues" });
-          const issueFolder = await createFileFolder({
-            name: data.title,
-            parent: parentFolder.id,
-          });
-
-          // Add the issue_number to the data object
-          data.issue_number = issue.issue_number;
-          data.issue_folder = issueFolder;
-
           const issueData = await importIssue(data);
           console.log(
             `The ${issue.year}-${issue.month} Issue import completed!`
