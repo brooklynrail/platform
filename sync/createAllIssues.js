@@ -9,43 +9,69 @@ const { createFileFolder } = require("./createFilesFolder");
 async function importIssues() {
   try {
     // Fetch the list of issues
-    // const allIssues = await fetchIssues();
-    const allIssues = [
+    const allIssues = await fetchIssues();
+    const selectIssues = [
       {
         year: "2024",
         month: "04",
-        issue_number: "6",
+        issue_number: "8",
+        special_issue: false,
+        published: true,
       },
       {
         year: "2024",
         month: "03",
-        issue_number: "5",
+        issue_number: "7",
+        special_issue: false,
+        published: true,
       },
-      // {
-      //   year: "2024",
-      //   month: "02",
-      //   issue_number: "4",
-      // },
-      // {
-      //   year: "2023",
-      //   month: "12",
-      //   issue_number: "3",
-      // },
-      // {
-      //   year: "2023",
-      //   month: "11",
-      //   issue_number: "2",
-      // },
-      // {
-      //   year: "2023",
-      //   month: "10",
-      //   issue_number: "1",
-      // },
+      {
+        year: "2019",
+        month: "09",
+        issue_number: "6",
+        special_issue: true,
+        published: true,
+      },
+      {
+        year: "2017",
+        month: "04",
+        issue_number: "5",
+        special_issue: false,
+        published: true,
+      },
+      {
+        year: "2009",
+        month: "06",
+        issue_number: "4",
+        special_issue: false,
+        published: true,
+      },
+      {
+        year: "2005",
+        month: "01",
+        issue_number: "3",
+        special_issue: false,
+        published: true,
+      },
+      {
+        year: "2002",
+        month: "10",
+        issue_number: "2",
+        special_issue: false,
+        published: true,
+      },
+      {
+        year: "2000",
+        month: "10",
+        issue_number: "2",
+        special_issue: false,
+        published: true,
+      },
     ];
 
-    if (allIssues) {
+    if (selectIssues) {
       // Iterate over each issue
-      for (const issue of allIssues) {
+      for (const issue of selectIssues) {
         const issueUrl = `${API_ENDPOINT}/${issue.year}/${issue.month}/api`;
 
         // Fetch data for the current issue
