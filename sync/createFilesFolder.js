@@ -27,11 +27,9 @@ async function checkFolder(folderName, client) {
 }
 
 async function createFileFolder(folderData) {
-  console.log("Creating Folder", folderData);
-
   const folderName = folderData.name;
   console.log("+++++++++++++++++++++++++++++++");
-  console.log(`Creating "${folderName}" folder`);
+  console.log(`Creating "${folderName}" folder`, folderData);
 
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
