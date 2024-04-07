@@ -6,7 +6,7 @@ const { withToken, importFile, readFiles } = require("@directus/sdk");
 async function importImageModule(data, issue_folder, client) {
   try {
     if (data && data.path) {
-      const existingImage = checkForImage(data, client);
+      const existingImage = await checkForImage(data, client);
       if (existingImage) {
         console.log("Image already exists --->", data.path);
         return existingImage;
