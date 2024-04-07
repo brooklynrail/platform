@@ -1,8 +1,6 @@
 const fs = require("fs");
 const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require("./config");
-const { importIssue } = require("./issueModule");
-const { createIssuePreset } = require("./createPreset");
-const { createFileFolder } = require("./createFilesFolder");
+const { importIssue, checkForIssue } = require("./issueModule");
 
 // ============
 
@@ -13,66 +11,75 @@ async function importIssues() {
     const selectIssues = [
       {
         year: "2024",
-        month: "04",
-        issue_number: "9",
-        special_issue: false,
-        published: true,
+        month: "4",
+        issue_number: 231,
+        special_issue: "0",
+        published: "1",
+        old_id: "244",
       },
       {
         year: "2024",
-        month: "03",
-        issue_number: "8",
-        special_issue: false,
-        published: true,
+        month: "3",
+        issue_number: 230,
+        special_issue: "0",
+        published: "1",
+        old_id: "243",
       },
       {
         year: "2019",
-        month: "09",
-        issue_number: "7",
-        special_issue: true,
-        published: true,
+        month: "9",
+        issue_number: 182,
+        special_issue: "1",
+        published: "0",
+        old_id: "192",
       },
       {
         year: "2017",
-        month: "05",
-        issue_number: "6",
-        special_issue: false,
-        published: true,
+        month: "5",
+        issue_number: 157,
+        special_issue: "0",
+        published: "1",
+        old_id: "165",
       },
       {
         year: "2017",
-        month: "04",
-        issue_number: "5",
-        special_issue: false,
-        published: true,
+        month: "4",
+        issue_number: 156,
+        special_issue: "0",
+        published: "1",
+        old_id: "164",
       },
       {
         year: "2009",
-        month: "06",
-        issue_number: "4",
-        special_issue: false,
-        published: true,
+        month: "6",
+        issue_number: 74,
+        special_issue: "0",
+        published: "1",
+        old_id: "81",
       },
       {
         year: "2005",
-        month: "01",
-        issue_number: "3",
-        special_issue: false,
-        published: true,
+        month: "1",
+        issue_number: 29,
+        special_issue: "0",
+        published: "1",
+        old_id: "29",
       },
       {
         year: "2002",
         month: "10",
-        issue_number: "2",
-        special_issue: false,
-        published: true,
+        issue_number: 11,
+        special_issue: "0",
+        published: "1",
+        old_id: "49",
       },
       {
         year: "2000",
         month: "10",
-        issue_number: "1",
-        special_issue: false,
-        published: true,
+        issue_number: 1,
+        special_issue: "0",
+        published: "1",
+        old_id: "70",
       },
     ];
 
@@ -98,11 +105,18 @@ async function importIssues() {
         const data = await response.json();
 
         if (data) {
-          const issueData = await importIssue(data);
-          console.log(
-            `The ${issue.year}-${issue.month} Issue import completed!`
-          );
-          // console.log(issueData);
+          const existingIssue = await checkForIssue(data);
+          if (existingIssue) {
+            console.log(`Issue ${issue.year}-${issue.month} already exists!`);
+            continue;
+          } else {
+            // Add the issue_number to the data object
+            data.issue_number = issue.issue_number;
+            const issueData = await importIssue(data);
+            console.log(
+              `The ${data.year}-${data.month} Issue import completed!`
+            );
+          }
         }
       }
     }
