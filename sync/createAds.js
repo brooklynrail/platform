@@ -29,6 +29,10 @@ async function createAds() {
     const data = await response.json();
 
     if (data) {
+      const issueFolder = await createFileFolder({
+        name: "Ads",
+      });
+
       const newData = [];
 
       // for each Ad in data
@@ -36,7 +40,11 @@ async function createAds() {
       // then push the updated Ad data to the newData array
       for (let index = 0; index < data.length; index++) {
         const adData = data[index];
-        const ad_image = await importImageModule(adData.tile_image, client);
+        const ad_image = await importImageModule(
+          adData.tile_image,
+          issueFolder,
+          client
+        );
         newData.push({
           ...adData,
           tile_image: ad_image,
