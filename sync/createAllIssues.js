@@ -50,6 +50,14 @@ async function importIssues() {
         old_id: "164",
       },
       {
+        year: "2012",
+        month: "4",
+        issue_number: 103,
+        special_issue: "0",
+        published: "1",
+        old_id: "110",
+      },
+      {
         year: "2009",
         month: "6",
         issue_number: 74,
