@@ -1,16 +1,17 @@
 // importImage.js
 const fs = require("fs");
-const { BASE_ACCESS_TOKEN } = require("./config");
-const { withToken, importFile, readFiles } = require("@directus/sdk");
+const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require("./config");
+const {
+  withToken,
+  importFile,
+  readFiles,
+  rest,
+  createDirectus,
+} = require("@directus/sdk");
 
 async function importImageModule(data, issue_folder, client) {
   try {
     if (data && data.path) {
-      const existingImage = await checkForImage(data, client);
-      if (existingImage) {
-        console.log("Image already exists --->", data.path);
-        return existingImage;
-      }
       // Import the image
       // FULL path to Cloud Storage files
       const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
@@ -39,8 +40,6 @@ async function importImageModule(data, issue_folder, client) {
 
       // return the ID of the file that was just uploaded
       if (result) {
-        console.log("Image uploaded --->", data.path);
-        // console.log(result);
         return result.id;
       }
     }
@@ -56,31 +55,34 @@ async function importImageModule(data, issue_folder, client) {
   }
 }
 
-module.exports = {
-  importImageModule,
-};
-
 // check to see if image already exists in Directus
 // if it does, return the ID of the existing image
-async function checkForImage(data, client) {
-  try {
-    const image = await client.request(
-      withToken(
-        BASE_ACCESS_TOKEN,
-        readFiles({
-          query: {
-            filter: {
-              old_path: {
-                _eq: data.old_path,
-              },
+async function checkForImage(data) {
+  console.log("checking for image data ----> ", data);
+  console.log("data.path", data.path);
+
+  const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
+  const image = await client.request(
+    withToken(
+      BASE_ACCESS_TOKEN,
+      readFiles({
+        query: {
+          filter: {
+            old_path: {
+              _eq: data.path,
             },
           },
-        })
-      )
-    );
+        },
+      })
+    )
+  );
 
-    return image.length > 0 ? image[0].id : null;
-  } catch (error) {
-    console.error("Error checking for existing image:", error.message);
-  }
+  console.log("this is the image that was found ----> ", image);
+
+  return image.length > 0 ? image[0].id : null;
 }
+
+module.exports = {
+  importImageModule,
+  checkForImage,
+};
