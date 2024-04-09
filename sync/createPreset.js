@@ -5,12 +5,19 @@ const {
   rest,
   withToken,
   createPreset,
+  readPresets,
 } = require("@directus/sdk");
 
 async function createIssuePreset(year, month, title) {
   console.log(year, month, title);
 
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
+
+  const existingPreset = await checkPreset(title);
+  if (existingPreset) {
+    console.log("Preset already exists");
+    return;
+  }
 
   const newPreset = {
     bookmark: `${title}`,
@@ -57,6 +64,26 @@ async function createIssuePreset(year, month, title) {
   );
 
   return presets;
+}
+
+// check to see if a preset exists
+async function checkPreset(title) {
+  const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
+
+  const presets = await client.request(
+    withToken(
+      BASE_ACCESS_TOKEN,
+      readPresets({
+        fields: ["*.*"],
+        filter: {
+          bookmark: { _eq: title },
+          collection: { _eq: "articles" },
+        },
+      })
+    )
+  );
+
+  return presets.length > 0 ? presets[0].id : null;
 }
 
 module.exports = {
