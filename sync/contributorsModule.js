@@ -5,7 +5,6 @@ const { withToken, readItems } = require("@directus/sdk");
 
 async function contributorsModule(contributorsIds, client) {
   try {
-    const existingContributors = [];
     // Function to check if a person with a given ID exists in Directus
     const checkPersonExists = async (personId, client) => {
       const person = await client.request(
@@ -24,6 +23,7 @@ async function contributorsModule(contributorsIds, client) {
       return person.length > 0 ? person[0].id : null;
     };
 
+    const existingContributors = [];
     // Iterate over each personId and check if it exists in Directus
     for (const contributorId of contributorsIds) {
       const existingContributorId = await checkPersonExists(
