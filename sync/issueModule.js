@@ -33,6 +33,10 @@ async function importArticles(data, client) {
   const issue_folder = data.issue_folder;
   return Promise.all(
     data.articles.map(async (article) => {
+      console.log("====================================");
+      console.log("Importing article data: ", article.articles_slug.title);
+      console.log("\n");
+
       const sections = await sectionsModule(
         article.articles_slug.old_section_id,
         client
@@ -72,14 +76,12 @@ async function importArticles(data, client) {
         client
       );
 
-      console.log("Article -----");
-      console.log(article.articles_slug.title);
-
       // check if there are wrapping <p> tags in the excerpt and remove them
       let excerpt = article.articles_slug.excerpt;
       if (excerpt) {
         excerpt = excerpt.replace(/<p>/g, "").replace(/<\/p>/g, "");
       }
+
       // add the excerpt to the article object
       article.articles_slug.excerpt = excerpt;
 
