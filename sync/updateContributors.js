@@ -30,15 +30,14 @@ async function createContributors() {
       if (existingContributor) {
         continue;
       } else {
-        console.log(contributorData);
-        const contributors = await client.request(
+        console.log("Adding:", contributorData);
+        const contributor = await client.request(
           withToken(
             BASE_ACCESS_TOKEN,
             createItem("contributors", contributorData)
           )
         );
-        console.log("========");
-        console.log(contributors);
+        console.log("Added: ", contributor);
       }
     }
   } catch (error) {
