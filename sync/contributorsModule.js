@@ -13,7 +13,7 @@ async function contributorsModule(contributorsIds, client) {
           readItems("contributors", {
             filter: {
               old_id: {
-                _eq: personId,
+                _eq: personId.contributors_id.id,
               },
             },
           })
@@ -35,21 +35,18 @@ async function contributorsModule(contributorsIds, client) {
       }
     }
 
-    if (existingContributors.length == 0) {
-      console.log("Error fetching existingContributors");
-      return;
+    if (existingContributors) {
+      return existingContributors;
     }
-
-    return existingContributors;
   } catch (error) {
     console.error("Error fetching person:", error.message);
-
-    // Handle the error and write specific data to a text file
-    const failedData = `${contributorsIds}\n`;
-    const filePath = `sync/errors-contributors.txt`;
-
-    // Write the error data to the text file
-    fs.appendFileSync(filePath, failedData, "utf-8");
+    for (const contributorId of contributorsIds) {
+      // Handle the error and write specific data to a text file
+      const failedData = `${contributorId.id}\n`;
+      const filePath = `sync/errors-contributors.txt`;
+      // Write the error data to the text file
+      fs.appendFileSync(filePath, failedData, "utf-8");
+    }
   }
 }
 
