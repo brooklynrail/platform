@@ -10,6 +10,8 @@ async function importIssues() {
     const allIssues = await fetchIssues();
     const selectIssues = [
       {
+        title: "APRIL 2024",
+        slug: "2024/04",
         year: "2024",
         month: "4",
         issue_number: 231,
@@ -18,6 +20,8 @@ async function importIssues() {
         old_id: "244",
       },
       {
+        title: "MARCH 2024",
+        slug: "2024/03",
         year: "2024",
         month: "3",
         issue_number: 230,
@@ -26,22 +30,48 @@ async function importIssues() {
         old_id: "243",
       },
       {
+        title: "SEPT 2019",
+        slug: "2019/09",
         year: "2019",
         month: "9",
-        issue_number: 182,
-        special_issue: "1",
-        published: "0",
-        old_id: "192",
-      },
-      {
-        year: "2017",
-        month: "5",
-        issue_number: 157,
+        issue_number: 183,
         special_issue: "0",
         published: "1",
-        old_id: "165",
+        old_id: "191",
       },
       {
+        title: "River Rail Colby",
+        slug: "River_Rail_Colby",
+        year: "2019",
+        month: "10",
+        issue_number: 184,
+        special_issue: "1",
+        published: "1",
+        old_id: "194",
+      },
+      {
+        title: "OCT 2019",
+        slug: "2019/10",
+        year: "2019",
+        month: "10",
+        issue_number: 185,
+        special_issue: "0",
+        published: "1",
+        old_id: "193",
+      },
+      {
+        title: "NOV 2019",
+        slug: "2019/11",
+        year: "2019",
+        month: "11",
+        issue_number: 186,
+        special_issue: "0",
+        published: "1",
+        old_id: "195",
+      },
+      {
+        title: "APR 2017",
+        slug: "2017/04",
         year: "2017",
         month: "4",
         issue_number: 156,
@@ -50,6 +80,18 @@ async function importIssues() {
         old_id: "164",
       },
       {
+        title: "MAY 2017",
+        slug: "2017/05",
+        year: "2017",
+        month: "5",
+        issue_number: 157,
+        special_issue: "0",
+        published: "1",
+        old_id: "165",
+      },
+      {
+        title: "APR 2012",
+        slug: "2012/04",
         year: "2012",
         month: "4",
         issue_number: 103,
@@ -58,6 +100,8 @@ async function importIssues() {
         old_id: "110",
       },
       {
+        title: "JUNE 2009",
+        slug: "2009/06",
         year: "2009",
         month: "6",
         issue_number: 74,
@@ -66,6 +110,8 @@ async function importIssues() {
         old_id: "81",
       },
       {
+        title: "DEC 04-JAN 05",
+        slug: "2005/01",
         year: "2005",
         month: "1",
         issue_number: 29,
@@ -74,6 +120,8 @@ async function importIssues() {
         old_id: "29",
       },
       {
+        title: "AUTUMN 2002",
+        slug: "2002/10",
         year: "2002",
         month: "10",
         issue_number: 11,
@@ -82,6 +130,8 @@ async function importIssues() {
         old_id: "49",
       },
       {
+        title: "OCT-NOV 2000",
+        slug: "2000/10",
         year: "2000",
         month: "10",
         issue_number: 1,
@@ -94,10 +144,13 @@ async function importIssues() {
     if (selectIssues) {
       // Iterate over each issue
       for (const issue of selectIssues) {
-        const issueUrl = `${API_ENDPOINT}/${issue.year}/${issue.month}/api`;
+        const issueAPI =
+          issue.special_issue === "1"
+            ? `${API_ENDPOINT}/special/${issue.slug}/api`
+            : `${API_ENDPOINT}/${issue.year}/${issue.month}/api`;
 
         // Fetch data for the current issue
-        const response = await fetch(issueUrl, {
+        const response = await fetch(issueAPI, {
           headers: {
             Authorization: `Bearer ${BASE_ACCESS_TOKEN}`,
           },
