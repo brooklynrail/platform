@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@directus/sdk": "^13.0.2",
+    "@directus/sdk": "^15.1.0",
     "directus": "10.10.5",
     "directus-extension-display-link": "^1.6.1",
     "directus-extension-field-actions": "^1.6.6",
