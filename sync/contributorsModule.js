@@ -42,7 +42,9 @@ async function contributorsModule(contributorsIds, client) {
     console.error("Error fetching person:", error.message);
     for (const contributorId of contributorsIds) {
       // Handle the error and write specific data to a text file
-      const failedData = `${contributorId.id}\n`;
+      const person = contributorId.contributors_id;
+      const failedData = `name: ${person.first_name} ${person.last_name} | old_id: ${person.old_id}\n`;
+      console.log("Error fetching person:\n", failedData);
       const filePath = `sync/errors-contributors.txt`;
       // Write the error data to the text file
       fs.appendFileSync(filePath, failedData, "utf-8");
