@@ -11,6 +11,7 @@ const {
   createItems,
 } = require("@directus/sdk");
 const { importImageModule } = require("./importImageModule");
+const { createFileFolder } = require("./createFilesFolder");
 
 async function createAds() {
   try {
