@@ -16,22 +16,22 @@ async function importIssues() {
       {
         title: "APRIL 2024",
         slug: "2024/04",
-        year: "2024",
-        month: "4",
+        year: 2024,
+        month: 4,
         issue_number: 231,
         special_issue: false,
         published: "1",
-        old_id: "244",
+        old_id: 244,
       },
       {
         title: "MARCH 2024",
         slug: "2024/03",
-        year: "2024",
-        month: "3",
+        year: 2024,
+        month: 3,
         issue_number: 230,
         special_issue: false,
         published: "1",
-        old_id: "243",
+        old_id: 243,
       },
       // {
       //   title: "SEPT 2019",
@@ -43,16 +43,16 @@ async function importIssues() {
       //   published: "1",
       //   old_id: "191",
       // },
-      // {
-      //   title: "River Rail Colby",
-      //   slug: "River_Rail_Colby",
-      //   year: "2019",
-      //   month: "10",
-      //   issue_number: 184,
-      //   special_issue: true,
-      //   published: "1",
-      //   old_id: "194",
-      // },
+      {
+        title: "River Rail Colby",
+        slug: "River_Rail_Colby",
+        year: 2019,
+        month: 10,
+        issue_number: 181,
+        special_issue: true,
+        published: "1",
+        old_id: 194,
+      },
       // {
       //   title: "OCT 2019",
       //   slug: "2019/10",
@@ -165,20 +165,14 @@ async function importIssues() {
       // },
     ];
     const existingIssues = await getExistingIssues();
-    console.log("Existing issues:", existingIssues); // Log the existing issues
 
     if (selectIssues && existingIssues) {
       // Iterate over each issue
       for (const issue of selectIssues) {
         // Look in the existingIssues array for an issue with the same old_id as issue.old_id
         const existingIssue = existingIssues.find((existingIssue) => {
-          console.log("Existing old_id: ", existingIssue.old_id);
-          console.log("Issue old_id:", issue.old_id);
-          console.log(existingIssue.old_id === issue.old_id);
           return existingIssue.old_id === issue.old_id;
         });
-
-        console.log("Existing issue? ", existingIssue);
 
         if (existingIssue) {
           console.log(`Issue ${issue.year}-${issue.month} already exists!`);
