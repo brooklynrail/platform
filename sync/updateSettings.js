@@ -81,6 +81,7 @@ async function updateStudioSettings() {
     );
 
     console.log(settings);
+    console.log("Settings updated!");
   } catch (error) {
     console.error("Error reading settings", error.message);
   }
