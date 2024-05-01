@@ -1,9 +1,6 @@
 require("dotenv").config();
-const {
-  BASE_ACCESS_TOKEN,
-  API_ENDPOINT,
-  BASE_DIRECTUS_URL,
-} = require("./config");
+const { askConfirmation } = require("./confirm");
+const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require("./config");
 const {
   createDirectus,
   rest,
@@ -13,6 +10,14 @@ const {
 
 async function updateStudioSettings() {
   try {
+    const confirm = await askConfirmation(
+      "Do you want update the default settings? (y/n): "
+    );
+    if (!confirm) {
+      console.log("Script cancelled.");
+      process.exit(0);
+    }
+
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
     const newSettings = {
