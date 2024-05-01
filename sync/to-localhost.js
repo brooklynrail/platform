@@ -1,5 +1,13 @@
 const fetch = require("cross-fetch");
 require("dotenv").config();
+const { askConfirmation } = require("./confirm");
+const {
+  createDirectus,
+  rest,
+  withToken,
+  schemaDiff,
+  schemaApply,
+} = require("@directus/sdk");
 
 const BASE_DIRECTUS_URL = "https://studio.brooklynrail.org";
 const BASE_ACCESS_TOKEN = process.env.TOKEN;
@@ -8,9 +16,22 @@ const TARGET_DIRECTUS_URL = "http://127.0.0.1:8055";
 const TARGET_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
 
 async function main() {
+  const confirm = await askConfirmation(
+    "Do you want import the schema from production to localhost? (y/n): "
+  );
+  if (!confirm) {
+    console.log("Script cancelled.");
+    process.exit(0);
+  }
+
   const snapshot = await getSnapshot();
   const diff = await getDiff(snapshot);
-  await applyDiff(diff);
+  if (diff.status === 204) {
+    console.log("No schema changes to apply.");
+  } else {
+    await applyDiff(diff);
+    console.log("Production and localhost schemas are now in sync!");
+  }
 }
 
 main();
@@ -22,27 +43,25 @@ async function getSnapshot() {
 }
 
 async function getDiff(snapshot) {
-  const URL = `${TARGET_DIRECTUS_URL}/schema/diff?access_token=${TARGET_ACCESS_TOKEN}`;
+  try {
+    const client = createDirectus(TARGET_DIRECTUS_URL).with(rest());
+    const data = await client.request(
+      withToken(TARGET_ACCESS_TOKEN, schemaDiff(snapshot))
+    );
 
-  const { data } = await fetch(URL, {
-    method: "POST",
-    body: JSON.stringify(snapshot),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((r) => r.json());
-
-  return data;
+    return data;
+  } catch (error) {
+    console.error("Error getting schema diff:", error.message);
+    throw error; // Propagate the error
+  }
 }
 
 async function applyDiff(diff) {
-  const URL = `${TARGET_DIRECTUS_URL}/schema/apply?access_token=${TARGET_ACCESS_TOKEN}`;
-
-  await fetch(URL, {
-    method: "POST",
-    body: JSON.stringify(diff),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    const client = createDirectus(TARGET_DIRECTUS_URL).with(rest());
+    await client.request(withToken(TARGET_ACCESS_TOKEN, schemaApply(diff)));
+  } catch (error) {
+    console.error("Error applying schema diff:", error.message);
+    throw error; // Propagate the error
+  }
 }
