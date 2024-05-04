@@ -2,7 +2,6 @@ const fs = require("fs");
 require("dotenv").config();
 const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require("./config");
 const { importImageModule } = require("./importImageModule");
-const { createIssuePreset } = require("./createPreset");
 const { createFileFolder } = require("./createFilesFolder");
 const {
   createDirectus,
@@ -16,7 +15,8 @@ const {
 
 // Import cover images sequentially
 async function importCoverImages(data, client) {
-  const issue_folder = await createFileFolder({
+  let issue_folder;
+  issue_folder = await createFileFolder({
     name: "Covers",
     parent: data.issue_folder.id,
   });
@@ -28,7 +28,7 @@ async function importCoverImages(data, client) {
   }
 }
 
-async function importIssue(data) {
+async function importIssue(data, mainIssuesFolder) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
     if (data) {
@@ -36,20 +36,10 @@ async function importIssue(data) {
       console.log(`Importing issue for ${data.year}-${data.month}`);
       console.log(`Issue #${data.issue_number}`);
 
-      const issuePreset = await createIssuePreset(
-        data.year,
-        data.month,
-        data.title
-      );
-      console.log(
-        `The ${data.year}-${data.month} Issue Preset created!`,
-        issuePreset
-      );
-
-      const parentFolder = await createFileFolder({ name: "Issues" });
-      const issueFolder = await createFileFolder({
+      let issueFolder;
+      issueFolder = await createFileFolder({
         name: data.title,
-        parent: parentFolder.id,
+        parent: mainIssuesFolder.id,
       });
 
       data.issue_folder = issueFolder;
@@ -70,7 +60,7 @@ async function importIssue(data) {
       };
 
       console.log(">>>---------------- - - - -");
-      console.log("Creating issue data: ", newData);
+      console.log(`Creating issue data: ${newData.title}/n/n`);
 
       const createIssue = await client.request(
         withToken(BASE_ACCESS_TOKEN, createItems("issues", newData))
