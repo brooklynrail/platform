@@ -5,6 +5,7 @@ const {
   BASE_DIRECTUS_URL,
 } = require("./config");
 const { importArticles } = require("./articlesModule");
+const { createIssuePreset } = require("./createPreset");
 const { createDirectus, rest, withToken, readItems } = require("@directus/sdk");
 const { createFileFolder } = require("./createFilesFolder");
 
@@ -12,6 +13,8 @@ const { createFileFolder } = require("./createFilesFolder");
 async function createArticles() {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
+    const mainIssuesFolder = await createFileFolder({ name: "Issues" });
+
     // Fetch the list of RAIL issues
     const allIssues = await fetchIssues();
     // Fetch the list of existing issues
@@ -24,15 +27,17 @@ async function createArticles() {
     // reverse the order of allIssues
     allIssues.reverse();
 
-    // Create a folder to store all the article files
-    const issue_folder = await createFileFolder({ name: "Articles" });
-
     // Iterate over each issue
     for (const issue of allIssues) {
       // check to see if the issue already exists in Directus
       const existingIssue = existingIssues.find((existingIssue) => {
         return existingIssue.old_id === issue.old_id;
       });
+
+      if (!existingIssue) {
+        console.log(`Issue ${issue.year}-${issue.month} does not exist!`);
+        continue; // Skip to the next issue
+      }
 
       if (existingIssue) {
         // if the existing issue has articles in the array, skip to the next issue
@@ -64,21 +69,47 @@ async function createArticles() {
         }
 
         const issueData = await response.json();
+
         if (issueData) {
           console.log("====================================");
           console.log("Issue to be updated:", issue);
+
+          const issuePreset = await createIssuePreset(
+            issueData.year,
+            issueData.month,
+            issueData.title
+          );
+
+          console.log(
+            `🚩 The ${issueData.year}-${issueData.month} Issue Preset created!`,
+            issuePreset
+          );
+
+          let issueFolder;
+          issueFolder = await createFileFolder({
+            name: issueData.title,
+            parent: mainIssuesFolder.id,
+          });
+
           // Import articles sequentially
           // loop through all the articles
-          for await (const articleData of articles) {
+          for await (const articleData of issueData.articles) {
+            // Create a folder to store all the article files
+            let articles_folder;
+            articles_folder = await createFileFolder({
+              name: "Articles",
+              parent: issueFolder.id,
+            });
+
             await importArticles(
               articleData,
               existingIssue,
-              issue_folder,
+              articles_folder,
               client
             );
           }
           console.log(
-            `Articles for ${issueData.year}-${issueData.month} Issue import completed!`
+            `📑 Articles for the ${issueData.year}-${issueData.month} issue completed!`
           );
         }
       }
