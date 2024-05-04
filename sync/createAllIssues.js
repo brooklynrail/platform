@@ -5,11 +5,13 @@ const {
   BASE_DIRECTUS_URL,
 } = require("./config");
 const { importIssue } = require("./issueModule");
+const { createFileFolder } = require("./createFilesFolder");
 const { createDirectus, rest, withToken, readItems } = require("@directus/sdk");
 // ============
 
 async function importIssues() {
   try {
+    const mainIssuesFolder = await createFileFolder({ name: "Issues" });
     // Fetch the list of issues
     const allIssues = await fetchIssues();
     const selectIssues = [
@@ -23,26 +25,26 @@ async function importIssues() {
         published: "1",
         old_id: 245,
       },
-      {
-        title: "APRIL 2024",
-        slug: "APRIL_2024",
-        year: 2024,
-        month: 4,
-        issue_number: 228,
-        special_issue: false,
-        published: "1",
-        old_id: 244,
-      },
-      {
-        title: "MARCH 2024",
-        slug: "MARCH_2024",
-        year: 2024,
-        month: 3,
-        issue_number: 227,
-        special_issue: false,
-        published: "1",
-        old_id: 243,
-      },
+      // {
+      //   title: "APRIL 2024",
+      //   slug: "APRIL_2024",
+      //   year: 2024,
+      //   month: 4,
+      //   issue_number: 228,
+      //   special_issue: false,
+      //   published: "1",
+      //   old_id: 244,
+      // },
+      // {
+      //   title: "MARCH 2024",
+      //   slug: "MARCH_2024",
+      //   year: 2024,
+      //   month: 3,
+      //   issue_number: 227,
+      //   special_issue: false,
+      //   published: "1",
+      //   old_id: 243,
+      // },
       // {
       //   title: "SEPT 2019",
       //   slug: "2019/09",
@@ -63,16 +65,16 @@ async function importIssues() {
         published: "1",
         old_id: 194,
       },
-      {
-        title: "OCT 2019",
-        slug: "2019/10",
-        year: "2019",
-        month: "10",
-        issue_number: 185,
-        special_issue: false,
-        published: "1",
-        old_id: "193",
-      },
+      // {
+      //   title: "OCT 2019",
+      //   slug: "2019/10",
+      //   year: "2019",
+      //   month: "10",
+      //   issue_number: 185,
+      //   special_issue: false,
+      //   published: "1",
+      //   old_id: "193",
+      // },
       // {
       //   title: "NOV 2019",
       //   slug: "2019/11",
@@ -212,7 +214,7 @@ async function importIssues() {
           if (data) {
             // Add the issue_number to the data object
             data.issue_number = issue.issue_number;
-            const issueData = await importIssue(data);
+            const issueData = await importIssue(data, mainIssuesFolder);
             console.log(
               `The ${data.year}-${data.month} Issue import completed!`
             );
