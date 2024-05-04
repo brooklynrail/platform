@@ -38,6 +38,7 @@ async function createIssuePreset(year, month, title) {
           "title",
           "in_print",
           "status",
+          "sections.sections_id.name",
           "contributors.contributors_id.slug",
           "user_updated.avatar.$thumbnail",
         ],
