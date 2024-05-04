@@ -2,9 +2,6 @@ const fs = require("fs");
 require("dotenv").config();
 const { BASE_ACCESS_TOKEN, BASE_DIRECTUS_URL } = require("./config");
 const { importImageModule } = require("./importImageModule");
-const { sectionsModule } = require("./sectionsModule");
-const { contributorsModule } = require("./contributorsModule");
-const { articleImagesModule } = require("./articleImagesModule");
 const { createIssuePreset } = require("./createPreset");
 const { createFileFolder } = require("./createFilesFolder");
 const {
@@ -19,7 +16,10 @@ const {
 
 // Import cover images sequentially
 async function importCoverImages(data, client) {
-  const issue_folder = data.issue_folder;
+  const issue_folder = await createFileFolder({
+    name: "Covers",
+    parent: data.issue_folder.id,
+  });
   for (let i = 0; i < data.covers.length; i++) {
     const coverData = data.covers[i];
     const key = `cover_${i + 1}`;
