@@ -8,7 +8,7 @@ const {
   readFolders,
 } = require("@directus/sdk");
 
-async function checkFolder(folderName, client) {
+async function checkFolder(folderData, client) {
   const listFolders = await client.request(
     withToken(
       BASE_ACCESS_TOKEN,
@@ -18,7 +18,17 @@ async function checkFolder(folderName, client) {
     )
   );
 
-  const folder = listFolders.find((folder) => folder.name === folderName);
+  if (folderData.name === "Issues") {
+    // Check in listFolders if folder exists by comparing folderData.name
+    const folder = listFolders.find((item) => item.name === folderData.name);
+    return folder;
+  }
+
+  // Check in listFolders if folder exists by comparing folderData.name and folderData.parent
+  const folder = listFolders.find(
+    (item) => item.name === folderData.name && item.parent === folderData.parent
+  );
+
   if (folder) {
     return folder;
   } else {
@@ -28,13 +38,13 @@ async function checkFolder(folderName, client) {
 
 async function createFileFolder(folderData) {
   const folderName = folderData.name;
-  console.log("+++++++++++++++++++++++++++++++");
-  console.log(`Creating "${folderName}" folder`, folderData);
+
+  console.log(`📁 Creating "${folderName}" folder`, folderData);
 
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
   // Check if folder exists
-  const existingFolder = await checkFolder(folderName, client);
+  const existingFolder = await checkFolder(folderData, client);
 
   if (!existingFolder) {
     const newFolder = await client.request(
