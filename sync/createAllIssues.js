@@ -14,21 +14,31 @@ async function importIssues() {
     const allIssues = await fetchIssues();
     const selectIssues = [
       {
+        title: "MAY 2024",
+        slug: "MAY_2024",
+        year: 2024,
+        month: 5,
+        issue_number: 229,
+        special_issue: false,
+        published: "1",
+        old_id: 245,
+      },
+      {
         title: "APRIL 2024",
-        slug: "2024/04",
+        slug: "APRIL_2024",
         year: 2024,
         month: 4,
-        issue_number: 231,
+        issue_number: 228,
         special_issue: false,
         published: "1",
         old_id: 244,
       },
       {
         title: "MARCH 2024",
-        slug: "2024/03",
+        slug: "MARCH_2024",
         year: 2024,
         month: 3,
-        issue_number: 230,
+        issue_number: 227,
         special_issue: false,
         published: "1",
         old_id: 243,
@@ -53,16 +63,16 @@ async function importIssues() {
         published: "1",
         old_id: 194,
       },
-      // {
-      //   title: "OCT 2019",
-      //   slug: "2019/10",
-      //   year: "2019",
-      //   month: "10",
-      //   issue_number: 185,
-      //   special_issue: false,
-      //   published: "1",
-      //   old_id: "193",
-      // },
+      {
+        title: "OCT 2019",
+        slug: "2019/10",
+        year: "2019",
+        month: "10",
+        issue_number: 185,
+        special_issue: false,
+        published: "1",
+        old_id: "193",
+      },
       // {
       //   title: "NOV 2019",
       //   slug: "2019/11",
@@ -231,7 +241,7 @@ async function getExistingIssues() {
       withToken(
         BASE_ACCESS_TOKEN,
         readItems("issues", {
-          fields: ["id", "slug", "old_id", "issue_number"],
+          fields: ["id", "slug", "old_id", "issue_number", "articles"],
           limit: -1,
         })
       )
@@ -263,3 +273,8 @@ async function fetchIssues() {
 
 // Start the import process
 importIssues();
+
+module.exports = {
+  getExistingIssues,
+  fetchIssues,
+};
