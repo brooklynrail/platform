@@ -28,80 +28,6 @@ async function importCoverImages(data, client) {
   }
 }
 
-// Import articles sequentially
-async function importArticles(data, client) {
-  const issue_folder = data.issue_folder;
-  return Promise.all(
-    data.articles.map(async (article) => {
-      console.log("====================================");
-      console.log("Importing article data: ", article.articles_slug.title);
-      console.log("\n");
-
-      const sections = await sectionsModule(
-        article.articles_slug.old_section_id,
-        client
-      );
-      const contributors = await contributorsModule(
-        article.articles_slug.contributors,
-        client
-      );
-
-      const featured_image = await importImageModule(
-        article.articles_slug.featured_image,
-        issue_folder,
-        client
-      );
-
-      const images = await articleImagesModule(
-        article.articles_slug.images,
-        issue_folder,
-        client
-      );
-
-      const promo_banner = await importImageModule(
-        article.articles_slug.promo_banner,
-        issue_folder,
-        client
-      );
-
-      const promo_thumb = await importImageModule(
-        article.articles_slug.promo_thumb,
-        issue_folder,
-        client
-      );
-
-      const slideshow_image = await importImageModule(
-        article.articles_slug.slideshow_image,
-        issue_folder,
-        client
-      );
-
-      // check if there are wrapping <p> tags in the excerpt and remove them
-      let excerpt = article.articles_slug.excerpt;
-      if (excerpt) {
-        excerpt = excerpt.replace(/<p>/g, "").replace(/<\/p>/g, "");
-      }
-
-      // add the excerpt to the article object
-      article.articles_slug.excerpt = excerpt;
-
-      return {
-        ...article,
-        articles_slug: {
-          ...article.articles_slug,
-          sections,
-          contributors,
-          featured_image,
-          images,
-          promo_banner,
-          promo_thumb,
-          slideshow_image,
-        },
-      };
-    })
-  );
-}
-
 async function importIssue(data) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
   try {
@@ -132,13 +58,19 @@ async function importIssue(data) {
       await importCoverImages(data, client);
 
       // Import articles sequentially
-      const articles = await importArticles(data, client);
+      // const articles = await importArticles(data, client);
       // console.log(articles);
+
+      // remove the articles from the data object
+      delete data.articles;
 
       const newData = {
         ...data,
-        articles,
+        // articles,
       };
+
+      console.log(">>>---------------- - - - -");
+      console.log("Creating issue data: ", newData);
 
       const createIssue = await client.request(
         withToken(BASE_ACCESS_TOKEN, createItems("issues", newData))
