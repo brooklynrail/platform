@@ -4,28 +4,50 @@ const {
   createDirectus,
   rest,
   withToken,
-  deleteItems,
+  readFiles,
+  deleteFiles,
 } = require("@directus/sdk");
 
-async function deleteFiles() {
+async function deleteAllFiles() {
   try {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
-    const ads = await client.request(
+
+    // const list = await client.request(
+    //   withToken(
+    //     BASE_ACCESS_TOKEN,
+    //     readFiles({
+    //       query: {
+    //         filter: {
+    //           article_images: {
+    //             _nnull: true,
+    //           },
+    //         },
+    //         limit: -1,
+    //       },
+    //     })
+    //   )
+    // );
+    // console.log("list of Files: ", list);
+
+    const article_images = await client.request(
       withToken(
         BASE_ACCESS_TOKEN,
-        deleteItems("directus_files", {
-          filter: {
-            status: {
-              _eq: "published",
+        deleteFiles({
+          query: {
+            filter: {
+              article_images: {
+                _nnull: true,
+              },
             },
+            limit: -1,
           },
-          limit: -1,
         })
       )
     );
-    console.log("all Files deleted: ", ads);
+    console.log("all article_images deleted: ", article_images);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
-deleteFiles();
+
+deleteAllFiles();
