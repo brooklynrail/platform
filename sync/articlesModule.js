@@ -11,7 +11,7 @@ const { withToken, createItem, createFileFolder } = require("@directus/sdk");
 async function importArticles(
   articleData,
   existingIssue,
-  issue_folder,
+  articles_folder,
   client
 ) {
   try {
@@ -33,31 +33,31 @@ async function importArticles(
 
     const featured_image = await importImageModule(
       articleData.articles_slug.featured_image,
-      issue_folder,
+      articles_folder,
       client
     );
 
     const images = await articleImagesModule(
       articleData.articles_slug.images,
-      issue_folder,
+      articles_folder,
       client
     );
 
     const promo_banner = await importImageModule(
       articleData.articles_slug.promo_banner,
-      issue_folder,
+      articles_folder,
       client
     );
 
     const promo_thumb = await importImageModule(
       articleData.articles_slug.promo_thumb,
-      issue_folder,
+      articles_folder,
       client
     );
 
     const slideshow_image = await importImageModule(
       articleData.articles_slug.slideshow_image,
-      issue_folder,
+      articles_folder,
       client
     );
 
