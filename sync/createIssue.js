@@ -1,11 +1,6 @@
 require("dotenv").config();
-const {
-  BASE_ACCESS_TOKEN,
-  API_ENDPOINT,
-  BASE_DIRECTUS_URL,
-} = require("./config");
+const { BASE_ACCESS_TOKEN, API_ENDPOINT } = require("./config");
 const { importIssue, checkForIssue } = require("./issueModule");
-const { createDirectus, rest } = require("@directus/sdk");
 
 // Create a single issue
 async function importSingleIssue(slug) {
