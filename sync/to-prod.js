@@ -1,5 +1,6 @@
 const fetch = require("cross-fetch");
 require("dotenv").config();
+const { askConfirmation } = require("./confirm");
 
 const BASE_DIRECTUS_URL = "http://127.0.0.1:8055";
 const BASE_ACCESS_TOKEN = process.env.TOKEN_LOCAL;
@@ -8,6 +9,14 @@ const TARGET_DIRECTUS_URL = "https://studio.brooklynrail.org";
 const TARGET_ACCESS_TOKEN = process.env.TOKEN;
 
 async function main() {
+  const confirm = await askConfirmation(
+    "Do you want import the schema from localhost to production? (y/n): "
+  );
+  if (!confirm) {
+    console.log("Script cancelled.");
+    process.exit(0);
+  }
+
   const snapshot = await getSnapshot();
   const diff = await getDiff(snapshot);
   await applyDiff(diff);
