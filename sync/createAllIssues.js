@@ -25,16 +25,16 @@ async function importIssues() {
         published: "1",
         old_id: 245,
       },
-      // {
-      //   title: "APRIL 2024",
-      //   slug: "APRIL_2024",
-      //   year: 2024,
-      //   month: 4,
-      //   issue_number: 228,
-      //   special_issue: false,
-      //   published: "1",
-      //   old_id: 244,
-      // },
+      {
+        title: "APRIL 2024",
+        slug: "APRIL_2024",
+        year: 2024,
+        month: 4,
+        issue_number: 228,
+        special_issue: false,
+        published: "1",
+        old_id: 244,
+      },
       // {
       //   title: "MARCH 2024",
       //   slug: "MARCH_2024",
@@ -216,7 +216,7 @@ async function importIssues() {
             data.issue_number = issue.issue_number;
             const issueData = await importIssue(data, mainIssuesFolder);
             console.log(
-              `The ${data.year}-${data.month} Issue import completed!`
+              `Issue ${data.year}-${data.month} migration completed!`
             );
           }
         }
