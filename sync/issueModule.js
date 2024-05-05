@@ -60,7 +60,7 @@ async function importIssue(data, mainIssuesFolder) {
       };
 
       console.log(">>>---------------- - - - -");
-      console.log(`Creating issue data: ${newData.title}/n/n`);
+      console.log(`Creating issue data: ${newData.title}`);
 
       const createIssue = await client.request(
         withToken(BASE_ACCESS_TOKEN, createItems("issues", newData))
