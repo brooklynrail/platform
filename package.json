@@ -4,14 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@directus/sdk": "^15.1.0",
-    "directus": "10.10.5",
-    "directus-extension-display-link": "^1.6.1",
-    "directus-extension-field-actions": "^1.6.6",
-    "directus-extension-grid-layout": "^1.0.4",
-    "directus-extension-group-tabs-interface": "^2.0.0",
-    "directus-extension-tokenized-preview": "^1.0.0",
-    "directus-extension-wpslug-interface": "^1.1.0",
+    "@directus/sdk": "16.0.0",
+    "directus": "10.11.0",
     "readline": "^1.3.0"
   },
   "engines": {
