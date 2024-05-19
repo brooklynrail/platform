@@ -10,7 +10,7 @@ RUN yarn install --ignore-engines
 
 ADD .env /src
 
-ADD snapshots/init.yaml snapshots/
+# ADD snapshots/init.yaml snapshots/
 
 # CMD ["yarn", "dev"]
 CMD ["yarn", "build"]
