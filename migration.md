@@ -69,7 +69,7 @@ DROP TABLE `schema_info`;
 
 ## Migrating data from the OLD Rail Site
 
-1. Download a fresh copy of the database from GoDaddy
+1. Download a fresh copy of the database from Google Cloud (~GoDaddy~)
 2. Start up the Brooklyn Site locally with this fresh database
 3. Verify that it works http://localhost:8055
 4. Connect to the Database via Sequel Ace
