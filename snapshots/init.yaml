@@ -1,5 +1,5 @@
 version: 1
-directus: 10.9.3
+directus: 10.11.2
 vendor: postgres
 collections:
   - collection: ads
@@ -41,7 +41,8 @@ collections:
       icon: null
       item_duplication_fields: null
       note: null
-      preview_url: null
+      preview_url: >-
+        https://preview.brooklynrail.org/api/preview/?secret=7giV5gQ6E5qx3&preview=true&slug={{slug}}
       singleton: false
       sort: 2
       sort_field: sort
@@ -61,7 +62,7 @@ collections:
       color: null
       display_template: null
       group: null
-      hidden: true
+      hidden: false
       icon: import_export
       item_duplication_fields: null
       note: null
@@ -85,7 +86,7 @@ collections:
       color: null
       display_template: null
       group: null
-      hidden: true
+      hidden: false
       icon: import_export
       item_duplication_fields: null
       note: null
@@ -109,7 +110,7 @@ collections:
       color: null
       display_template: null
       group: null
-      hidden: true
+      hidden: false
       icon: import_export
       item_duplication_fields: null
       note: null
@@ -133,7 +134,7 @@ collections:
       color: null
       display_template: null
       group: null
-      hidden: true
+      hidden: false
       icon: import_export
       item_duplication_fields: null
       note: null
@@ -423,7 +424,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -503,7 +504,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 6
@@ -703,7 +704,8 @@ fields:
       hidden: false
       interface: file-image
       note: null
-      options: null
+      options:
+        folder: fa3fc79b-3f2b-4137-972d-8f5d74e4dbeb
       readonly: false
       required: false
       sort: 11
@@ -744,6 +746,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: fa3fc79b-3f2b-4137-972d-8f5d74e4dbeb
       readonly: false
       required: false
       sort: 13
@@ -784,6 +787,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: fa3fc79b-3f2b-4137-972d-8f5d74e4dbeb
       readonly: false
       required: false
       sort: 12
@@ -923,29 +927,36 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: articles
-    field: contributors
+  - collection: ads
+    field: notice-ba-ffx
     type: alias
     meta:
-      collection: articles
+      collection: ads
       conditions: null
-      display: related-values
+      display: null
       display_options: null
-      field: contributors
+      field: notice-ba-ffx
       group: null
       hidden: false
-      interface: list-m2m
+      interface: presentation-notice
       note: null
       options:
-        enableLink: true
-        enableSearchFilter: true
-        layout: table
-        limit: 10
+        color: warning
+        icon: warning
+        text: >-
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
       readonly: false
       required: false
-      sort: 21
+      sort: 17
       special:
-        - m2m
+        - alias
+        - no-data
       translations: null
       validation: null
       validation_message: null
@@ -1076,9 +1087,8 @@ fields:
     meta:
       collection: articles
       conditions: null
-      display: formatted-value
-      display_options:
-        format: true
+      display: raw
+      display_options: {}
       field: excerpt
       group: null
       hidden: false
@@ -1090,6 +1100,7 @@ fields:
           - code
           - italic
           - removeformat
+          - visualaid
       readonly: false
       required: true
       sort: 16
@@ -1106,7 +1117,7 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: true
+      is_nullable: false
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -1126,13 +1137,15 @@ fields:
       group: null
       hidden: false
       interface: file-image
-      note: null
+      note: >-
+        The "featured image" is the primary image in downstream services, like
+        social media
       options:
         crop: false
-        folder: 3f7ac0a0-1de2-4850-9534-65da1aaf18d1
+        folder: 0eec8cad-4157-4286-91ad-0eb274a62892
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special:
         - file
       translations: null
@@ -1176,7 +1189,7 @@ fields:
             value: diptych
       readonly: false
       required: true
-      sort: 13
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -1264,7 +1277,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: kicker
       table: articles
@@ -1332,9 +1345,12 @@ fields:
       group: null
       hidden: false
       interface: extension-wpslug
-      note: null
+      note: >-
+        The "slug" should be lowercase, with no spaces, and no special
+        characters. Editing the slug after an article is published will break
+        the URL. [Create a redirect »](#)
       options:
-        template: "{{title}}"
+        template: '{{title}}'
       readonly: false
       required: true
       sort: 10
@@ -1369,7 +1385,7 @@ fields:
       display_options: null
       field: sort
       group: null
-      hidden: false
+      hidden: true
       interface: input
       note: null
       options: null
@@ -1408,15 +1424,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: "#18222F"
-            background: "#D3DAE4"
+            foreground: '#18222F'
+            background: '#D3DAE4'
           - text: $t:archived
             value: archived
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -1510,7 +1526,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 2
@@ -1550,7 +1566,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -1685,17 +1701,17 @@ fields:
       group: null
       hidden: false
       interface: boolean
-      note: null
+      note: This makes this article "Featured"
       options: null
       readonly: false
       required: true
-      sort: 22
+      sort: 12
       special:
         - cast-boolean
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: featured
       table: articles
@@ -1705,6 +1721,178 @@ fields:
       numeric_precision: null
       numeric_scale: null
       is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: seo
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: seo
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 22
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: relationships
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: null
+      display_options: null
+      field: relationships
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 20
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: contributors
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: related-values
+      display_options: null
+      field: contributors
+      group: bylines_and_credits
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        enableLink: true
+        enableSearchFilter: true
+        template: "{{contributors_id.first_name}} {{contributors_id.last_name}}\_\_[{{contributors_id.slug}}]"
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: issues
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: related-values
+      display_options: null
+      field: issues
+      group: relationships
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        enableCreate: false
+        enableLink: true
+        enableSearchFilter: true
+        limit: 10
+        template: '{{issues_id.cover_1.$thumbnail}} {{issues_id.title}}'
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: sections
+    type: alias
+    meta:
+      collection: articles
+      conditions: null
+      display: related-values
+      display_options: null
+      field: sections
+      group: relationships
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        enableCreate: false
+        enableSearchFilter: true
+        fields:
+          - sections_id.name
+        limit: 10
+        template: '{{sections_id.name}}'
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: articles
+    field: title_tag
+    type: string
+    meta:
+      collection: articles
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: title_tag
+      group: seo
+      hidden: false
+      interface: input
+      note: null
+      options:
+        trim: true
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title_tag
+      table: articles
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -1726,10 +1914,10 @@ fields:
       interface: files
       note: 'Shortcode: [img name="img2" type="lg" /]'
       options:
-        folder: 1d972beb-1662-4981-999a-1096afa94556
-        limit: 25
+        folder: 0eec8cad-4157-4286-91ad-0eb274a62892
+        limit: 100
         template: >-
-          {{directus_files_id.$thumbnail}}{{directus_files_id.title}} —
+          {{directus_files_id.$thumbnail}} {{directus_files_id.title}} —
           {{directus_files_id.shortcode_key}} -- {{sort}}
       readonly: false
       required: false
@@ -1739,7 +1927,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
   - collection: articles
     field: promo_thumb
     type: uuid
@@ -1754,7 +1942,7 @@ fields:
       interface: file-image
       note: null
       options:
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+        folder: 0eec8cad-4157-4286-91ad-0eb274a62892
       readonly: false
       required: false
       sort: 4
@@ -1763,7 +1951,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: promo_thumb
       table: articles
@@ -1795,7 +1983,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+        folder: 0eec8cad-4157-4286-91ad-0eb274a62892
       readonly: false
       required: false
       sort: 3
@@ -1804,7 +1992,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: promo_banner
       table: articles
@@ -1836,7 +2024,7 @@ fields:
       note: null
       options:
         crop: false
-        folder: 84e94cd1-1397-40fb-9a60-3f5bd3ec635f
+        folder: 0eec8cad-4157-4286-91ad-0eb274a62892
       readonly: false
       required: false
       sort: 2
@@ -1845,7 +2033,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       name: slideshow_image
       table: articles
@@ -1910,7 +2098,8 @@ fields:
       collection: articles
       conditions: null
       display: formatted-value
-      display_options: null
+      display_options:
+        format: true
       field: body_text
       group: body
       hidden: false
@@ -1964,71 +2153,120 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: articles
-    field: issues
+    field: hide_bylines
+    type: boolean
+    meta:
+      collection: articles
+      conditions: null
+      display: boolean
+      display_options: null
+      field: hide_bylines
+      group: bylines_and_credits
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: Hidden
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: hide_bylines
+      table: articles
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: hide_bylines_downstream
+    type: boolean
+    meta:
+      collection: articles
+      conditions: null
+      display: boolean
+      display_options: null
+      field: hide_bylines_downstream
+      group: bylines_and_credits
+      hidden: false
+      interface: boolean
+      note: null
+      options:
+        label: Hidden
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: hide_bylines_downstream
+      table: articles
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: bylines_and_credits
     type: alias
     meta:
       collection: articles
       conditions: null
-      display: related-values
+      display: null
       display_options: null
-      field: issues
+      field: bylines_and_credits
       group: null
       hidden: false
-      interface: list-m2m
+      interface: group-detail
       note: null
-      options:
-        enableCreate: false
-        enableLink: true
-        enableSearchFilter: true
-        layout: table
-        limit: 10
+      options: null
       readonly: false
       required: false
-      sort: 23
+      sort: 21
       special:
-        - m2m
+        - alias
+        - group
+        - no-data
       translations: null
       validation: null
       validation_message: null
       width: full
   - collection: articles
-    field: sections
-    type: alias
-    meta:
-      collection: articles
-      conditions: null
-      display: related-values
-      display_options: null
-      field: sections
-      group: null
-      hidden: false
-      interface: list-m2m
-      note: null
-      options:
-        enableCreate: false
-        enableLink: true
-        enableSearchFilter: true
-        layout: table
-        limit: 10
-      readonly: false
-      required: false
-      sort: 24
-      special:
-        - m2m
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: articles
-    field: title_tag
+    field: byline_override
     type: string
     meta:
       collection: articles
       conditions: null
       display: formatted-value
       display_options: null
-      field: title_tag
-      group: null
+      field: byline_override
+      group: bylines_and_credits
       hidden: false
       interface: input
       note: null
@@ -2036,18 +2274,111 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 25
+      sort: 5
       special: null
       translations: null
       validation: null
       validation_message: null
       width: full
     schema:
-      name: title_tag
+      name: byline_override
       table: articles
       data_type: character varying
       default_value: null
       max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: endnote
+    type: text
+    meta:
+      collection: articles
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: endnote
+      group: bylines_and_credits
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customLink
+          - fullscreen
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - strikethrough
+          - subscript
+          - superscript
+          - unlink
+          - visualaid
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: endnote
+      table: articles
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: articles
+    field: tags
+    type: json
+    meta:
+      collection: articles
+      conditions: null
+      display: labels
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 23
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: tags
+      table: articles
+      data_type: json
+      default_value: null
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -2438,6 +2769,45 @@ fields:
       has_auto_increment: false
       foreign_key_table: issues
       foreign_key_column: id
+  - collection: articles_issues
+    field: order
+    type: integer
+    meta:
+      collection: articles_issues
+      conditions: null
+      display: raw
+      display_options: null
+      field: order
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 1
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: order
+      table: articles_issues
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: articles_sections
     field: id
     type: integer
@@ -2565,7 +2935,13 @@ fields:
       hidden: false
       interface: list-m2m
       note: null
-      options: null
+      options:
+        enableCreate: false
+        enableLink: true
+        limit: 100
+        template: >-
+          {{articles_slug.featured_image.$thumbnail}} {{articles_slug.title}} —
+          {{articles_slug.issues.issues_id.title}}
       readonly: false
       required: false
       sort: 16
@@ -2948,7 +3324,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: "{{first_name}} {{last_name}}"
+        template: '{{first_name}} {{last_name}}'
       readonly: false
       required: true
       sort: 12
@@ -3022,15 +3398,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: "#18222F"
-            background: "#D3DAE4"
+            foreground: '#18222F'
+            background: '#D3DAE4'
           - text: $t:archived
             value: archived
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -3123,7 +3499,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -3163,7 +3539,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 6
@@ -3190,29 +3566,6 @@ fields:
       foreign_key_table: directus_users
       foreign_key_column: id
   - collection: directus_files
-    field: articles
-    type: alias
-    meta:
-      collection: directus_files
-      conditions: null
-      display: null
-      display_options: null
-      field: articles
-      group: null
-      hidden: false
-      interface: list-o2m
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - o2m
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-  - collection: directus_files
     field: caption
     type: text
     meta:
@@ -3228,9 +3581,11 @@ fields:
       options:
         toolbar:
           - bold
+          - code
           - customLink
           - italic
           - unlink
+          - visualaid
       readonly: false
       required: false
       sort: 1
@@ -3310,7 +3665,7 @@ fields:
         trim: true
       readonly: false
       required: false
-      sort: 4
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -3333,14 +3688,244 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: directus_files
-    field: ads
+    field: article_slideshow_image
     type: alias
     meta:
       collection: directus_files
       conditions: null
       display: null
       display_options: null
-      field: ads
+      field: article_slideshow_image
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: ads_banner_image
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: ads_banner_image
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 15
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_1
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_1
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_2
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_2
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_3
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_3
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 11
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_4
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_4
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 12
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_5
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_5
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 13
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: issue_cover_6
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: issue_cover_6
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 14
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: ads_banner_image_mobile
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: ads_banner_image_mobile
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 16
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: ads_tile_image
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: ads_tile_image
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 17
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: article_featured_image
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: article_featured_image
       group: null
       hidden: false
       interface: list-o2m
@@ -3356,14 +3941,14 @@ fields:
       validation_message: null
       width: full
   - collection: directus_files
-    field: issues
+    field: article_promo_banner
     type: alias
     meta:
       collection: directus_files
       conditions: null
       display: null
       display_options: null
-      field: issues
+      field: article_promo_banner
       group: null
       hidden: false
       interface: list-o2m
@@ -3371,13 +3956,79 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - o2m
       translations: null
       validation: null
       validation_message: null
       width: full
+  - collection: directus_files
+    field: article_promo_thumb
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: article_promo_thumb
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_files
+    field: article_images
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: article_images
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: directus_sessions
+    field: next_token
+    type: string
+    meta: null
+    schema:
+      name: next_token
+      table: directus_sessions
+      data_type: character varying
+      default_value: null
+      max_length: 64
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: global_settings
     field: id
     type: uuid
@@ -3431,7 +4082,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 2
@@ -3511,7 +4162,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -3592,9 +4243,9 @@ fields:
       note: null
       options:
         enableCreate: false
-        template: "{{cover_1.$thumbnail}} {{title}}"
+        template: '{{cover_1.$thumbnail}} {{title}}'
       readonly: false
-      required: true
+      required: false
       sort: 6
       special:
         - m2o
@@ -3610,7 +4261,7 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: false
+      is_nullable: true
       is_unique: false
       is_primary_key: false
       is_generated: false
@@ -3618,6 +4269,46 @@ fields:
       has_auto_increment: false
       foreign_key_table: issues
       foreign_key_column: id
+  - collection: global_settings
+    field: preview_password
+    type: string
+    meta:
+      collection: global_settings
+      conditions: null
+      display: raw
+      display_options: null
+      field: preview_password
+      group: null
+      hidden: false
+      interface: input
+      note: This is the password that everyone will use to preview draft articles.
+      options:
+        clear: true
+        trim: true
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: preview_password
+      table: global_settings
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: issues
     field: id
     type: uuid
@@ -3774,7 +4465,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -3854,7 +4545,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 6
@@ -4052,7 +4743,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: "{{year}}/{{month}}"
+        template: '{{year}}/{{month}}'
       readonly: false
       required: true
       sort: 11
@@ -4169,6 +4860,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 14
@@ -4209,6 +4901,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 15
@@ -4249,6 +4942,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 16
@@ -4289,6 +4983,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 17
@@ -4329,6 +5024,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 18
@@ -4369,6 +5065,7 @@ fields:
       note: null
       options:
         crop: false
+        folder: 0772b2e1-f666-4bd0-9e14-937eae5d52d9
       readonly: false
       required: false
       sort: 19
@@ -4407,7 +5104,12 @@ fields:
       hidden: false
       interface: list-m2m
       note: null
-      options: null
+      options:
+        limit: 1000
+        template: >-
+          #{{order}} – {{articles_slug.featured_image.$thumbnail}}
+          {{articles_slug.title}} |
+          {{articles_slug.contributors.contributors_id.slug}} 
       readonly: false
       required: false
       sort: 20
@@ -4418,28 +5120,130 @@ fields:
       validation_message: null
       width: full
   - collection: issues
-    field: current_issue
-    type: alias
+    field: special_issue
+    type: boolean
     meta:
       collection: issues
       conditions: null
-      display: null
+      display: boolean
       display_options: null
-      field: current_issue
+      field: special_issue
       group: null
       hidden: false
-      interface: list-o2m
+      interface: boolean
       note: null
       options: null
       readonly: false
-      required: false
-      sort: 21
+      required: true
+      sort: 22
       special:
-        - o2m
+        - cast-boolean
       translations: null
       validation: null
       validation_message: null
       width: full
+    schema:
+      name: special_issue
+      table: issues
+      data_type: boolean
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: issues
+    field: summary
+    type: text
+    meta:
+      collection: issues
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: summary
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - code
+          - customLink
+          - italic
+      readonly: false
+      required: false
+      sort: 23
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: summary
+      table: issues
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: issues
+    field: credits
+    type: text
+    meta:
+      collection: issues
+      conditions: null
+      display: formatted-value
+      display_options: null
+      field: credits
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - code
+          - customLink
+          - italic
+      readonly: false
+      required: false
+      sort: 24
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: credits
+      table: issues
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: pages
     field: slug
     type: string
@@ -4454,7 +5258,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: "{{title}}"
+        template: '{{title}}'
       readonly: false
       required: false
       sort: 2
@@ -4490,15 +5294,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: "#18222F"
-            background: "#D3DAE4"
+            foreground: '#18222F'
+            background: '#D3DAE4'
           - text: $t:archived
             value: archived
-            foreground: "#FFFFFF"
+            foreground: '#FFFFFF'
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -4590,7 +5394,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 5
@@ -4670,7 +5474,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 7
@@ -5059,7 +5863,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 4
@@ -5139,7 +5943,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 6
@@ -5258,7 +6062,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: "{{name}}"
+        template: '{{name}}'
       readonly: false
       required: true
       sort: 9
@@ -5335,7 +6139,13 @@ fields:
       hidden: false
       interface: list-m2m
       note: null
-      options: null
+      options:
+        enableCreate: false
+        enableLink: true
+        limit: 100
+        template: >-
+          {{articles_slug.featured_image.$thumbnail}} {{articles_slug.title}} —
+          {{articles_slug.issues.issues_id.title}}
       readonly: false
       required: false
       sort: 11
@@ -5399,7 +6209,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: ads
+      one_field: ads_banner_image
       sort_field: null
     schema:
       table: ads
@@ -5420,7 +6230,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: ads
+      one_field: ads_banner_image_mobile
       sort_field: null
     schema:
       table: ads
@@ -5441,7 +6251,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: ads
+      one_field: ads_tile_image
       sort_field: null
     schema:
       table: ads
@@ -5462,7 +6272,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: articles
+      one_field: article_featured_image
       sort_field: null
     schema:
       table: articles
@@ -5525,7 +6335,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: articles
+      one_field: article_promo_thumb
       sort_field: null
     schema:
       table: articles
@@ -5546,7 +6356,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: articles
+      one_field: article_promo_banner
       sort_field: null
     schema:
       table: articles
@@ -5567,7 +6377,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: articles
+      one_field: article_slideshow_image
       sort_field: null
     schema:
       table: articles
@@ -5651,7 +6461,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: articles
+      one_field: article_images
       sort_field: null
     schema:
       table: articles_files
@@ -5673,7 +6483,7 @@ relations:
       one_collection_field: null
       one_deselect_action: nullify
       one_field: articles
-      sort_field: null
+      sort_field: order
     schema:
       table: articles_issues
       column: issues_id
@@ -5787,6 +6597,39 @@ relations:
       constraint_name: contributors_user_updated_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
+  - collection: directus_settings
+    field: public_registration_role
+    related_collection: directus_roles
+    meta: null
+    schema:
+      table: directus_settings
+      column: public_registration_role
+      foreign_key_table: directus_roles
+      foreign_key_column: id
+      constraint_name: directus_settings_public_registration_role_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: directus_webhooks
+    field: migrated_flow
+    related_collection: directus_flows
+    meta:
+      junction_field: null
+      many_collection: directus_webhooks
+      many_field: migrated_flow
+      one_allowed_collections: null
+      one_collection: directus_flows
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: directus_webhooks
+      column: migrated_flow
+      foreign_key_table: directus_flows
+      foreign_key_column: id
+      constraint_name: directus_webhooks_migrated_flow_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: global_settings
     field: user_created
     related_collection: directus_users
@@ -5840,7 +6683,7 @@ relations:
       one_collection: issues
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: current_issue
+      one_field: null
       sort_field: null
     schema:
       table: global_settings
@@ -5903,7 +6746,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_1
       sort_field: null
     schema:
       table: issues
@@ -5924,7 +6767,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_2
       sort_field: null
     schema:
       table: issues
@@ -5945,7 +6788,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_3
       sort_field: null
     schema:
       table: issues
@@ -5966,7 +6809,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_4
       sort_field: null
     schema:
       table: issues
@@ -5987,7 +6830,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_5
       sort_field: null
     schema:
       table: issues
@@ -6008,7 +6851,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: issues
+      one_field: issue_cover_6
       sort_field: null
     schema:
       table: issues
