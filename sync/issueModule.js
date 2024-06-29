@@ -15,6 +15,11 @@ const {
 
 // Import cover images sequentially
 async function importCoverImages(data, client) {
+  if (!data.covers || data.covers.length === 0) {
+    console.log("No covers to import.");
+    return;
+  }
+
   let issue_folder;
   issue_folder = await createFileFolder({
     name: "Covers",
