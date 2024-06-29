@@ -424,7 +424,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -504,7 +504,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 6
@@ -1350,7 +1350,7 @@ fields:
         characters. Editing the slug after an article is published will break
         the URL. [Create a redirect »](#)
       options:
-        template: '{{title}}'
+        template: "{{title}}"
       readonly: false
       required: true
       sort: 10
@@ -1424,15 +1424,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: '#18222F'
-            background: '#D3DAE4'
+            foreground: "#18222F"
+            background: "#D3DAE4"
           - text: $t:archived
             value: archived
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -1526,7 +1526,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 2
@@ -1566,7 +1566,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -1822,7 +1822,7 @@ fields:
         enableLink: true
         enableSearchFilter: true
         limit: 10
-        template: '{{issues_id.cover_1.$thumbnail}} {{issues_id.title}}'
+        template: "{{issues_id.cover_1.$thumbnail}} {{issues_id.title}}"
       readonly: false
       required: false
       sort: 1
@@ -1851,7 +1851,7 @@ fields:
         fields:
           - sections_id.name
         limit: 10
-        template: '{{sections_id.name}}'
+        template: "{{sections_id.name}}"
       readonly: false
       required: false
       sort: 2
@@ -3324,7 +3324,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: '{{first_name}} {{last_name}}'
+        template: "{{first_name}} {{last_name}}"
       readonly: false
       required: true
       sort: 12
@@ -3398,15 +3398,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: '#18222F'
-            background: '#D3DAE4'
+            foreground: "#18222F"
+            background: "#D3DAE4"
           - text: $t:archived
             value: archived
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -3499,7 +3499,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -3539,7 +3539,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 6
@@ -4009,26 +4009,6 @@ fields:
       validation: null
       validation_message: null
       width: full
-  - collection: directus_sessions
-    field: next_token
-    type: string
-    meta: null
-    schema:
-      name: next_token
-      table: directus_sessions
-      data_type: character varying
-      default_value: null
-      max_length: 64
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
   - collection: global_settings
     field: id
     type: uuid
@@ -4082,7 +4062,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 2
@@ -4162,7 +4142,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -4243,7 +4223,7 @@ fields:
       note: null
       options:
         enableCreate: false
-        template: '{{cover_1.$thumbnail}} {{title}}'
+        template: "{{cover_1.$thumbnail}} {{title}}"
       readonly: false
       required: false
       sort: 6
@@ -4465,7 +4445,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -4545,7 +4525,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 6
@@ -4743,7 +4723,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: '{{year}}/{{month}}'
+        template: "{{year}}/{{month}}"
       readonly: false
       required: true
       sort: 11
@@ -5109,7 +5089,7 @@ fields:
         template: >-
           #{{order}} – {{articles_slug.featured_image.$thumbnail}}
           {{articles_slug.title}} |
-          {{articles_slug.contributors.contributors_id.slug}} 
+          {{articles_slug.contributors.contributors_id.slug}}
       readonly: false
       required: false
       sort: 20
@@ -5258,7 +5238,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: '{{title}}'
+        template: "{{title}}"
       readonly: false
       required: false
       sort: 2
@@ -5294,15 +5274,15 @@ fields:
         choices:
           - text: $t:published
             value: published
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--primary)
           - text: $t:draft
             value: draft
-            foreground: '#18222F'
-            background: '#D3DAE4'
+            foreground: "#18222F"
+            background: "#D3DAE4"
           - text: $t:archived
             value: archived
-            foreground: '#FFFFFF'
+            foreground: "#FFFFFF"
             background: var(--theme--warning)
         showAsDot: true
       field: status
@@ -5394,7 +5374,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 5
@@ -5474,7 +5454,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 7
@@ -5863,7 +5843,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 4
@@ -5943,7 +5923,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 6
@@ -6062,7 +6042,7 @@ fields:
       interface: extension-wpslug
       note: null
       options:
-        template: '{{name}}'
+        template: "{{name}}"
       readonly: false
       required: true
       sort: 9
