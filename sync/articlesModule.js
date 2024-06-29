@@ -31,17 +31,14 @@ async function importArticles(
 
     const issues = [{ issues_id: existingIssue.id }];
 
-    const featured_image = await importImageModule(
-      articleData.articles_slug.featured_image,
-      articles_folder,
-      client
-    );
-
-    const images = await articleImagesModule(
-      articleData.articles_slug.images,
-      articles_folder,
-      client
-    );
+    let images;
+    if (articleData.articles_slug.images !== null) {
+      images = await articleImagesModule(
+        articleData.articles_slug.images,
+        articles_folder,
+        client
+      );
+    }
 
     const promo_banner = await importImageModule(
       articleData.articles_slug.promo_banner,
@@ -60,6 +57,15 @@ async function importArticles(
       articles_folder,
       client
     );
+
+    let featured_image;
+    if (articleData.articles_slug.featured_image !== null) {
+      featured_image = await importImageModule(
+        articleData.articles_slug.featured_image,
+        articles_folder,
+        client
+      );
+    }
 
     // check if there are wrapping <p> tags in the excerpt and remove them
     let excerpt = articleData.articles_slug.excerpt;
