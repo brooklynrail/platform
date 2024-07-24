@@ -8,8 +8,8 @@ const {
   readPresets,
 } = require("@directus/sdk");
 
-async function createIssuePreset(year, month, title) {
-  console.log(year, month, title);
+async function createIssuePreset(year, month, title, issue_number) {
+  console.log(year, month, title, issue_number);
 
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
@@ -20,7 +20,7 @@ async function createIssuePreset(year, month, title) {
   }
 
   const newPreset = {
-    bookmark: `${title}`,
+    bookmark: `#${issue_number} • ${title}`,
     collection: "articles",
     filter: {
       _and: [
