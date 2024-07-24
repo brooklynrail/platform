@@ -19,7 +19,7 @@ async function importArticles(
     console.log("Importing article data: ", articleData.articles_slug.title);
     console.log("\n");
 
-    const sections = await sectionsModule(
+    const section = await sectionsModule(
       articleData.articles_slug.old_section_id,
       client
     );
@@ -29,7 +29,7 @@ async function importArticles(
       client
     );
 
-    const issues = [{ issues_id: existingIssue.id }];
+    const issue = { id: existingIssue.id };
 
     let images;
     if (articleData.articles_slug.images !== null) {
@@ -78,15 +78,17 @@ async function importArticles(
 
     const newData = {
       ...articleData.articles_slug,
-      sections,
+      section,
       contributors,
       featured_image,
       images,
       promo_banner,
       promo_thumb,
       slideshow_image,
-      issues,
+      issue,
     };
+
+    console.log("newData ===========================", newData);
 
     // console.log("New article data: ", newData);
 
@@ -101,9 +103,10 @@ async function importArticles(
       `Error importing article data for ${articleData.articles_slug.title}:`,
       error.message
     );
+
     // Handle the error and write specific data to a text file
-    const failedData = `${articleData.articles_slug.title}\n`;
-    const filePath = `sync/errors-issue.txt`;
+    const failedData = `${existingIssue.title} | ${articleData.articles_slug.title}\n`;
+    const filePath = `sync/errors-articles.txt`;
 
     // Write the error data to the text file
     fs.appendFileSync(filePath, failedData, "utf-8");
