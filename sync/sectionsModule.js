@@ -6,7 +6,6 @@ const { withToken, readItems } = require("@directus/sdk");
 async function sectionsModule(old_section_id, client) {
   const old_id = old_section_id;
   try {
-    const existingSections = [];
     // Function to check if a section with a given ID exists in Directus
     const checkSectionExists = async (old_id, client) => {
       const sections = await client.request(
@@ -26,10 +25,8 @@ async function sectionsModule(old_section_id, client) {
 
     const existingSectionId = await checkSectionExists(old_id, client);
     if (existingSectionId) {
-      existingSections.push({ sections_id: existingSectionId });
+      return { id: existingSectionId };
     }
-
-    return existingSections;
   } catch (error) {
     console.error("Error fetching section:", error.message);
     // Handle the error and write specific data to a text file
