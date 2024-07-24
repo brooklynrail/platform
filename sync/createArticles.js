@@ -29,6 +29,11 @@ async function createArticles() {
 
     // Iterate over each issue
     for (const issue of allIssues) {
+      if (issue.year !== 2024 || issue.month !== 6) {
+        console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
+        continue; // Skip to the next issue
+      }
+
       // check to see if the issue already exists in Directus
       const existingIssue = existingIssues.find((existingIssue) => {
         return existingIssue.old_id === issue.old_id;
@@ -77,14 +82,15 @@ async function createArticles() {
           const issuePreset = await createIssuePreset(
             issueData.year,
             issueData.month,
-            issueData.title
+            issueData.title,
+            existingIssue.issue_number
           );
 
           console.log(
             `🚩 The ${issueData.year}-${issueData.month} Issue Preset created!`,
             issuePreset
           );
-
+          // Create issueFolder for FILES
           let issueFolder;
           issueFolder = await createFileFolder({
             name: issueData.title,
@@ -111,6 +117,10 @@ async function createArticles() {
           console.log(
             `📑 Articles for the ${issueData.year}-${issueData.month} issue completed!`
           );
+          const memoryUsage = process.memoryUsage();
+          console.log(`====================================`);
+          console.log(`Memory Usage: ${memoryUsage.heapUsed / 1024 / 1024} MB`);
+          console.log(`====================================`);
         }
       }
     }
