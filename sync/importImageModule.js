@@ -13,7 +13,7 @@ async function importImageModule(data, issue_folder, client) {
         console.log(`======>>>> existingImageId: ${existingImageId}`);
         return existingImageId;
       } else {
-        console.log(`Uploading cover image: ${data.path}`);
+        console.log(`Uploading image: ${data.path}`);
         // Import the image
         // FULL path to Cloud Storage files
         const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
