@@ -5,7 +5,7 @@ const { importImageModule } = require("./importImageModule");
 const { sectionsModule } = require("./sectionsModule");
 const { contributorsModule } = require("./contributorsModule");
 const { articleImagesModule } = require("./articleImagesModule");
-const { withToken, createItem, createFileFolder } = require("@directus/sdk");
+const { withToken, createItem, readItems } = require("@directus/sdk");
 
 // Import articles sequentially
 async function importArticles(
@@ -15,6 +15,33 @@ async function importArticles(
   client
 ) {
   try {
+    // Check to see if the article already exists in Directus
+    const old_id = articleData.articles_slug.old_id;
+
+    const checkArticleExists = async (old_id, client) => {
+      const articles = await client.request(
+        withToken(
+          BASE_ACCESS_TOKEN,
+          readItems("articles", {
+            filter: {
+              old_id: {
+                _eq: old_id,
+              },
+            },
+          })
+        )
+      );
+      return articles.length > 0 ? true : false;
+    };
+
+    const articleExists = await checkArticleExists(old_id, client);
+    if (articleExists) {
+      console.log(
+        `Article ${articleData.articles_slug.title} already exists! Skipping...`
+      );
+      return;
+    }
+
     console.log("====================================");
     console.log("Importing article data: ", articleData.articles_slug.title);
     console.log("\n");
