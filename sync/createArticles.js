@@ -29,7 +29,7 @@ async function createArticles() {
 
     // Iterate over each issue
     for (const issue of allIssues) {
-      if (issue.year !== 2024 || issue.month !== 6) {
+      if (issue.year !== 2024) {
         console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
         continue; // Skip to the next issue
       }
@@ -45,14 +45,6 @@ async function createArticles() {
       }
 
       if (existingIssue) {
-        // if the existing issue has articles in the array, skip to the next issue
-        if (existingIssue.articles.length > 0) {
-          console.log(
-            `---> ${existingIssue.slug} has ${existingIssue.articles.length} articles`
-          );
-          continue;
-        }
-
         // set the issue API URL
         const issueAPI =
           issue.special_issue === true
