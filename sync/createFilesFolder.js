@@ -39,7 +39,7 @@ async function checkFolder(folderData, client) {
 async function createFileFolder(folderData) {
   const folderName = folderData.name;
 
-  console.log(`📁 Creating "${folderName}" folder`, folderData);
+  // console.log(`📁 Creating "${folderName}" folder`, folderData);
 
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
@@ -50,10 +50,10 @@ async function createFileFolder(folderData) {
     const newFolder = await client.request(
       withToken(BASE_ACCESS_TOKEN, createFolder(folderData))
     );
-    console.log("Folder created: ", newFolder);
+    // console.log("Folder created: ", newFolder);
     return newFolder;
   } else {
-    console.log("Folder already exists");
+    // console.log("Folder already exists");
     return existingFolder;
   }
 }
