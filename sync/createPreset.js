@@ -9,13 +9,10 @@ const {
 } = require("@directus/sdk");
 
 async function createIssuePreset(year, month, title, issue_number) {
-  console.log(year, month, title, issue_number);
-
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
 
-  const existingPreset = await checkPreset(title);
+  const existingPreset = await checkPreset(`#${issue_number} • ${title}`);
   if (existingPreset) {
-    console.log("Preset already exists");
     return;
   }
 
@@ -24,10 +21,15 @@ async function createIssuePreset(year, month, title, issue_number) {
     collection: "articles",
     filter: {
       _and: [
-        { issues: { issues_id: { year: { _eq: `${year}` } } } },
-        { issues: { issues_id: { month: { _eq: `${month}` } } } },
+        {
+          _and: [
+            { issue: { year: { _eq: `${year}` } } },
+            { issue: { month: { _eq: `${month}` } } },
+          ],
+        },
       ],
     },
+
     layout: "tabular",
     layout_query: {
       tabular: {
@@ -38,9 +40,10 @@ async function createIssuePreset(year, month, title, issue_number) {
           "title",
           "in_print",
           "status",
-          "sections.sections_id.name",
+          "section.name",
           "contributors.contributors_id.slug",
           "user_updated.avatar.$thumbnail",
+          "sort",
         ],
       },
     },
@@ -51,8 +54,10 @@ async function createIssuePreset(year, month, title, issue_number) {
           title: 325,
           in_print: 50,
           status: 50,
-          "contributors.contributors_id.slug": 250,
+          "section.name": 120,
+          "contributors.contributors_id.slug": 200,
           "user_updated.avatar.$thumbnail": 50,
+          sort: 75,
         },
       },
     },
@@ -64,21 +69,21 @@ async function createIssuePreset(year, month, title, issue_number) {
     withToken(BASE_ACCESS_TOKEN, createPreset(newPreset))
   );
 
+  console.log(`🚩 The ${year}-${month} Bookmark was created!`);
+
   return presets;
 }
 
 // check to see if a preset exists
 async function checkPreset(title) {
   const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
-
   const presets = await client.request(
     withToken(
       BASE_ACCESS_TOKEN,
       readPresets({
-        fields: ["*.*"],
+        fields: ["bookmark", "id"],
         filter: {
           bookmark: { _eq: title },
-          collection: { _eq: "articles" },
         },
       })
     )
