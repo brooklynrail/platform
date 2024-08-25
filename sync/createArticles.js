@@ -1,3 +1,4 @@
+const fs = require("fs");
 require("dotenv").config();
 const {
   BASE_ACCESS_TOKEN,
@@ -29,10 +30,15 @@ async function createArticles() {
 
     // Iterate over each issue
     for (const issue of allIssues) {
-      if (issue.year !== 2024) {
+      if (issue.year !== 2017 || (issue.year === 2024 && issue.month === 7)) {
         console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
         continue; // Skip to the next issue
       }
+
+      // if (issue.year !== 2023 || issue.month !== 6) {
+      //   console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
+      //   continue; // Skip to the next issue
+      // }
 
       // check to see if the issue already exists in Directus
       const existingIssue = existingIssues.find((existingIssue) => {
@@ -40,7 +46,9 @@ async function createArticles() {
       });
 
       if (!existingIssue) {
-        console.log(`Issue ${issue.year}-${issue.month} does not exist!`);
+        console.log(
+          `Skipping because Issue ${issue.year}-${issue.month} does not exist!`
+        );
         continue; // Skip to the next issue
       }
 
@@ -68,20 +76,16 @@ async function createArticles() {
         const issueData = await response.json();
 
         if (issueData) {
-          console.log("====================================");
-          console.log("Issue to be updated:", issue);
+          console.log("\n\n====================================");
+          console.log("Updating:", issue.title);
 
-          const issuePreset = await createIssuePreset(
+          await createIssuePreset(
             issueData.year,
             issueData.month,
             issueData.title,
             existingIssue.issue_number
           );
 
-          console.log(
-            `🚩 The ${issueData.year}-${issueData.month} Issue Preset created!`,
-            issuePreset
-          );
           // Create issueFolder for FILES
           let issueFolder;
           issueFolder = await createFileFolder({
@@ -106,20 +110,29 @@ async function createArticles() {
               client
             );
           }
-          console.log(
-            `📑 Articles for the ${issueData.year}-${issueData.month} issue completed!`
-          );
+
+          const thisIssue = await getThisIssue(issueData);
           const memoryUsage = process.memoryUsage();
           console.log(`====================================`);
+          console.log(issueData.title, " completed!");
+          console.log("Old Articles: ", issueData.articles.length);
+          console.log("New Articles: ", thisIssue[0].articles.length);
+          console.log(``);
           console.log(`Memory Usage: ${memoryUsage.heapUsed / 1024 / 1024} MB`);
           console.log(`====================================`);
+
+          const articlesCount = `===========\n${issueData.title}\nNew: ${thisIssue[0].articles.length}\nOld: ${issueData.articles.length}\n`;
+          const migrationfilePath = `sync/migration-check.txt`;
+
+          // Write the error data to the text file
+          fs.appendFileSync(migrationfilePath, articlesCount, "utf-8");
         }
       }
     }
   } catch (error) {
     console.error(
       "Error fetching creating article data for each issue:",
-      error.message
+      error
     );
   }
 }
@@ -133,7 +146,7 @@ async function getExistingIssues() {
       withToken(
         BASE_ACCESS_TOKEN,
         readItems("issues", {
-          fields: ["id", "slug", "old_id", "issue_number", "articles"],
+          fields: ["id", "title", "slug", "old_id", "issue_number", "articles"],
           limit: -1,
         })
       )
@@ -142,6 +155,34 @@ async function getExistingIssues() {
     return existingIssues;
   } catch (error) {
     console.error("Error fetching existing issues:", error.message);
+    throw error; // Propagate the error
+  }
+}
+async function getThisIssue(issueData) {
+  try {
+    // console.log("Fetching this issue...", issueData);
+    const client = createDirectus(BASE_DIRECTUS_URL).with(rest());
+    const issue = await client.request(
+      withToken(
+        BASE_ACCESS_TOKEN,
+        readItems("issues", {
+          fields: ["title", "year", "month", "slug", "articles", "old_id"],
+          filter: {
+            year: { _eq: issueData.year },
+            month: { _eq: issueData.month },
+          },
+          deep: {
+            articles: {
+              _limit: -1,
+            },
+          },
+        })
+      )
+    );
+
+    return issue;
+  } catch (error) {
+    console.error("Error fetching this issue:", error.message);
     throw error; // Propagate the error
   }
 }
