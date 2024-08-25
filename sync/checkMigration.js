@@ -1,3 +1,4 @@
+const fs = require("fs");
 require("dotenv").config();
 const {
   BASE_ACCESS_TOKEN,
@@ -55,6 +56,11 @@ async function checkMigration() {
     console.log(issue.title);
     console.log("Old Articles: ", oldIssueData.articles.length);
     console.log("New Articles: ", issue.articles.length);
+    const articlesCount = `===========\n${issue.title}\nNew: ${issue.articles.length}\nOld: ${oldIssueData.articles.length}\n`;
+    const migrationfilePath = `sync/migration-check.txt`;
+
+    // Write the error data to the text file
+    fs.appendFileSync(migrationfilePath, articlesCount, "utf-8");
   }
 }
 
