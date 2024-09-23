@@ -1,0 +1,18 @@
+name: Adam Fitzgerald | old_id: 4205
+name: Jim Feast | old_id: 454
+name: Lu Chen | old_id: 1401
+name: David Wilentz | old_id: 54
+allPeople is not async iterable
+undefined
+undefined
+undefined
+Cannot read properties of undefined (reading 'Symbol(Symbol.asyncIterator)')
+undefined
+createFileFolder is not defined
+person is not defined
+Error creating person: [object Object]
+Error creating person: [object Object]
+checkArticleExists is not defined
+old_id is not defined
+undefined
+undefined

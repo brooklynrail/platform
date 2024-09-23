@@ -10,13 +10,14 @@ async function importImageModule(data, issue_folder, client) {
       existingImageId = await checkForImage(data, client);
       if (existingImageId) {
         console.log(`Image ${data.path} already exists!`);
-        console.log(`======>>>> existingImageId: ${existingImageId}`);
         return existingImageId;
       } else {
         console.log(`Uploading image: ${data.path}`);
         // Import the image
         // FULL path to Cloud Storage files
-        const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
+        // const path = `https://storage.googleapis.com/rail-legacy-media/production${data.path}`;
+        const path = `https://brooklynrail.org${data.path}`;
+        console.log("path=====", path);
         // Local, relative paths
         // const path = `http://localhost:8000${data.path}`;
         const description = data.description;
@@ -41,9 +42,7 @@ async function importImageModule(data, issue_folder, client) {
         );
 
         // return the ID of the file that was just uploaded
-        if (result) {
-          return result.id;
-        }
+        return result.id;
       }
     }
   } catch (error) {
@@ -62,14 +61,23 @@ async function importImageModule(data, issue_folder, client) {
 // if it does, return the ID of the existing image
 async function checkForImage(data, client) {
   const old_path = data.path;
+  // get the filename from old_path
+  const old_filename = old_path.split("/").pop();
+
   const image = await client.request(
     withToken(
       BASE_ACCESS_TOKEN,
       readFiles({
-        fields: ["id", "old_path"],
+        fields: ["id", "old_path", "filename_download"],
         filter: {
           old_path: { _eq: old_path },
         },
+        // filter: {
+        //   _or: [
+        //     { old_path: { _eq: old_path } },
+        //     { filename_download: { _eq: old_filename } },
+        //   ],
+        // },
       })
     )
   );

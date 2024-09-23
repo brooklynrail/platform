@@ -26,9 +26,11 @@ async function main() {
     }
 
     const snapshot = await getSnapshot();
+    // console.log("Got snapshot from production!", snapshot);
     const diff = await getDiff(snapshot);
+    // console.log("This is the DIFF", diff);
     await applyDiff(diff);
-    console.log("Production and localhost schemas are now in sync!");
+    // console.log("Production and localhost schemas are now in sync!");
   } catch (error) {
     console.error("An error occurred:", error.message);
     process.exit(1); // Exit with an error code
@@ -52,7 +54,6 @@ async function getDiff(snapshot) {
     const data = await client.request(
       withToken(TARGET_ACCESS_TOKEN, schemaDiff(snapshot))
     );
-
     return data;
   } catch (error) {
     console.error("Error getting schema diff:", error.message);

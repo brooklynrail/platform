@@ -20,15 +20,7 @@ async function importIssues() {
     if (allIssues && existingIssues) {
       // Iterate over each issue
       for (const issue of allIssues) {
-        if (
-          (issue.year !== 2005 &&
-            issue.year !== 2004 &&
-            issue.year !== 2003 &&
-            issue.year !== 2002 &&
-            issue.year !== 2001 &&
-            issue.year !== 2000) ||
-          (issue.year === 2024 && issue.month === 7)
-        ) {
+        if (issue.year !== 2024 || issue.month !== 7) {
           console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
           continue; // Skip to the next issue
         }
@@ -97,7 +89,7 @@ async function getExistingIssues() {
         BASE_ACCESS_TOKEN,
         readItems("issues", {
           fields: ["id", "slug", "old_id", "issue_number", "articles"],
-          // limit: -1,
+          limit: -1,
         })
       )
     );

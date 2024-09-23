@@ -25,6 +25,7 @@ async function importCoverImages(data, client) {
     name: "Covers",
     parent: data.issue_folder.id,
   });
+
   for (let i = 0; i < data.covers.length; i++) {
     const coverData = data.covers[i];
     const key = `cover_${i + 1}`;

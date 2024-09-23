@@ -30,15 +30,10 @@ async function createArticles() {
 
     // Iterate over each issue
     for (const issue of allIssues) {
-      if (issue.year !== 2017 || (issue.year === 2024 && issue.month === 7)) {
+      if (issue.year !== 2024 || issue.month !== 7) {
         console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
         continue; // Skip to the next issue
       }
-
-      // if (issue.year !== 2023 || issue.month !== 6) {
-      //   console.log(`Skipping Issue ${issue.year}-${issue.month} for now!`);
-      //   continue; // Skip to the next issue
-      // }
 
       // check to see if the issue already exists in Directus
       const existingIssue = existingIssues.find((existingIssue) => {
@@ -79,12 +74,12 @@ async function createArticles() {
           console.log("\n\n====================================");
           console.log("Updating:", issue.title);
 
-          await createIssuePreset(
-            issueData.year,
-            issueData.month,
-            issueData.title,
-            existingIssue.issue_number
-          );
+          // await createIssuePreset(
+          //   issueData.year,
+          //   issueData.month,
+          //   issueData.title,
+          //   existingIssue.issue_number
+          // );
 
           // Create issueFolder for FILES
           let issueFolder;
@@ -111,21 +106,21 @@ async function createArticles() {
             );
           }
 
-          const thisIssue = await getThisIssue(issueData);
-          const memoryUsage = process.memoryUsage();
-          console.log(`====================================`);
-          console.log(issueData.title, " completed!");
-          console.log("Old Articles: ", issueData.articles.length);
-          console.log("New Articles: ", thisIssue[0].articles.length);
-          console.log(``);
-          console.log(`Memory Usage: ${memoryUsage.heapUsed / 1024 / 1024} MB`);
-          console.log(`====================================`);
+          // const thisIssue = await getThisIssue(issueData);
+          // const memoryUsage = process.memoryUsage();
+          // console.log(`====================================`);
+          // console.log(issueData.title, " completed!");
+          // console.log("Old Articles: ", issueData.articles.length);
+          // console.log("New Articles: ", thisIssue[0].articles.length);
+          // console.log(``);
+          // console.log(`Memory Usage: ${memoryUsage.heapUsed / 1024 / 1024} MB`);
+          // console.log(`====================================`);
 
-          const articlesCount = `===========\n${issueData.title}\nNew: ${thisIssue[0].articles.length}\nOld: ${issueData.articles.length}\n`;
-          const migrationfilePath = `sync/migration-check.txt`;
+          // const articlesCount = `===========\n${issueData.title}\nNew: ${thisIssue[0].articles.length}\nOld: ${issueData.articles.length}\n`;
+          // const migrationfilePath = `sync/migration-check.txt`;
 
-          // Write the error data to the text file
-          fs.appendFileSync(migrationfilePath, articlesCount, "utf-8");
+          // // Write the error data to the text file
+          // fs.appendFileSync(migrationfilePath, articlesCount, "utf-8");
         }
       }
     }

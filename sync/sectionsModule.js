@@ -3,8 +3,8 @@ require("dotenv").config();
 const { BASE_ACCESS_TOKEN } = require("./config");
 const { withToken, readItems } = require("@directus/sdk");
 
-async function sectionsModule(old_section_id, client) {
-  const old_id = old_section_id;
+async function sectionsModule(old_section_slug, client) {
+  const old_id = old_section_slug;
   try {
     // Function to check if a section with a given ID exists in Directus
     const checkSectionExists = async (old_id, client) => {
@@ -13,7 +13,7 @@ async function sectionsModule(old_section_id, client) {
           BASE_ACCESS_TOKEN,
           readItems("sections", {
             filter: {
-              old_id: {
+              slug: {
                 _eq: old_id,
               },
             },
