@@ -94,3 +94,19 @@ Required settings for all image transformations.
 - `promo-thumb` — 120x120
 - `slideshow-image` — 1328x564
 - `featured-image` — 800x1058
+
+---
+
+## Backing up local databases
+
+_via https://simplebackups.com/blog/docker-postgres-backup-restore-guide-with-examples/_
+
+```
+docker exec -i studio-db /usr/bin/pg_dump \ -U postgres directus > postgres-backup.sql
+```
+
+```
+docker exec studio-db /bin/bash \
+ -c "/usr/bin/pg_dump -U postgres directus" \
+ | gzip -9 > postgres-backup.sql.gz
+```
