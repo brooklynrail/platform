@@ -7,7 +7,6 @@ const {
   withToken,
 } = require("@directus/sdk");
 
-// Create all the articles for each issue
 async function clear() {
   try {
     const client = createDirectus(BASE_DIRECTUS_URL).with(rest());

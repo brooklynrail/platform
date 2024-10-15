@@ -28,6 +28,8 @@ async function createPeople() {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
+    const mainPeopleFolder = await createFileFolder({ name: "People" });
+
     const allPeople = await response.json();
 
     if (allPeople) {
@@ -57,17 +59,11 @@ async function createPeople() {
           continue;
         }
 
-        // Create a folder to store all the article files
-        let portraits_folder;
-        portraits_folder = await createFileFolder({
-          name: "Portraits",
-        });
-
         let portrait;
         if (personData.portrait !== null) {
           portrait = await importImageModule(
             personData.portrait,
-            portraits_folder,
+            mainPeopleFolder,
             client
           );
         }
