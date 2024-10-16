@@ -19,42 +19,32 @@ async function cleanupPeopleAltText() {
 
     const archivePeople = await response.json();
 
+    const peopleToUpdate = [];
     for (const person of archivePeople) {
-      console.log("========================================");
-      // For each person, check if they have a portrait and alt text
-      if (person.portrait && person.portrait.alt) {
-        const imagePath = person.portrait.path;
-        // Get the filename from the path
-        // example -- "path" : "/media/files/000512650035-square.jpg",
-        const filename = imagePath.split("/").pop();
-        console.log("filename: ", filename);
+      // Find the person in Directus using the slug
+      const thisPerson = await client.request(
+        withToken(
+          BASE_ACCESS_TOKEN,
+          readItems("people", {
+            filter: { slug: { _eq: person.slug } },
+          })
+        )
+      );
 
-        // Find the image in the DirectusFiles API using the filename as the filter
-        const files = await client.request(
-          withToken(
-            BASE_ACCESS_TOKEN,
-            readItems("directus_files", {
-              filter: { filename_download: { _eq: filename } },
-            })
-          )
-        );
-
-        if (files.data.length > 0) {
-          const file = files.data[0];
-          console.log("updating file: ", file);
-          // const updatedFile = await client.request(
-          //   withToken(
-          //     BASE_ACCESS_TOKEN,
-          //     updateItem("directus_files", file.id, {
-          //       alt: person.portrait.alt,
-          //     })
-          //   )
-          // );
-
-          // console.log("updatedFile: ", updatedFile);
-        }
+      if (
+        person.portrait &&
+        person.portrait.alt &&
+        thisPerson[0] &&
+        thisPerson[0].portrait
+      ) {
+        const record = { id: thisPerson[0].portrait, alt: person.portrait.alt };
+        // push to peopleToUpdate array
+        peopleToUpdate.push(record);
       }
     }
+
+    console.log("========================================");
+    console.log(peopleToUpdate);
   } catch (error) {
     console.error("Error", error);
   }
