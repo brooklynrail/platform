@@ -30,7 +30,7 @@ async function main() {
     const diff = await getDiff(snapshot);
     // console.log("This is the DIFF", diff);
     await applyDiff(diff);
-    // console.log("Production and localhost schemas are now in sync!");
+    console.log("Production and localhost schemas are now in sync!");
   } catch (error) {
     console.error("An error occurred:", error.message);
     process.exit(1); // Exit with an error code
